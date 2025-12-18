@@ -1,0 +1,26 @@
+Answer.1:
+To solve this issue, we first study the problem carefully to understand why the website fails when many users visit at the same time. Then we design a better system that can handle high traffic. After improving the code and database, we test the website by creating heavy traffic situations. Once deployed, we keep monitoring the system so the issue does not repeat in future sales.
+
+
+Answer.2: 
+For a short deadline, the Agile model is the best option. It allows the team to build only the most important features first and release them quickly. Regular feedback from the client helps improve the app while staying within the time limit.
+
+
+Answer.3: 
+This problem should have been found before release during proper testing phase. To avoid this issue later, the payment process must be tested in different real-life situations, and the system should be monitored after launch to catch problems early.
+
+
+Answer.4:
+In the traditional SDLC approach, changes are difficult to manage once development has started. Any new requirement means extra work and delays. This shows that the traditional model is not suitable for projects where requirements are likely to change.
+
+
+Answer.5:
+Security must be considered from the beginning of the project. Security rules are decided early, safe system design is created, secure coding is followed, and security checks are done before release. After launch, continuous monitoring helps protect user data.
+
+
+Answer.6:
+This usually happens when the customer’s needs are not clearly understood at the start. To prevent this, developers should talk regularly with the customer, confirm requirements, and show progress frequently to ensure expectations are met.
+
+
+Answer.7:
+The process starts by reviewing the existing system to understand what can be moved. Then a cloud-based design is planned, required changes are made, and the system is tested properly. After deployment, performance is monitored to ensure everything works smoothly.
