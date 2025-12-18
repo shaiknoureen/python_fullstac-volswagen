@@ -1,0 +1,176 @@
+1. An online shopping website is facing frequent downtime during sales. How would you apply the SDLC phases to identify and permanently fix this issue?
+
+
+Answer - 
+	
+Requirement Analysis
+
+I will try to identify peak-load expectations like traffic spikes, concurrent users.
+I will seek clarity for non-functional requirements (availability, scalability etc.).
+
+Design
+
+I will design scalable architecture (load balancers, auto-scaling, caching).
+I will try to remove single points of failure.
+
+Implementation
+
+I will try to optimize code, DB queries, async processing.
+I will introduce caching and rate-limiting.
+
+Testing
+
+I will perform load testing before sales.
+
+Deployment & Maintenance
+
+Will monitor the system and fix issues quickly.
+
+
+
+2. A client wants to launch an MVP of an online food delivery app in 3 months. Which SDLC model would you choose and why?
+
+Answer-
+	
+I would choose the Agile Model.
+
+Reason:
+
+We can build the app in small parts.
+Core features like login, order and payment can be done first.
+Client can give feedback easily.
+Changes can be handled easily.
+
+Agile is better than all other models in this scenario.
+
+
+3. After deployment, users report that the payment feature fails intermittently. In which SDLC phase should this have been caught, and how would you prevent it next time?
+
+Answer-
+
+This should have been caught in the testing phase.
+
+Potential reasons - 
+
+May be the Payment gateway was not tested properly and different scenarios like slow internet were not tested.
+
+Next time -
+
+I will do proper integration testing.
+I will test payment under load.
+I will handle failures properly in code.
+
+
+4. A business requirement changes midway while developing a subscription-based platform. How does the traditional SDLC handle this, and what are its limitations?
+
+Answer - 
+
+In traditional SDLC (waterfall) model, changes are difficult.
+
+We have to go back to requirement and design again.
+It increases time and cost.
+Development gets delayed.
+
+This is the limitations of traditional SDLC and this is why Agile is preferred.
+
+
+5. An online banking application must meet strict security and compliance requirements. How would you incorporate security testing into the SDLC lifecycle?
+
+
+Answer - 
+
+Security should be added in every SDLC phase.
+
+Requirement: Security roles should be noted clearly.
+Design: Planning of authentication and authorization will be done.
+Development: By following secure coding practices.
+Testing: By doing security and vulnerability testing.
+Maintenance: Monitor and fix security issues regularly.
+
+Security checks should not be done at the end.
+
+
+6. Your team delivered a feature, but it doesn’t match the customer’s expectation. Which SDLC step likely failed, and how would you improve it?
+
+
+Answer-
+
+The issue is most likely in the requirement gathering phase.
+
+Requirements were not understood properly.
+Customer expectations were not clear.
+
+Improvement :
+
+Ask clear questions.
+Show demos or sample screens.
+Take feedback regularly.
+
+
+
+7. A legacy e-commerce system needs to be migrated to a cloud-based architecture. How would SDLC guide this migration process?
+
+
+Answer-
+
+SDLC guided approach
+
+Requirements
+
+Identify scalability, cost, security goals.
+
+Analysis
+
+Assess legacy system dependencies and risks.
+
+Design
+
+Choosing cloud architecture (microservices, managed DBs).
+Planning that data migration strategy.
+
+Implementation
+
+Incremental migration (module-wise).
+Use of feature toggles.
+
+Testing 
+
+Regression, performance, security testing.
+
+Deployment
+
+Phased rollout with rollback plan.
+
+Maintenance
+
+Optimize costs, monitor performance, improve reliability.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
