@@ -1,0 +1,38 @@
+Ans.1 :-> 
+• Requirement Analysis: First understand when and why the site crashes during sales.
+• Design: Plan a system that can handle heavy traffic (scaling, load balancing).
+• Implementation: Make the needed code and infrastructure improvements.
+• Testing: Check the system under high load before going live.
+• Maintenance: Keep monitoring and fix issues so it doesn’t happen again.
+
+Ans.2 :->
+=>I would choose the Agile model because the client wants a quick MVP in just 3 months. Agile allows us to build the app in small parts, get early feedback, and make changes easily. This way, we can launch fast with core features and improve the app step by step.
+
+Ans.3 :->
+=>This issue should have been caught in the Testing phase, especially during integration and real-world scenario testing.
+To prevent it next time, we should do proper end-to-end, load, and edge-case testing before deployment and test payments under different network conditions.
+
+Ans.4 :->
+=>In traditional SDLC (Waterfall), changes are hard to handle once development has started. The team usually has to go back to the requirement phase, which takes time and increases cost.
+Its limitation is that it’s not flexible, so mid-way requirement changes can delay the project and frustrate both the team and the client.
+
+Ans.5 :->
+=>Security should be included at every stage of SDLC.
+During requirements, define security and compliance rules.
+In design, plan secure architecture.
+During development, follow secure coding practices.
+In testing, perform an appropriate testing technique.
+After deployment, continuously monitor and update security.
+
+Ans.6 :->
+=>The Requirement Analysis phase likely failed, as customer expectations were not clearly understood or documented.
+To improve it, we should have regular discussions, clear requirement documents, and early demos or feedback to ensure everyone is aligned.
+
+Ans.7 :->
+SDLC guides this by treating the migration like a full project:
+• Requirements: Identify what must move and cloud needs.
+• Design: Plan cloud architecture, security, and scalability.
+• Implementation: Move data, integrate systems, and update code.
+• Testing: Ensure everything works correctly in the cloud.
+• Deployment & Maintenance: Go live and monitor performance continuously.
+
