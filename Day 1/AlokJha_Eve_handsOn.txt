@@ -1,0 +1,41 @@
+8. An online travel booking platform receives frequent feature requests from users. How would Agile help manage these changing requirements?
+
+9. During a sprint, the product owner asks for a high-priority feature to be added immediately. How would you handle this in Agile?
+
+10. Your Agile team consistently misses sprint deadlines for an online SaaS product. What steps would you take during retrospectives to improve delivery?
+
+11. A newly released feature causes performance issues in production. How would Agile practices help resolve this quickly?
+
+12. Multiple stakeholders have conflicting priorities for an online marketplace. How does Agile help in prioritization and decision-making?
+
+13. Users complain that the UI of a mobile commerce app is confusing. How would Agile enable continuous improvement based on user feedback?
+
+14. Your Agile team is distributed across different time zones. How would you ensure effective communication and sprint success?
+
+15. A competitor launches a new feature that impacts your online business. How can Agile help your team respond faster compared to traditional SDLC?
+
+Answers :
+
+8. 
+Agile handles frequent feature requests by maintaining a product backlog where all new ideas and user requests are recorded. The Product Owner prioritizes these requests based on business               value, customer impact, and feasibility. Features are developed in short iterations (sprints), allowing the team to release improvements regularly. This ensures that important user-requested      features are delivered quickly without disrupting ongoing development.
+
+9. 
+In Agile, the sprint goal is protected to maintain team focus. When a high-priority request arises, the Product Owner first evaluates its urgency. If the feature is business-critical, it      may replace a lower-priority item in the current sprint after team agreement. Otherwise, it is added to the backlog and scheduled for the next sprint. This approach balances flexibility with sprint discipline.
+
+10. 
+During sprint retrospectives, the team analyzes root causes such as unrealistic estimations, unclear requirements, dependencies, or technical challenges. Actions may include improving story estimation, breaking large tasks into smaller ones, addressing skill gaps, and removing blockers early. Continuous reflection and adjustment help the team improve planning accuracy and overall delivery performance.
+
+11.
+Agile emphasizes fast feedback and rapid response. Once performance issues are detected, the team logs them as high-priority backlog items or bugs. Thanks to CI/CD pipelines, fixes or optimizations can be developed, tested, and deployed quickly. In retrospectives, the team identifies preventive measures such as better performance testing or monitoring to avoid similar issues in the future.
+
+12. 
+Agile resolves conflicts through clear ownership and transparency. The Product Owner evaluates stakeholder inputs using criteria like business value, user impact, risk, and ROI. A prioritized backlog ensures everyone understands what will be delivered first. Sprint reviews provide a platform for alignment, helping stakeholders make informed and collaborative decisions.
+
+13. 
+Agile supports continuous improvement by incorporating user feedback after each iteration. Feedback is translated into user stories related to usability enhancements. These improvements are implemented in upcoming sprints, followed by further user validation. Regular releases allow gradual refinement of the UI, ensuring the app becomes more intuitive over time.
+
+14.
+Agile ensures effective collaboration by establishing overlapping working hours for key meetings like stand-ups and sprint planning. Communication tools such as Jira, Slack, and Confluence support transparency and asynchronous updates. Clear sprint goals, documentation, and recorded meetings help maintain alignment and ensure sprint success despite geographical differences.
+
+15.
+Agile enables faster response by allowing immediate backlog reprioritization. The team can plan and implement a competitive feature in upcoming sprints or release a quick MVP. Continuous delivery and frequent feedback loops help validate the solution quickly. Compared to traditional SDLC, Agile provides greater speed, adaptability, and market responsiveness.
