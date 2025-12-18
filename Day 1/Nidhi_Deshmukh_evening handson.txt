@@ -1,0 +1,23 @@
+8. An online travel booking platform receives frequent feature requests from users. How would Agile help manage these changing requirements?
+Agile helps manage changing requirements by allowing flexibility during development. User feature requests are collected in the product backlog and prioritized by the Product Owner. Important features are implemented in upcoming sprints. This ensures continuous improvement without disrupting the entire system.
+
+9. During a sprint, the product owner asks for a high-priority feature to be added immediately. How would you handle this in Agile?
+In Agile, sprint scope is usually fixed. If the feature is critical, the team may replace an existing task after mutual agreement. If it is not urgent, the request is added to the product backlog and planned for the next sprint. This maintains focus and flexibility.
+
+10. Your Agile team consistently misses sprint deadlines for an online SaaS product. What steps would you take during retrospectives to improve delivery?
+During retrospectives, the team analyzes reasons for missed deadlines such as poor estimation or unclear requirements. Improvements are made in planning, task breakdown, and early removal of blockers. This helps improve future sprint delivery.
+
+11. A newly released feature causes performance issues in production. How would Agile practices help resolve this quickly?
+Agile helps resolve issues quickly through fast feedback and short development cycles. Performance issues are treated as high-priority tasks and fixed in quick releases. This reduces downtime and improves system stability.
+
+12. Multiple stakeholders have conflicting priorities for an online marketplace. How does Agile help in prioritization and decision-making?
+Agile assigns prioritization responsibility to the Product Owner. Stakeholder requirements are evaluated based on business value and customer impact. Regular discussions ensure transparent and effective decision-making.
+
+13. Users complain that the UI of a mobile commerce app is confusing. How would Agile enable continuous improvement based on user feedback?
+Agile regularly collects user feedback through reviews and testing. Feedback is converted into improvement tasks and added to the backlog. UI changes are implemented in future sprints, enabling continuous improvement.
+
+14. Your Agile team is distributed across different time zones. How would you ensure effective communication and sprint success?
+Agile ensures communication through regular meetings, collaboration tools, and clear documentation. Teams use overlapping work hours or asynchronous updates to stay aligned. This supports successful sprint execution.
+
+15. A competitor launches a new feature that impacts your online business. How can Agile help your team respond faster compared to traditional SDLC?
+Agile allows teams to quickly reprioritize work and deliver features in short sprints. Continuous releases and feedback help teams adapt faster. This makes Agile more responsive than traditional SDLC.
