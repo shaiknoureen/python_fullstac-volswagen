@@ -1,0 +1,40 @@
+8. An online travel booking platform receives frequent feature requests from users.
+How would Agile help manage these changing requirements?
+
+Ans :- Agile works in short cycles, so new feature requests can be added to the backlog and picked up in upcoming sprints without disturbing the whole project.
+
+9. During a sprint, the product owner asks for a high-priority feature to be added immediately.
+How would you handle this in Agile?
+
+Ans :- The product owner can re-prioritize the backlog. If it’s critical, the team can swap it with a lower-priority task or plan it for the next sprint after discussion.
+
+10. Your Agile team consistently misses sprint deadlines for an online SaaS product.
+What steps would you take during retrospectives to improve delivery?
+
+Ans :- In retrospectives, the team should identify blockers, break tasks into smaller pieces, improve estimation, and fix communication or dependency issues.
+
+11. A newly released feature causes performance issues in production.
+How would Agile practices help resolve this quickly?
+
+Ans :- Agile allows quick fixes through hotfix sprints or patches. The team can quickly analyze feedback, fix the issue, test, and redeploy.
+
+12. Multiple stakeholders have conflicting priorities for an online marketplace.
+How does Agile help in prioritization and decision-making?
+
+Ans :- Agile uses a prioritized backlog managed by the product owner. Stakeholders discuss impact and value, and features with the highest business value are done first.
+
+
+13. Users complain that the UI of a mobile commerce app is confusing.
+How would Agile enable continuous improvement based on user feedback?
+
+Ans :- User feedback is reviewed every sprint. The team can make small UI improvements regularly instead of waiting for a big redesign.
+
+14. Your Agile team is distributed across different time zones.
+How would you ensure effective communication and sprint success?
+
+Ans :- Use daily standups, clear documentation, overlapping working hours, and collaboration tools to keep everyone aligned.
+
+15. A competitor launches a new feature that impacts your online business.
+How can Agile help your team respond faster compared to traditional SDLC?
+
+Ans :- Agile enables faster response by quickly adding new features or improvements into upcoming sprints, unlike traditional SDLC which takes longer to change plans.
