@@ -1,0 +1,30 @@
+Answer.8:
+Agile helps by allowing new feature requests to be added to the product backlog at any time. The team reviews these requests regularly and works on the most important ones in upcoming sprints. This way, changes are handled smoothly without disturbing ongoing work.
+
+
+Answer.9:
+In Agile, the team first checks the impact of adding the new feature. If it is very critical, the team may replace a lower-priority task or plan it for the next sprint. This keeps the sprint goal clear while still handling urgent needs.
+
+
+Answer.10:
+During sprint retrospectives, the team discusses what caused delays, such as unclear tasks or over-planning. They then improve estimation, break tasks into smaller pieces, and remove blockers early. These changes help the team deliver on time in future sprints.
+
+
+Answer.11:
+Agile allows quick action through short feedback cycles. The team can immediately fix the issue in the next sprint or release a quick patch. Regular monitoring and frequent releases help solve such problems faster.
+
+
+Answer.12:
+Agile uses a product backlog where all requirements are listed and ranked. The product owner works with stakeholders to decide what gives the most business value. This clear prioritization helps avoid confusion and supports better decision-making.
+
+
+Answer.13:
+Agile encourages continuous user feedback after every release. Based on this feedback, the team improves the UI step by step in future sprints. Small and frequent changes help enhance user experience gradually.
+
+
+Answer.14:
+To ensure smooth work, the team uses regular online meetings, shared tools, and clear documentation. Daily stand-ups, sprint planning, and reviews are scheduled at common times. This keeps everyone aligned and supports sprint success.
+
+
+Answer.15:
+Agile helps teams react quickly by allowing fast planning and development in short sprints. The team can prioritize a similar or better feature immediately and release it faster than traditional SDLC, which takes longer to adapt to change.
