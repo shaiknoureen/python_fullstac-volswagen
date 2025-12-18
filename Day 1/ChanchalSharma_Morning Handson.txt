@@ -1,0 +1,64 @@
+Day1 Morning Handson
+
+Ques1.An online shopping website is facing frequent downtime during sales.
+How would you apply the SDLC phases to identify and permanently fix this issue?
+
+Ans--> To fix the frequrnt downtime during sales we have to apply SDLC as follow;
+
+1. Requirement analysis: we should always analyze the logs and traffic spikes as well as the failure reports to identify that what is the root cause.for example the root cause can be server overload or slow databases.
+
+2.Design: we should or can use load balancer for a scalable architexture and along with that we have to plan fault tolerance and high availability.
+
+3.Development: we should implement the code optimizations and go for scalable infrastructure so that we can reduce the downtime.
+
+4. Testing: we should perform load , stress and failover testing so that we can have a server with almost zero downtime and id not we can find the error during testing only.
+
+5.Maintenance: we have to monitor the performance and improve it based on incidents.
+
+
+Ques2.A client wants to launch an MVP of an online food delivery app in 3 months
+which SDLC model would you choose and why?
+
+Ans--> i would have chosen Agile SDLC model because it is ideal for launching an MVP timeline within 3 months.It allows rapid development through sprints and delivers core features quickly. Agile also supports flexibility to adapt to changing markets needs and priority. Testing and improvements also happen continuously, ensuring a usable and scalable product is ready for launch in time.
+
+Ques3.After deployement users report that the payment feature fails intermittently.
+In which SDLC phase should this have been caught and how would you prevent it next time?
+
+Ans--> This issue should have been caught in the Testing phase of the SDLC.
+
+intermittent payment failures usually result from load issues or third party integration problems which we can find in the testing phase.
+
+Preventions:
+1.we have to perfor thorough integration testing with the payment gateways we are using.
+2.we can add automated regression tests.
+
+These ensures that critical failurs like this get settle before the deployement.
+
+Ques4.A business requirement changes midway while developing a subscription based platform.
+How would you incorporate security testing into the SDLC lifecycle?
+
+Ans-->In traditiona SDLC or waterfall model, changes in midway are handled through a formal change request.
+1.changes are time consuming and costly as compared to others.
+2.project timeline get affected.
+3.Late changes increase the risk of defects in the project
+This makes traditional method of SDLC less suitable for changes than others.
+
+Ques5.An online banking application must need strict security and compliance requirements. How would you incorporate the SDLC.
+
+Ans--> security testing should be integrated throughout the SDLC. define security and compliance requirements during analysis,follow secure coding practices and conduct code reviews.We can also perform penetration testing and vulnerability scanning during testing.and we have to apply secure configurations at deployemet.
+
+Ques6.Your team has delivered a feature but it doesn't match the customer expectation. Which SDLC step likely failed? and how woud you improve it?
+
+Ans--> The requirement analysis phase likely failed due to unclear or misunderstood requirements. to improve it, we should involve customers early, use detaied documentation validate requirements and ensure continuous communication and feedback to the customer.
+
+Ques7.A legacy E-commerce system needs to be migrated to a cloud based architecture. How would SDLC guide this?
+
+ANs-->SDLC guides migration by first analyzing legacy system requirements and risks designing a scalable cloud architecture.
+testing ensures performance, security and data integrity. 
+
+
+
+
+
+
+	
