@@ -1,0 +1,81 @@
+SDLC – Scenario Based Questions (1–7)
+
+1. An online shopping website is facing frequent downtime during sales. How would you apply the SDLC phases to identify and permanently fix this issue?
+
+2. A client wants to launch an MVP of an online food delivery app in 3 months. Which SDLC model would you choose and why?
+
+3. After deployment, users report that the payment feature fails intermittently. In which SDLC phase should this have been caught, and how would you prevent it next time?
+
+4. A business requirement changes midway while developing a subscription-based platform. How does the traditional SDLC handle this, and what are its limitations?
+
+5. An online banking application must meet strict security and compliance requirements. How would you incorporate security testing into the SDLC lifecycle?
+
+6. Your team delivered a feature, but it doesn’t match the customer’s expectation. Which SDLC step likely failed, and how would you improve it?
+
+7. A legacy e-commerce system needs to be migrated to a cloud-based architecture. How would SDLC guide this migration process?
+
+Answers
+
+1. As the online website is going through frequent downtime during sales there, firstly identify the issue which must be related to the incoming requests which overloads the system. There must be done something to increase the scalability of the system so for that we will go through the process :
+Requirement Analysis - Identify when downtime occurs (peak sales, payment load, traffic spikes).
+System Design - Design scalable architecture.
+Implementation - Optimize code, database queries, and integrate scalability tools
+Testing - Perform load testing, stress testing, and performance testing.
+Deployment - Deploy with monitoring tools
+Maintenance - Continuously monitor traffic and fix bottlenecks proactively.
+
+2. In case of, where client wants to launch MVP of an online food delivery app in 3 months, we can use Agile Model which will be best in case due to following reasons :
+   a. Fast delivery in short time
+   b. Easy to prioritize core MVP features
+   c. Quick transfer feedback
+   d. Changes or alteration can be made easily.
+   Basically due to speed and flexibility Agile model will be best in case.
+
+3. Payment feature fails intermittently after deployment : Phase where it should be caught is the Testing Phase
+   What could have gone wrong are : 
+   a. Insufficient integration testing
+   b. No stress or reliability testing
+   How it can be prevented next time:
+   a. Add end-to-end testing
+   b. Perform load & concurrency testing
+   c. Use sandbox testing for payment gateways
+
+4. A tradition SDLC model does not have the option to go back to earlier phases to deal with that situation if we will be in early phases then it will be easier to make changes but if it will be in the middle of the development then these steps can be taken to deal with it :
+   a. Changes require to start over from Requirement analysis and Design Phases.
+   b. High cost and consumption of time.
+   Limitations that the traditional SDLC model has :
+   a. Not Flexible
+   b. late changes are expensive
+   c. Risk of project delay or failure
+
+5. Online banking application with strict security requirements, incorporating security into SDLC:
+   Requirement Analysis - Define security & compliance needs (PCI-DSS, RBI, GDPR).
+   Design - Secure architecture, encryption, access control.
+   Implementation - Secure coding practices.
+   Testing - Vulnerability testing
+   Penetration testing
+   Security audits
+   Deployment & Maintenance - Continuous monitoring and regular security updates.
+
+   This approach is called Secure SDLC (Dev SecOps).
+
+6. Feature delivered but doesn’t match customer expectations, failed SDLC phase:
+   Requirement Analysis
+   Reason:
+   a. Poor requirement gathering
+   b. Lack of user stories or validation
+   Improvements:
+   a. Conduct detailed requirement discussions
+   b. Use prototypes and mockups
+   c. Regular stakeholder reviews
+   d. Validate requirements before development
+
+7. Migrating legacy e-commerce system to cloud ,SDLC-guided migration approach:
+   a. Requirement Analysis - Identify current system issues and cloud goals.
+   b. Design - Design cloud architecture (microservices, cloud DB, security).
+   c. Implementation - Migrate modules step-by-step.
+   d. Testing - Functional, performance, and security testing.
+   e. Deployment - Gradual rollout with rollback strategy.
+   f. Maintenance - Optimize performance and manage cloud costs.
+
+   SDLC ensures safe, structured, and risk-free migration.
