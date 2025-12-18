@@ -1,0 +1,22 @@
+Ans 1) Apply SDLC by analyzing peak-load issues, Designing a scalable architecture, optimizing code, performing load and stress testing and monitoring the system after deployment to prevent future downtime.
+
+Ans 2) I will choose waterfall model because it is mostly used for smaller projects and easy to develop. More advantages of waterfall model are:
+     a) easy to understand
+     b) easy to manage
+
+Ans 3) Phase in which it should have been caught would be: Testing Phase and i will perform manual testing after developing some of the parts and debugging will be the main part i will be focusing on in future.
+
+Ans 4) How traditional SDLC will handle it: 
+       a) we will be returning to the Requirement Analysis phase 
+       b) it will cause us to redesign, redevelopment, and retesting
+
+       Limitations:
+       a) high cost
+       b) poor flexibility
+       c) late customer feedback
+
+Ans 5) Security should be integrated in every SDLC phase through secure requirements, secure coding, and regular audits.
+
+Ans 6) The failure occurred would be in the requirement analysis phase. Improvement requires a clear communication, requirement validation, and customer feedback.
+
+Ans 7) Sdlc guides migration by analyzing the existing system, designing cloud architecture, modifying code, testing thoroughly, and deploying in phases.
