@@ -1,0 +1,70 @@
+8. Answer - 
+
+Agile helps because requirements are flexible. New feature requests can be added to the product backlog and prioritized by the product owner. The most important features are taken into upcoming sprints without disturbing completed work.
+
+9. Answer - 
+
+In Agile, we usually don't disturb an ongoing sprint. The product owner can either:
+
+Replace a lower-priority task if the team agrees, or
+Add the feature to the next sprint.
+
+This helps maintain sprint focus and discipline.
+
+10. Answer - 
+
+In the sprint retrospective, we would:
+
+Identify why deadlines are missed (over-commitment, unclear tasks, dependencies)
+Break stories into smaller tasks
+Improve estimation and communication
+Reduce sprint scope if needed
+
+11. Answer - 
+
+Agile supports quick feedback and fast releases.
+
+The team can:
+
+Create a high-priority bug story.
+Fix it in the next sprint or release.
+Use CI/CD to deploy quickly. Regular reviews help catch such issues earlier next time.
+
+
+12. Answer - 
+
+Agile uses a single product backlog managed by product owner.
+
+The product owner:
+
+Talks to stakeholders
+Prioritizes based on business value and urgency. This avoids confusion and gives clear direction to the team.
+
+
+13. Answer -
+
+Agile encourages continuous feedback through reviews and user input.
+
+The team can:
+
+Convert feedback into UI improvement stories.
+Test changes in small iterations.
+Improve UI gradually instead of waiting for a big release.
+
+
+14. Answer - 
+
+To ensure success:
+
+Daily stand-ups at overlapping time.
+Use tools like Jira, Slack, Confluence
+Clear documentation and sprint goals.
+Regular sprint reviews and retrospectives. This keeps everyone aligned.
+
+15. Answer - 
+
+Agile allows faster response because:
+
+Development happens in short sprints.
+Priorities can be changed quickly.
+Features can be released incrementally. Unlike traditional SDLC, Agile doesn't require restarting the whole process.
