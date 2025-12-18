@@ -1,0 +1,15 @@
+Ans 8) Agile manages changes using a prioritized product backlog and implements features in short iterations, allowing continuous user feedback and flexibility.
+
+Ans 9) The product owner can re-prioritize the sprint backlog or add the feature to the next sprint to maintain sprint stability.
+
+Ans 10) Retrospectives identify issues, improve estimations, remove bottlenecks, and enable continuous process improvement.
+
+Ans 11) Agile enables rapid feedback, continuous testing, and frequent releases, allowing quick identification and resolution
+
+Ans 12) Agile uses a single product backlog prioritize by the product owner based on business value.
+
+Ans 13) User feedback is converted into backlog items and improved incrementally thorough iterative sprints.
+
+Ans 14) Agile uses daily stand-ups, collaboration tools, and clear sprint goals for effective communication. Effective communication in distributed teams is ensured by regular daily meetings, strong team collaboration and clear sprint planning. Regular sprint reviews and retrospectives help maintain alignment, accountability, and sprint success even across different timezones.
+
+Ans 15) It's short iterations and adaptive planning allows rapid feature development and faster market response.
