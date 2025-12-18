@@ -1,0 +1,21 @@
+Q1. An online shopping website is facing frequent downtime during sales. How would you apply the SDLC phases to identify and permanently fix this issue?
+Answer: The issue can be addressed by applying all SDLC phases systematically. In the requirement analysis phase, performance and availability needs are identified. In the design phase, a scalable system architecture is planned. The development phase implements improvements. The testing phase validates system performance under peak load. The maintenance phase ensures continuous monitoring and long-term stability.
+
+Q2. A client wants to launch an MVP of an online food delivery app in 3 months. Which SDLC model would you choose and why?
+Answer: The Agile SDLC model is most suitable because it supports rapid development, iterative releases, and flexibility. Agile enables early delivery of core features and allows continuous feedback, which is ideal for developing an MVP within a short time frame.
+
+Q3. After deployment, users report that the payment feature fails intermittently. In which SDLC phase should this have been caught, and how would you prevent it next time?
+Answer: This issue should have been identified during the testing phase. Proper system and integration testing help detect such failures. To prevent this, more comprehensive testing should be conducted before deployment.
+
+Q4. A business requirement changes midway while developing a subscription-based platform. How does the traditional SDLC handle this, and what are its limitations?
+Answer: In the traditional SDLC model, requirement changes require revisiting earlier phases, leading to rework and delays. Its limitation lies in its rigid structure, which makes it difficult to accommodate changes once development has started.
+
+Q5. An online banking application must meet strict security and compliance requirements. How would you incorporate security testing into the SDLC lifecycle?
+Answer: Security is incorporated throughout the SDLC lifecycle. Security requirements are defined in the requirement phase, secure design is created in the design phase, secure coding is followed during development, security testing is performed in the testing phase, and continuous monitoring is carried out during maintenance.
+
+Q6. Your team delivered a feature, but it does not match the customer’s expectations. Which SDLC step likely failed, and how would you improve it?
+Answer: The requirement analysis phase likely failed due to unclear or incomplete requirements. This can be improved by better requirement gathering, validation, and stakeholder communication.
+
+Q7. A legacy e-commerce system needs to be migrated to a cloud-based architecture. How would SDLC guide this migration process?
+Answer: SDLC guides the migration by first analyzing system requirements, then designing a suitable cloud architecture. The system is then migrated or redeveloped, thoroughly tested, deployed carefully, and maintained to ensure smooth operation.
+
