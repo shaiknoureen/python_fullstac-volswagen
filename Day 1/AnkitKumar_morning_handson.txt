@@ -1,0 +1,34 @@
+1. An online shopping website is facing frequent downtime during sales.
+How would you apply the SDLC phases to identify and permanently fix this issue?
+
+Ans:- Start by checking server logs and user traffic to understand why the site crashes during sales. Then fix weak system parts, improve code, test with high load, and monitor after release so the issue doesn’t happen again.
+
+2. A client wants to launch an MVP of an online food delivery app in 3 months.
+Which SDLC model would you choose and why?
+
+Ans :- Agile SDLC is best because it allows building the app in small parts, getting quick feedback, and making changes easily within 3 months.
+
+3. After deployment, users report that the payment feature fails intermittently.
+In which SDLC phase should this have been caught, and how would you prevent it next time?
+
+Ans :- This issue should be found during testing. To avoid it later, test payments with real gateways, handle failures properly, and test under different network and load conditions.
+
+4. A business requirement changes midway while developing a subscription-based platform.
+How does the traditional SDLC handle this, and what are its limitations?
+
+Ans :- Traditional SDLC struggles with changes. If requirements change midway, the team must go back to earlier stages, which increases time, cost, and effort.
+
+5. An online banking application must meet strict security and compliance requirements.
+How would you incorporate security testing into the SDLC lifecycle?
+
+Ans :- Security should be added at every step design secure architecture, write safe code, test for security issues, and keep monitoring after deployment.
+
+6. Your team delivered a feature, but it doesn’t match the customer’s expectation.
+Which SDLC step likely failed, and how would you improve it?
+
+Ans :- The problem usually starts in requirement analysis. Improve it by clearly understanding customer needs, confirming them in writing, and showing early versions.
+
+7. A legacy e-commerce system needs to be migrated to a cloud-based architecture.
+How would SDLC guide this migration process?
+
+Ans:- First understand the old system, then plan the cloud setup. Move features step by step, test each part, and monitor the system after going live.
