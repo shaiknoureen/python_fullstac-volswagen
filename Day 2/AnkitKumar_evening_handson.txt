@@ -1,0 +1,115 @@
+1. Difference between DELETE and DROP
+
+DELETE
+
+Removes rows (records) from a table
+
+Table structure remains
+
+Can be rolled back (if transaction is used)
+
+DROP
+
+Removes the entire table
+
+Table structure and data are permanently deleted
+
+Cannot be rolled back
+
+2. Difference between DROP and TRUNCATE
+
+TRUNCATE
+
+Removes all rows from a table
+
+Table structure remains
+
+Faster and uses less memory
+
+DROP
+
+Removes table + data
+
+Table does not exist after drop
+
+Structure must be recreated
+
+3. Explain ACID Properties
+
+Atomicity: Transaction completes fully or not at all
+
+Consistency: Database moves from one valid state to another
+
+Isolation: Transactions do not affect each other
+
+Durability: Data is saved even after system failure
+
+4. How many types of Normalization are there?
+
+1NF: Removes repeating groups
+
+2NF: Removes partial dependency
+
+3NF: Removes transitive dependency
+
+(Higher forms exist, but these three are most important)
+
+5. Fetch the Second Highest Salary
+
+(From Employee table)
+
+SELECT MAX(salary)
+FROM employee
+WHERE salary < (SELECT MAX(salary) FROM employee);
+
+6. Explain CRUD in DBMS
+
+Create: Insert new data
+
+Read: Retrieve data
+
+Update: Modify existing data
+
+Delete: Remove data
+
+7. What is an Entity Diagram (ER Diagram)?
+
+Graphical representation of database structure
+
+Shows entities, attributes, and relationships
+
+Used in database design
+
+8. How do you describe a Relationship?
+
+Relationship shows how entities are connected
+
+Types: One-to-One, One-to-Many, Many-to-Many
+
+Represented using lines in ER diagram
+
+9. Difference between Primary Key and Unique Key
+
+Primary Key
+
+Uniquely identifies a record
+
+Cannot be NULL
+
+Only one per table
+
+Unique Key
+
+Ensures uniqueness
+
+Can have one NULL value
+
+Multiple unique keys allowed
+
+10. Why do we use NOT NULL?
+
+Ensures column always has a value
+
+Prevents missing or incomplete data
+
+Improves data accuracy
