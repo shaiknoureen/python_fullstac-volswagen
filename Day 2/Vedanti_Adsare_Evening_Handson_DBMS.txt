@@ -1,0 +1,84 @@
+Q.1) What is the difference between delete and drop?
+Ans:-
+
+DELETE is used to remove specific records from a table, and the table structure remains the same.
+We can use a WHERE condition with DELETE to remove selected rows.
+DROP completely removes the table along with its data and structure.Once a table is dropped, it cannot be recovered.
+
+Q.2) What is the difference between DROP and TRUNCATE?
+Ans:-
+
+TRUNCATE removes all rows from a table but keeps the table structure intact.It is faster because it does not log each row deletion.
+DROP deletes the entire table including its structure.After DROP, the table no longer exists in the database.
+
+Q.3) Explain ACID properties in DBMS.
+
+Ans:-
+Atomicity means a transaction is fully completed or not done at all.
+Isolation means no one transaction affects another.
+Consistency ensures the database remains in a valid state.
+Durability guarantees that committed data is permanently saved.
+
+Q.4) How many types of normalization are there?.
+
+Ans:-
+Normalization is used to organize data and reduce redundancy.
+There are mainly five normal forms: 1NF, 2NF, 3NF, BCNF, and 4NF.
+Each normal form removes a specific type of data dependency.
+
+1NF (First Normal Form):
+Ensures that each column contains atomic (single) values and no repeating groups.
+
+2NF (Second Normal Form):
+Removes partial dependency, meaning non-key attributes depend on the whole primary key.
+
+3NF (Third Normal Form):
+Removes transitive dependency, where non-key attributes depend on other non-key attributes.
+
+BCNF (Boyce-Codd Normal Form):
+A stronger version of 3NF where every determinant is a candidate key.
+
+Q.5) Fetch the second highest salary from the employee and the department?
+
+Ans:-
+SELECT MAX(e.salary) AS second_highest_salary
+FROM employee e
+WHERE e.salary < (
+    SELECT MAX(salary)
+    FROM employee
+);
+
+Q.6) explain crud in the dbms?
+
+Ans:-
+CRUD represents the four basic database operations.
+Create is used to insert new data into a table.Read is used to retrieve or view data.Update modifies existing data, and Delete removes data.
+
+Q.7) what is entity diagram?
+
+Ans:-
+An entity diagram is a visual representation of a database.It shows entities, their attributes, and relationships.
+Entities usually represent real-world objects like students or employees.It is mainly used during database design.
+
+Q.8) how do you describe the relathionship?
+
+Ans:-
+One-to-One means one entity is linked to one entity.
+One-to-Many means one entity is linked to multiple entities.
+Many-to-Many means many entities are linked to many entities.
+
+Q.9) difference between unique key and primary key?
+
+Ans:-
+A primary key uniquely identifies each record in a table.It cannot contain NULL values and only one primary key is allowed.
+A unique key also ensures uniqueness but can allow one NULL value.Multiple unique keys can exist in a table.
+
+Q.10) why do we use NOT NULL?
+
+Ans:-
+NOT NULL ensures that a column always has a value.It prevents missing or incomplete data.It improves data accuracy and reliability.Commonly used for important fields like ID or name.
+
+
+
+
+
