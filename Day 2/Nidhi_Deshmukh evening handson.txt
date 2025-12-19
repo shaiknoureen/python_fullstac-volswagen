@@ -1,0 +1,86 @@
+Q1. What is the difference between DELETE and DROP?
+
+DELETE is a Data Manipulation Language (DML) command used to remove specific records from a table. It allows the use of a WHERE clause to delete selected rows and does not affect the structure of the table. The table, along with its constraints and indexes, remains intact after the DELETE operation. In many database systems, DELETE operations can be rolled back if they are performed within a transaction.
+DROP, on the other hand, is a Data Definition Language (DDL) command that completely removes a table from the database. It deletes both the data and the table structure permanently. Once a table is dropped, it cannot be accessed or recovered.
+
+Q2. What is the difference between DROP and TRUNCATE?
+
+TRUNCATE is a DDL command used to remove all records from a table while preserving the table structure, columns, and constraints. It does not support the WHERE clause and executes faster than DELETE because it does not log individual row deletions. After truncation, the table can still be used to insert new data.
+DROP completely removes the table from the database along with its structure, indexes, and constraints. After using DROP, the table no longer exists and must be recreated to store data again.
+
+Q3. Explain ACID properties in DBMS.
+
+ACID properties are a set of principles that ensure reliable database transactions. Atomicity ensures that a transaction is treated as a single unit, meaning all operations within the transaction are executed successfully or none are executed. Consistency ensures that the database remains in a valid state by maintaining all rules and constraints before and after the transaction. Isolation ensures that multiple transactions occurring simultaneously do not interfere with each other. Durability guarantees that once a transaction is committed, its changes are permanently stored in the database, even in the case of system failure.
+
+Q4. How many types of normalization are there? Explain.
+
+Normalization is a database design technique used to reduce data redundancy and improve data integrity. The process includes several normal forms. First Normal Form (1NF) ensures that all attributes contain atomic values and removes repeating groups. Second Normal Form (2NF) eliminates partial dependency by ensuring that non-key attributes depend on the entire primary key. Third Normal Form (3NF) removes transitive dependency between non-key attributes. Boyce-Codd Normal Form (BCNF) is an advanced form that resolves anomalies not handled by 3NF.
+
+Q5. How do you fetch the second highest salary from an employee table?
+
+The second highest salary is the salary value that is immediately less than the maximum salary in the employee table. This can be achieved by using a subquery that first finds the highest salary and then retrieves the maximum salary that is less than that value.The query used here would be -
+SELECT MAX(salary) AS Second_Highest_Salary
+FROM employee
+WHERE salary < (SELECT MAX(salary) FROM employee);
+  
+
+Q6. Explain CRUD operations in DBMS.
+
+The CRUD operations represents four basic operations that can be performed on data in a database. These operations define how data is created, accessed, modified, and removed within a database management system.
+
+Create refers to the operation of inserting new records into a database. It is used when new data needs to be stored, such as adding a new employee or a new customer record. This operation is commonly performed using the INSERT command.For eg,
+Consider table as employee,
+EmpID	Name	Department	Salary
+1	Rahul	IT	        50000
+2	Anjali	HR	        45000
+We would use 
+INSERT INTO Employee (EmpID, Name, Department, Salary)
+VALUES (3, 'Priya', 'Finance', 48000);
+to create a new column in the table.
+
+
+Read refers to retrieving existing data from the database. It allows users to view or access stored information without making any changes to it. The SELECT command is used to perform read operations.For eg considering the previous employee table,
+SELECT * FROM Employee
+WHERE Department = 'IT';
+to read whether the said entry is present withing the table.
+
+Update is used to modify existing data in a database. It allows changes to be made to one or more records, such as updating an employee’s salary or changing a customer’s contact details. The UPDATE command is used for this operation.For eg, the update any entry in the table we would use
+UPDATE Employee
+SET Salary = 47000
+WHERE Name = 'Anjali';
+
+
+Delete refers to the removal of records from a database. It is used when data is no longer required, such as deleting inactive user accounts. The DELETE command is used to remove data from tables.
+To 
+delete DELETE FROM Employee
+WHERE Name = 'Priya';
+ would be used.
+Q7. What is an Entity Relationship Diagram (ER Diagram)?
+
+An Entity Relationship Diagram is a graphical representation of a database system that shows entities, their attributes, and the relationships between them. It is used during the database design phase to visually model the structure of the database. ER diagrams help developers understand data requirements and reduce design errors before implementing the database.
+
+Q8. How do you describe relationships in DBMS?
+
+Relationships in DBMS describe how entities are logically connected to each other. They define associations such as one-to-one, one-to-many, and many-to-many relationships. These relationships are represented in ER diagrams using connecting lines and are implemented in databases using primary and foreign keys. Relationships help maintain data consistency and logical integrity.
+
+Q9. Differentiate between Primary Key and Unique Key.
+
+A Primary Key is used to uniquely identify each record in a table and does not allow NULL values. Only one primary key is allowed per table, and it enforces entity integrity. A Unique Key also ensures that values in a column are unique, but it allows one NULL value. Multiple unique keys can be defined in a table to enforce additional uniqueness constraints.
+
+Suppose we have a table Employee:
+
+EmpID	Email	        Name
+1	rahul@mail.com  Rahul
+	
+2	anjali@mail.com  Anjali
+	
+3	priya@mail.com   Priya
+	
+
+Primary Key: EmpID (uniquely identifies each employee, cannot be NULL)
+
+Unique Key: Email (ensures no two employees have the same email, can allow one NULL if needed)
+
+Q10. Why is the NOT NULL constraint used in DBMS?
+
+The NOT NULL constraint is used to ensure that a column always contains a value and does not accept NULL entries. It enforces mandatory data entry, thereby preventing incomplete records. This constraint improves data accuracy, reliability, and overall database integrity.

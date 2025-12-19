@@ -1,0 +1,22 @@
+1. A DBMS is software that allows users to store, manage, and retrieve data from a database in an organized manner. It provides an interface between the database and users or applications. DBMS is software used to store and manage data, while RDBMS is an advanced DBMS that stores data in tables (relations).
+
+2. DBMS stores data as files or records; RDBMS stores data in rows and columns.
+
+3.DBMS does not support relationships between data; RDBMS supports relationships using primary and foreign keys.
+
+4.DBMS supports limited users; RDBMS efficiently supports multiple users.
+
+5.DBMS provides low data integrity; RDBMS ensures high data integrity through constraints.
+
+6.DBMS examples include file systems; RDBMS examples include MySQL, Oracle, and SQL Server.
+
+7.DBMS offers limited security features.
+RDBMS provides strong security mechanisms including user authentication, authorization, and role-based access control.
+
+8.DBMS has limited transaction support.
+RDBMS fully supports ACID properties—Atomicity, Consistency, Isolation, and Durability—ensuring reliable transactions.
+
+9.DBMS is suitable for small and simple applications, while RDBMS is ideal for large, complex, and multi-user applications that require strong data integrity and security.
+
+10. DBMS does not support the normalization process.
+RDBMS supports normalization, which organizes data into multiple tables to reduce redundancy and improve efficiency
