@@ -1,0 +1,101 @@
+DBMS (Database Management System):
+1.It is a software used to manage data from a database.
+2.It is used to perform all kinds of operations such as:
+  inserting the data, updating the data, deleting the data, fetching the data  etc.
+3.It acts as an intermediary between the user and the database.
+4.It is a collection of interrelated data and a set of programs to access those data.
+5.It reduces data redundancy, improves data security, and enhances decision-making 
+  through data visualization and reporting.
+6.It provides a controlled environment for working with data, ensuring data accuracy 
+  and consistency.
+7.It allows multiple users to access the database simultaneously without conflicts.
+8.DBMS provides data backup and recovery mechanisms to prevent data loss in case of 
+  system failures.
+9.It ensures data independence, meaning changes in the database structure do not 
+  affect application programs.
+10.It provides authorization and authentication to restrict unauthorized access to data.
+
+
+RDBMS (Relational Database Management System):
+1.The data is stored in the form of table structures, and these tables can have relationships 
+  with each other using keys.
+2.It offer robust security features, allowing administrators to control who can access the data.
+3.It support SQL (Structured Query Language), which is used for querying and manipulating data.
+4.RDBMS platforms are designed to handle large volumes of data and support multiple concurrent users.
+5.It provide comprehensive backup and recovery options to protect data from system failures.
+6.RDBMS encourages normalization, a process that organizes data to minimize redundancy and 
+  ensure efficient storage.
+7.Normalized data structures reduce data duplication, making the system more efficient and easy 
+  to maintain.
+8.RDBMS enforces data integrity using constraints such as primary keys, foreign keys, unique keys, 
+  and check constraints.
+9.It follows ACID properties (Atomicity, Consistency, Isolation, Durability) to ensure reliable 
+  transaction processing.
+10.RDBMS provides data consistency even when multiple users access the database simultaneously.
+11.It supports indexing, which improves the speed of data retrieval operations.
+
+
+
+Library Schema:
+
+In the beginning, the library is small and managed by a single librarian who maintains information 
+using separate notebooks and files. One file contains book details, another stores member information, 
+and a third keeps records of issued books. Whenever a book is issued, the librarian manually writes 
+the same book and member details again in the issue file. Since there is no proper connection between 
+these files, the same information is repeated in multiple places. If any detail changes, it must be 
+updated everywhere, which often leads to confusion and mistakes. This situation is similar to a DBMS, 
+where data is stored and accessed but relationships between data are not well organized, resulting 
+in data redundancy and inconsistency.
+As the library grows and the number of books and members increases, the librarian shifts to a more 
+organized system using a relational database. In this new system, all book information is stored in a 
+BOOKS table, where each book is assigned a unique book_id. Member details are stored separately in a 
+MEMBERS table, with each member having a unique member_id. When a book is issued, the transaction is 
+recorded in an ISSUE_RECORDS table, which stores only the book_id and member_id along with issue and 
+return dates. These tables are linked using keys, so the system can easily identify which member has 
+borrowed which book without repeating data.
+This structured approach represents an RDBMS, where data is stored in tables with clear relationships. 
+It eliminates data duplication, makes searching faster, and ensures accuracy and consistency. Thus, 
+while the DBMS-style system works for a small library with limited data, the RDBMS-based system 
+using BOOKS, MEMBERS, and ISSUE_RECORDS tables is more reliable and suitable as the library grows 
+and data accuracy becomes important.
+
+
+
+Why is normalization supported only in RDBMS and not in DBMS? Explain using a library schema.
+
+Normalization is supported only in RDBMS because it stores data in tables with keys and relationships, 
+which helps remove duplicate data and maintain consistency. DBMS does not support normalization properly 
+because it stores data in files without defined relationships, leading to data repetition.
+
+In an RDBMS, data is organized into well-defined tables such as BOOKS, MEMBERS, and ISSUE_RECORDS. 
+Each table represents a single entity and uses primary keys to uniquely identify records. Relationships 
+between tables are created using foreign keys, which allows data to be split logically across tables. 
+For example, book details are stored only once in the BOOKS table, member details only once in the 
+MEMBERS table, and the ISSUE_RECORDS table stores only the related IDs. This structure makes it easy 
+to apply normalization rules, reduces redundancy, and ensures data consistency.
+
+In contrast, a DBMS stores data in separate files or unstructured formats without enforced relationships. 
+In a library DBMS, book and member details may be written repeatedly in multiple files whenever a book is 
+issued. Since there are no keys or relational links, dividing data into separate entities is difficult, 
+and normalization cannot be applied effectively. As a result, DBMS systems often contain duplicate data 
+and inconsistencies.
+
+
+
+Which ACID properties are supported in an RDBMS for a library schema, and how are they applied?
+
+In an RDBMS-based library schema, all ACID properties are supported to ensure that book issuing and 
+returning operations are reliable and accurate. Atomicity ensures that when a book is issued or returned, 
+all related actions—such as updating the book status in the BOOKS table and inserting or updating a record 
+in the ISSUE_RECORDS table—are completed together as a single unit; if any step fails, the entire transaction 
+is rolled back. Consistency ensures that the database always follows library rules, such as a book not being 
+issued to more than one member at the same time and only existing members being allowed to borrow books, which 
+is enforced through constraints and relationships between the BOOKS, MEMBERS, and ISSUE_RECORDS tables. 
+Isolation ensures that when multiple members try to issue or return books simultaneously, each transaction is 
+executed independently without interfering with others, preventing conflicts like double issuance of the same book. 
+Finally, Durability guarantees that once a transaction is committed, the changes—such as issued or returned book 
+records—are permanently saved in the database and remain safe even if a system failure occurs. Together, these 
+ACID properties make the library schema in an RDBMS secure, consistent, and reliable for multi-user operations.
+
+
+
