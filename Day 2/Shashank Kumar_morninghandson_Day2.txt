@@ -1,0 +1,286 @@
+10 points on DBMS and RDBMS each.
+
+DBMS is software used to store, manage, and retrieve data efficiently.
+Data is stored in files or tables without strict relational structure.
+Supports single-user and multi-user access.
+Provides data security and access control.
+Reduces data redundancy compared to file systems.
+Ensures data consistency and integrity to some extent.
+Supports basic CRUD operations (Create, Read, Update, Delete).
+Does not strictly enforce relationships between data.
+Examples: File system–based DBMS, XML DBMS.
+Suitable for small applications with simple data requirements.
+
+RDBMS (Relational Database Management System)
+
+RDBMS is a type of DBMS based on the relational model.
+Data is stored in tables (relations) with rows and columns.
+Uses primary keys to uniquely identify records.
+Supports relationships using foreign keys.
+Follows ACID properties (Atomicity, Consistency, Isolation, Durability).
+Uses SQL (Structured Query Language) for data manipulation.
+Ensures high data integrity through constraints.
+Supports complex queries and joins.
+Handles large-scale, multi-user applications efficiently.
+Examples: MySQL, PostgreSQL, Oracle, SQL Server.
+
+
+My Database to demonstrate the difference between DBMS and RDBMS -
+
+
+A University Managing Student Data
+
+Situation
+
+Suppose a university wants to manage data of:
+Students
+Courses
+Faculty
+Exams & Results
+
+At first, the university just wants basic storage, later they want relationships and rules.
+
+Phase 1: Using a DBMS (Non-relational thinking)
+
+What the university does
+
+The university uses a DBMS to store data.
+
+They create separate files:
+
+students.txt
+courses.txt
+faculty.txt
+
+Each file has records like:
+
+Student Name | Roll No | Course
+
+Data is stored in files or simple tables. 
+There is no strict schema enforcement
+No rule that Roll No must be unique
+No strict link between students and courses
+
+
+Problems appear
+
+Same student data repeated in multiple files (data redundancy)
+If a course name changes, it must be updated everywhere
+A student can be added to a course that doesn’t exist
+No concept of relations or foreign keys
+
+
+Phase 2: Moving to RDBMS (Relational thinking)
+
+Now the university grows and needs accuracy, rules, and relationships.
+
+They shift to an RDBMS.
+
+How RDBMS organizes data
+Tables (Relations)
+
+The university designs relations (tables):
+
+STUDENT relation
+student_id (PK) | name | email
+
+COURSE relation
+course_id (PK) | course_name
+
+ENROLLMENT relation
+enroll_id (PK) | student_id (FK) | course_id (FK)
+
+Primary Key
+student_id uniquely identifies each student
+
+Ensures entity integrity
+
+Foreign Key
+
+student_id in ENROLLMENT refers to STUDENT
+course_id in ENROLLMENT refers to COURSE
+
+Ensures referential integrity
+
+Schema
+
+The schema defines:
+
+Table structure, Data types, Constraints
+
+Example:
+
+STUDENT(student_id INT PRIMARY KEY, name VARCHAR)
+
+Constraints
+
+NOT NULL → student name cannot be empty
+UNIQUE → email must be unique
+CHECK → marks between 0 and 100
+
+
+
+Question - Which normalization is best for my schema and why?
+
+Answer -
+
+Initial Data Storage (Problematic Design)
+
+Initially, the university stored all information in one table:
+
+UNNORMALIZED / POOR DESIGN
+
+UNIVERSITY_DATA( student_id, student_name, course_id, course_name, course_fee, faculty_name )
+
+Primary Key
+
+(student_id, course_id)
+
+2.  Problems in Initial Design (Redundancy & Inconsistency)
+
+Data Redundancy
+
+student_name repeated for every course of the same student
+course_name, course_fee, faculty_name repeated for every student
+
+Same facts stored multiple times
+
+
+3. Data Anomalies
+
+Update Anomaly
+
+If course fee changes → update multiple rows
+
+Insertion Anomaly
+
+Cannot add a course unless a student enrolls
+
+Deletion Anomaly
+
+Deleting last student removes course info
+
+
+Functional Dependencies Identified
+
+From the table:
+student_id → student_name course_id → course_name, course_fee faculty_id → faculty_name (student_id, course_id) → enrollment
+
+4. Partial Dependency (Why 2NF Needed)
+
+Definition
+
+Partial dependency occurs when a non-key attribute depends on only part of a composite primary key.
+
+In Our Table
+
+student_name depends only on student_id
+course_name, course_fee depend only on course_id
+
+This violates Second Normal Form (2NF).
+
+Removing Partial Dependency (2NF)
+
+We split the table:
+
+STUDENT
+
+(student_id PK, student_name)
+
+COURSE
+
+(course_id PK, course_name, course_fee)
+
+ENROLLMENT
+
+(student_id PK, course_id PK)
+
+Now: All non-key attributes depend on the entire key ✔ Partial dependency removed
+
+5. Transitive Dependency (Why 3NF Needed)
+
+Situation
+
+If COURSE table contains:
+COURSE(course_id, course_name, course_fee, faculty_id, faculty_name)
+
+Dependency
+course_id → faculty_id faculty_id → faculty_name
+
+So:
+
+course_id → faculty_name (indirect)
+
+This is transitive dependency, violating 3NF.
+
+Removing Transitive Dependency (3NF)
+
+We split:
+
+FACULTY
+
+(faculty_id PK, faculty_name)
+
+COURSE
+
+(course_id PK, course_name, course_fee)
+
+COURSE_FACULTY (Many-to-Many)
+
+(course_id PK, faculty_id PK)
+
+Now: No non-key attribute depends on another non-key attribute ✔ Transitive dependency removed
+
+6. Final Normalized Schema (3NF)
+
+STUDENT
+(student_id PK, student_name)
+
+COURSE
+(course_id PK, course_name, course_fee)
+
+FACULTY
+(faculty_id PK, faculty_name)
+
+ENROLLMENT
+(student_id PK, course_id PK)
+
+COURSE_FACULTY
+(course_id PK, faculty_id PK)
+
+8.  Why NOT 1NF?
+
+1NF only removes multi-valued attributes
+
+Does NOT remove redundancy
+Anomalies still exist
+Not sufficient
+
+9. Why NOT 2NF?
+
+2NF removes partial dependency
+But transitive dependency still exists
+Still causes redundancy
+
+10.  Why NOT BCNF?
+
+BCNF is stricter than 3NF
+Useful only when complex functional dependencies exist
+Increases table count & query complexity
+Not required for typical university systems
+Overkill
+
+11. Why 3NF is the Best Choice
+
+3NF ensures:
+
+No partial dependency
+No transitive dependency
+Minimal redundancy
+Data consistency
+Practical query performance
+Industry-standard design
+
+
+Initially, all student, course, and faculty data was stored in a single table, causing redundancy and anomalies. By identifying functional dependencies, we removed partial dependencies using 2NF and transitive dependencies using 3NF. The final design separates entities into STUDENT, COURSE, FACULTY, and associative tables, ensuring consistency and eliminating redundancy. 3NF provides the best balance between normalization and performance, whereas 1NF and 2NF are insufficient and BCNF is unnecessary for this use case.
+
