@@ -1,0 +1,21 @@
+Relational:
+
+1. Relational database is a type of database where data is stored in the form of table(rows and columns) whereas Non relational Database stores data in
+
+documents, key-value pair, graphs or columns. 2. In RDBMS the schema is predefined and fixed, we cannot make changes in it while DBMS support flexible and dynamic schema.
+
+3. In RDBMS relationships and created between tables and attributes using primary keys and foreign keys while in DBMS relationships are managed through
+
+embedded data or references. 4. It uses SQL(Structured query language) for query while DBMS uses NoSQL APIs and custom query languages.
+
+5. RDBMS mainly scale vertically by upgrading hardware DBMS scale horizontally by adding servers.
+
+6. It follows ACID properties to ensure consistency while DBMS follows BASE Model.
+
+7. Relational Database provides transaction support while DBMS often offer eventual consistency.
+
+8. RDBMS perform best for complex queries and joins while DBMS excel at high speed read and write speed.
+
+9. RDBMS are commonly used in banking and enterprise systems whereas DBMS are used in big data and real-time applications.
+
+10. RDBMS examples include MYSQL in PostgreSQL while non-relational database include MongoDB and Redis
