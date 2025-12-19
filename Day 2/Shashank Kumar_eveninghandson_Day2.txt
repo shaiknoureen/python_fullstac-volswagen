@@ -1,0 +1,109 @@
+1. Difference between DELETE and DROP.
+
+Answer-
+
+DELETE:
+
+Deletes rows from a table 
+Table structure remains
+Can use WHERE clause
+Can be rolled back (if not committed)
+DML command
+
+DROP:
+
+Deletes the entire table  
+Table structure is removed
+No WHERE clause
+Cannot be rolled back     
+DDL command
+
+2. Difference between DROP and TRUNCATE.
+
+TRUNCATE
+
+Removes all rows 
+Table structure remains
+Faster than DELETE
+Cannot use WHERE
+DDL command
+
+DROP
+
+Removes table completely  
+Structure removed 
+Faster but destructive   
+Not applicable  
+DDL command
+
+3. Explain ACID Properties
+
+Atomicity → All or nothing (transaction fully completes or rolls back)
+Consistency → Database moves from one valid state to another
+Isolation → Transactions don’t interfere with each other
+Durability → Once committed, data is permanent even after crash
+
+
+4. How many types of Normalization are there?
+
+Commonly used normalization forms:
+
+1NF – Atomic values
+2NF – No partial dependency
+3NF – No transitive dependency
+BCNF – Stronger than 3NF
+4NF – Removes multi-valued dependency
+5NF – Removes join dependency
+
+
+5. Fetch the Second Highest Salary (Employee & Department)
+
+Using subquery
+
+SELECT e.name, e.salary, d.dept_name FROM employee e JOIN department d ON e.dept_id = d.dept_id WHERE e.salary = ( SELECT MAX(salary) FROM employee WHERE salary < (SELECT MAX(salary) FROM employee) );
+
+6. Explain CRUD in DBMS
+
+CRUD represents basic database operations:
+
+C – Create → Inserts new data in the database.
+R – Read → Reads the data present in the database.
+U – Update → Updates the existing data with new information.
+D – Delete → Deletes/Remove the specified information from the data.
+
+
+7. What is an Entity Relationship Diagram (ER Diagram)?
+
+A visual representation of database structure
+
+Shows:
+
+Entities (tables) - Represents real world object like employee, course etc.
+Attributes (columns) - Describes the properties associated with entities.
+Relationships show how entity are related to each other.
+
+8. How do you describe Relationships?
+
+Relationships define how entities are connected:
+
+One-to-One (1:1) One entity relates to one entity
+One-to-Many (1:M) One entity relates to multiple entities
+Many-to-Many (M:N) Multiple entities relate to multiple entities (resolved using junction table)
+
+9. Difference between Primary Key and Unique Key
+
+Primary Key                                           Unique Key
+
+Uniquely identifies a record                              Ensures uniqueness 
+Only one per table                                     Multiple allowed 
+Cannot be NULL                                       Can have one NULL 
+Used for relationships                                   Not mandatory for relationships
+
+10. Why do we use NOT NULL?
+
+Ensures a column cannot store NULL values
+Forces mandatory data
+Improves data integrity
+Prevents incomplete records
+
+Example: student_id, email
