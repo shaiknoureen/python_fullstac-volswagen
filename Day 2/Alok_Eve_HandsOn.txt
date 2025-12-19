@@ -1,0 +1,73 @@
+1. what is the difference between delete and drop? 
+2. what is the difference with drop and truncate? 
+3. explain acid properties? 
+4. how many types of normalization's are there? 
+5. fetch the second highest salary from the employee and the department? 
+6. explain crud in the DBMS ? 
+7. what is entity diagram? 
+8. how do you describe the relationship? 
+9. difference between unique key and primary key? 
+10. why do we use NOT NULL?
+
+Answers :
+
+1. Difference between DELETE and DROP
+
+DELETE removes selected rows from a table using a WHERE clause. The table structure remains, and it can be rolled back (if transaction is used).
+DROP completely removes the table from the database, including its structure and data. It cannot be rolled back.
+
+2. Difference between DROP and TRUNCATE
+
+DROP deletes the entire table structure and data permanently.
+TRUNCATE removes all records from a table but keeps the table structure intact. It is faster than DELETE and cannot be rolled back.
+
+3. ACID properties
+ACID ensures reliable database transactions:
+
+Atomicity: A transaction is all-or-nothing.
+Consistency: A transaction moves the database from one valid state to another.
+Isolation: Transactions do not interfere with each other.
+Durability: Once committed, data remains permanent even after failure.
+
+4. Types of normalization
+There are 5 main normal forms:
+
+1NF – No multi-valued attributes
+2NF – No partial dependency
+3NF – No transitive dependency
+BCNF – Stronger version of 3NF
+4NF & 5NF – Deal with multi-valued and join dependencies
+
+5. Fetch the second highest salary from employee and department
+
+Second highest salary (overall):
+SELECT MAX(salary) FROM employee WHERE salary < (SELECT MAX(salary) FROM employee);
+
+Second highest salary department-wise:
+SELECT department_id, MAX(salary) FROM employee e1 WHERE salary < (SELECT MAX(salary) FROM employee e2 WHERE e1.department_id = e2.department_id) GROUP BY department_id;
+
+6. CRUD in DBMS
+CRUD represents basic database operations:
+
+Create – Insert data
+Read – Retrieve data
+Update – Modify data
+Delete – Remove data
+
+7. Entity diagram
+An Entity Relationship Diagram (ERD) is a visual representation of database structure showing entities, attributes, and relationships.
+
+8. Relationships are defined as:
+
+One-to-One
+One-to-Many
+Many-to-Many
+They are shown using lines between entities with cardinality.
+
+9. Difference between UNIQUE key and PRIMARY key
+
+Primary Key uniquely identifies records and cannot be NULL. Only one per table.
+Unique Key ensures uniqueness but allows one NULL value. Multiple allowed per table.
+
+10. Why we use NOT NULL
+NOT NULL ensures that a column always contains a value and prevents missing or incomplete data.
