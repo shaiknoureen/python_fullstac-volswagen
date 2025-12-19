@@ -1,0 +1,41 @@
+Difference between DBMS and RDBMS
+
+1. Basic meaning
+DBMS is software used to store and manage data.
+RDBMS is an advanced version of DBMS that stores data in related tables.
+
+2. Data storage
+In DBMS, data is stored in files or simple tables.
+In RDBMS, data is stored in well-structured tables (rows and columns).
+
+3. Relationship between data
+DBMS does not maintain relationships between tables.
+RDBMS maintains relationships using primary and foreign keys.
+
+4. Data redundancy
+DBMS allows duplicate data.
+RDBMS reduces duplicate data using proper table design.
+
+5. Normalization
+DBMS does not follow normalization rules.
+RDBMS follows normalization to organize data properly.
+
+6. Data integrity
+DBMS does not strictly ensure data accuracy.
+RDBMS ensures data integrity using constraints.
+
+7. Multi-user support
+DBMS supports limited users at a time.
+RDBMS supports multiple users working together.
+
+8. Security
+DBMS provides basic security.
+RDBMS provides strong security and access control.
+
+9. Transaction management
+DBMS does not support ACID properties.
+RDBMS supports ACID properties for safe transactions.
+
+10. Usage area
+DBMS is used for small and simple applications.
+RDBMS is used for large, complex, and enterprise applications.
