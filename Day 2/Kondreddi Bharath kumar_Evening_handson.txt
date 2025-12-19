@@ -1,0 +1,138 @@
+1.what is the difference between delete and drop?
+
+Delete:
+Delete is a Data manipulating language command
+Delete is a temporary command to make it permenant we use TCL(Transaction control language) command COMMIT.
+Delete is slower than the drop and truncate.
+In delete we use where condition to delete specigic record.
+Delete operation can be undo.
+
+Drop:
+It is a Data definition language Command.
+It is used to delete the table from database.
+Deleted tables will be stored in recycle bin.
+To delete the table from recycle bin we use flashback command.
+Drop is a permanent command.
+
+
+
+2.what is the difference with drop and truncate?
+
+Drop:
+It is a Data definition language Command.
+It is used to delete the table from database.
+Deleted tables will be stored in recycle bin.
+To delete the table from recycle bin we use flashback command.
+Drop is a permanent command.
+
+Truncate:
+It is a Data definition language Command.
+It is used to delete all the records permanently.
+Truncate is a permanent command.
+Truncate is slower than drop.
+In truncate we cannot use where condition to delete specific records.
+Truncate operation cannot be undo.
+
+
+3.Explain acid properties?
+
+A. ACID properties ensure reliable processing of database transactions, standing for Atomicity, Consistency, Isolation, and Durability.
+Atomicity: 
+This principle states that database transactions must be all or nothing. If the transaction fails, the entire transaction is rolled back. Atomicity prevents partial and incomplete transactions.
+Consistency: 
+According to this property, only valid data is written to the database. Consistency enforces integrity constraints to maintain the accuracy and correctness of data.
+Isolation: 
+Running transactions independently is the core of isolation. Changes in one transaction will not impact others until committed. Isolation maintains data integrity across concurrent transactions. 
+Durability: 
+Durability guarantees that all committed transactions are permanently recorded in the database. They persist even after system failure. Durability provides recoverability.
+
+
+
+5.How many types of normalization's are there?
+
+A.There are mainly 6 types of normalizations in Database Management Systems
+1NF (First Normal Form): Ensures that each column contains atomic values and each record is unique.
+2NF (Second Normal Form): Ensures that all non-key attributes are fully functional on the primary key.
+3NF (Third Normal Form): Ensures that all non-key attributes are fully functional on the primary key and independent of each other.
+BCNF (Boyce-Codd Normal Form): A refinement of 3NF that requires every determinant to be a candidate key.
+4NF (Fourth Normal Form): Ensures that there are no multiple independent multi-valued facts about an entity in a record.
+5NF (Fifth Normal Form): Also known as "Projection-Join Normal Form" (PJNF), it pertains to the reconstruction of information.
+These normalizations help in reducing redundancy, improving data consistency, and ensuring data integrity in a database. 
+
+
+
+6.Fetch the second highest salary from the employee and the department?
+
+A. select salary from 
+   (select salary from 
+    (select distinct salary from employee order by salary desc) 
+       where rownum<=2) 
+         order by salary asc) 
+            where rownum<=1;
+                                                              or
+
+   select min(salary) from 
+    (select distinct salary from employee order by salary desc) 
+       where rownum<=2;
+
+
+
+6.Explain crud in the dbms?
+
+A.In Database Management Systems (DBMS), CRUD stands for Create, Read, Update, and Delete — the four fundamental operations used to manage persistent data in relational or NoSQL databases. These operations are primarily implemented using SQL DML (Data Manipulation Language) commands.
+
+Create – Adds new records to a table using the INSERT statement.
+Read – Retrieves data using the SELECT statement.
+Update – Modifies existing records using the UPDATE statement.
+Delete – Removes records using the DELETE statement.
+
+
+
+
+7.What is entity diagram?
+A. It is used to show the relationship between one entity to another entity.This model represents the logical structure of a database, including entities, their attributes and relationships between them.
+
+Entity: An entity is a thing or object in the real world.
+Attribute: Properties that describes an entity.
+Relationship: A connection between entities.
+
+
+
+8.How do you describe the relathionship?
+A. Relationship is a connection between entities.
+There are 4 types of relationships:
+one to one-(1 entity can related with only 1 entity).
+one to many-(1 entity can related with n number of entities).
+many to one-(n number of entities can related with only 1 entity).
+many to many-(n number of entities can related with n number of entities).
+
+
+
+9.Difference between unique key and primary key?
+A.
+Unique key:
+It accepts only unique values.
+It accept null values.
+It will not accept duplicate values.
+In a 1 table we can have n number of unique values.
+
+Primary key:
+It accepts only unique values.
+It accept only not null values.
+It not accept duplicate values.
+It not accept null values.
+It is a combination of unique and not null.
+In a table we can declare only 1 primary key.
+
+
+10.why do we use NOT NULL?
+A. We use not null constraint to ensure that a column in a table cannot contain NULL values.
+
+
+
+
+
+
+
+
+
