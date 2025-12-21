@@ -1,0 +1,40 @@
+Ans 1) main difference between Delete and drop is:
+
+Microsoft Edge
+
+a) Rollback: Delete command can be rollback where as drop command can't be rollback.
+
+b) Delete is a DDL, command where as Drop is DML command.
+
+c) Delete removes selected rows , whereas Drop command removes table and data completely.
+
+Ans 2) a) Drop command deletes the entire table or database where as truncate command deletes all rows but retain table structure.
+
+       b) both cannot be rollback
+
+Ans 3) ACID: a) Atomicity: "A transaction happens completely or not at all". That is if one part fails, everything is rolled back. Example: Money is debited from my account but it is not credited into another account the transaction is cancelled.
+
+             b) CONSISTENCY: A transaction keeps the database in a valid state. That is if i have send 50 rupee to a friend then my account balance should be updated as value 50rs and My friends account should reflect Initial Value 50 cs.
+
+             c) Isolation: Multiple transactions do not interfere with each other. Each transaction behaves as if it is running alone.
+
+             d) Durability: Once a transaction is commited, it is saved permanently. Data is safe even after a power failure or system crash.
+
+Ans 4) There are mainly five types of normalization: 1NF, 2NF, 3NF, BCNF, 4NF, and 5NF. In practice, up to 3NF or BCNF is mostly used.
+
+
+Ans 5) SELECT salary
+       From employee 
+       ORDER BY salary DESC 
+       LIMIT 1 OFFSET 1;
+
+Ans 6) CRUD stands for Create, Read, Update, Delete. These are the basic operations used to manage data in a database.
+
+Ans 7) An Entity Relationship Diagram (ERD) is a diagram that shows entities, their attributes, and the relationships between them
+
+Ans 8) Relationships are described as one-to-one, one-to-many, or many-to-many, based on how entities are connected.
+
+Ans 9) Unique Key: Only unique 
+       Primary key: Unique + not null
+
+Ans 10) We use NOT NULL to make sure a column always has a value and does not stay empty.

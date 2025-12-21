@@ -1,0 +1,51 @@
+DBMS: (it refers to Database Management System) 
+1) DBMS: Database Management System are the software designed to efficiently create, organize, store, retrieve, modify and
+
+2) It is basic a storage house for the data and data stored here is in an unorganized manner.
+
+3) it stores data as file.
+
+4) As the data is stored in an unorganized way which makes it more difficult to work with large amount of data.
+
+5) no relation between data.
+
+6) mostly used for small quantity of data
+
+7) less security
+
+8) data fetching is slower for large amount of data
+
+9) Normalization is not present
+
+10) ex: XML
+
+RDBMS: (It is referred to as Relational Database management system) 
+1) It stores data in form of rows and column, ie a tabular form.
+
+2) multiple data can be accessed at same time
+
+3) data here is stored in form of tables which are related to each other.
+
+4) normalization is present
+
+5) Similar is stored at one place
+
+6) It deals with large amount of data.
+
+7) more secure
+
+8) Data is fetched faster because of the relational approach.
+
+9) There exists a multiple level of data security in a rdbms
+
+10) EX: MySQL, PostgreSQL
+
+
+
+
+QUES: I need to get a book but it is taken by other person, So write a query showing when I will be able to get that book. 
+Answer: SELECT 
+    book_title,
+    due_date
+FROM issued_books
+WHERE book_title = 'BOOK_NAME_HERE'
