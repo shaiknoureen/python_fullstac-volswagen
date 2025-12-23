@@ -1,0 +1,164 @@
+1. Insert Operations
+
+    1. insertOne() is used to insert a single document into a MongoDB collection.
+    
+    2. db.users.insertOne({ name: "Ankit", age: 22 })
+    
+    3. If the collection does not exist, MongoDB automatically creates the collection and then inserts the document.
+    
+    4. insertMany() is used to insert multiple documents at once, whereas insertOne() inserts only one document.
+    
+    5. By default (ordered: true), MongoDB stops inserting remaining documents.
+    
+     If { ordered: false } is used, MongoDB continues inserting the remaining valid documents.
+
+2. Update Operations
+
+    1. updateOne() updates only the first document that matches the filter condition.
+    
+        updateMany() updates all documents that match the filter condition.
+    2. db.users.updateOne(
+      { name: "Rohit" },
+      { $set: { age: 23 } }
+    )
+    
+    3. db.users.updateMany(
+      { city: "Pune" },
+      { $set: { status: "active" } }
+    )
+    
+    4. Only one (the first matched) document is updated; the others remain unchanged.
+    5. $set
+
+3. Add Date
+
+    1. db.logs.insertOne({
+      action: "login",
+      createdAt: new Date()
+    })
+    
+    2. new Date() or $currentDate
+    
+    3. db.logs.updateMany(
+      {},
+      { $currentDate: { updatedAt: true } }
+    )
+    
+    4. new Date() can be used during insert or update operations.
+    
+    $currentDate is used only during update operations.
+    
+    new Date() generates the date on the client side.
+    
+    $currentDate generates the date on the server side.
+    
+    new Date() sets a fixed timestamp at execution time.
+    
+    $currentDate always sets the current date and time automatically.
+
+4. Delete Operations
+
+    1. deleteOne() deletes only one document that matches the filter condition.
+    
+    deleteMany() deletes all documents that match the filter condition.
+    
+    2. db.users.deleteOne({ name: "Rohit" })
+    
+    3. All documents in the collection are deleted, but the collection itself remains.
+
+5. Drop Operations
+
+    1. db.users.drop()
+    2. use myDatabase
+    db.dropDatabase()
+    3.deleteMany({}) deletes all documents in a collection but keeps the collection and indexes.
+    
+      drop() removes the entire collection, including all documents and indexes.
+
+
+MongoDB Practical Questions (CRUD)
+
+1. InsertOne
+
+  1. db.students.insertOne({ name: "Rahul", course: "BTech", year: 2024 })
+  2. db.employees.insertOne({
+    name: "Rahul",
+    role: "ML Engineer",
+    salary: 800000,
+    joiningDate: new Date()
+  })
+  3. db.products.insertOne({ name: "Laptop", price: 65000, category: "Electronics" })
+
+2. InsertMany
+
+    1. db.users.insertMany([
+      { name: "Ali", age: 25 },
+      { name: "Neha", age: 24 },
+      { name: "Rohit", age: 26 },
+      { name: "Priya", age: 23 },
+      { name: "Aman", age: 27 }
+    ])
+    2. db.products.insertMany([
+      { name: "Phone", price: 30000, category: "Electronics" },
+      { name: "Chair", price: 2000, category: "Furniture" },
+      { name: "Book", price: 500, category: "Education" }
+    ])
+    3. db.orders.insertMany([
+      { orderId: 101, customerName: "Ali", totalAmount: 2500 },
+      { orderId: 102, customerName: "Neha", totalAmount: 4500 }
+    ])
+
+3. UpdateOne
+    1. db.employees.updateOne(
+      { name: "Aryan" },
+      { $set: { salary: 900000 } }
+    )
+    2. db.users.updateOne(
+      { name: "Ali" },
+      { $set: { status: "active" } }
+    )
+    3. db.customers.updateOne(
+      { name: "Rohit" },
+      { $set: { city: "Mumbai" } }
+    )
+
+4. UpdateMany
+
+    1. db.users.updateMany(
+      {},
+      { $currentDate: { updatedDate: true } }
+    )
+    2. db.products.updateMany(
+      { category: "Electronics" },
+      { $inc: { price: 1000 } }
+    )
+    3. db.users.updateMany(
+      {},
+      { $set: { country: "India" } }
+    )
+
+5. Add Date
+    1. db.logs.insertOne({ action: "login", createdAt: new Date() })
+    2. db.logs.updateMany(
+      {},
+      { $currentDate: { updatedAt: true } }
+    )
+    3. db.students.updateMany(
+      { year: { $exists: true } },
+      [{ $set: { yearDate: { $dateFromParts: { year: "$year", month: 1, day: 1 } } } }]
+    )
+
+6. DeleteOne
+
+    1. db.users.deleteOne({ name: "Ali" })
+    2. db.products.deleteOne({ productId: 101 })
+
+7. DeleteMany
+
+    1. db.users.deleteMany({ city: "Delhi" })
+    2. db.students.deleteMany({ year: { $lt: 2020 } })
+
+8. Drop Operations
+
+    1. db.students.drop()
+    2. db.dropDatabase()
