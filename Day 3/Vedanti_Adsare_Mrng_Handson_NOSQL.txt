@@ -1,0 +1,75 @@
+NOSQL
+
+Q.1)Difference between SQL and NOSQL;
+ 
+               SQL                                 NOSQL
+ 1)Uses tables with rows and columns      1)Uses collections, documents, key-value pairs, graphs
+ 2)Has a fixed schema                     2)Dynamic schema, flexible structure
+ 3)Query language used is SQL.            3)Varies by database (e.g., MongoDB uses JSON-like queries)
+ 4)Vertical Scaling                       4)Horizontal scaling
+ 5)Follows Acid properties                5)Does not follow ACID properties
+
+
+Q.2) Create DB - use foodAnalyticsDB
+     
+     Add Records :-
+     
+     db.orders.insertMany([
+  { orderId: 1, restaurant: "Dominos", city: "Pune", orderAmount: 450, paymentMode: "UPI" },
+  { orderId: 2, restaurant: "McDonalds", city: "Mumbai", orderAmount: 320, paymentMode: "Card" },
+  { orderId: 3, restaurant: "KFC", city: "Pune", orderAmount: 600, paymentMode: "Cash" },
+  { orderId: 4, restaurant: "Subway", city: "Delhi", orderAmount: 280, paymentMode: "UPI" },
+  { orderId: 5, restaurant: "Burger King", city: "Pune", orderAmount: 390, paymentMode: "Card" },
+  { orderId: 6, restaurant: "Pizza Hut", city: "Mumbai", orderAmount: 520, paymentMode: "UPI" },
+  { orderId: 7, restaurant: "Starbucks", city: "Bangalore", orderAmount: 750, paymentMode: "Card" },
+  { orderId: 8, restaurant: "Wow Momo", city: "Pune", orderAmount: 260, paymentMode: "Cash" },
+  { orderId: 9, restaurant: "Haldirams", city: "Delhi", orderAmount: 410, paymentMode: "UPI" },
+  { orderId: 10, restaurant: "Barbeque Nation", city: "Mumbai", orderAmount: 1200, paymentMode: "Card" },
+  { orderId: 11, restaurant: "Faasos", city: "Pune", orderAmount: 340, paymentMode: "UPI" },
+  { orderId: 12, restaurant: "Biryani Blues", city: "Delhi", orderAmount: 560, paymentMode: "Cash" }
+  ]);
+    
+   Executing Query - db.orders.find({ city: "Pune" }); 
+    
+   Here I created a MongoDB database named foodAnalyticsDB, added records into the orders collection, and executed a query to retrieve data based on a specific column.
+
+Final Output:
+
+Output:
+
+switched to db foodAnalyticsDB
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("694a29beb80ab61eda053ef1"),
+		ObjectId("694a29beb80ab61eda053ef2"),
+		ObjectId("694a29beb80ab61eda053ef3"),
+		ObjectId("694a29beb80ab61eda053ef4"),
+		ObjectId("694a29beb80ab61eda053ef5"),
+		ObjectId("694a29beb80ab61eda053ef6"),
+		ObjectId("694a29beb80ab61eda053ef7"),
+		ObjectId("694a29beb80ab61eda053ef8"),
+		ObjectId("694a29beb80ab61eda053ef9"),
+		ObjectId("694a29beb80ab61eda053efa"),
+		ObjectId("694a29beb80ab61eda053efb"),
+		ObjectId("694a29beb80ab61eda053efc")
+	]
+}
+{ "_id" : ObjectId("694a29beb80ab61eda053ef1"), "orderId" : 1, "restaurant" : "Dominos", "city" : "Pune", "orderAmount" : 450, "paymentMode" : "UPI" }
+{ "_id" : ObjectId("694a29beb80ab61eda053ef3"), "orderId" : 3, "restaurant" : "KFC", "city" : "Pune", "orderAmount" : 600, "paymentMode" : "Cash" }
+{ "_id" : ObjectId("694a29beb80ab61eda053ef5"), "orderId" : 5, "restaurant" : "Burger King", "city" : "Pune", "orderAmount" : 390, "paymentMode" : "Card" }
+{ "_id" : ObjectId("694a29beb80ab61eda053ef8"), "orderId" : 8, "restaurant" : "Wow Momo", "city" : "Pune", "orderAmount" : 260, "paymentMode" : "Cash" }
+{ "_id" : ObjectId("694a29beb80ab61eda053efb"), "orderId" : 11, "restaurant" : "Faasos", "city" : "Pune", "orderAmount" : 340, "paymentMode" : "UPI" }
+
+   
+
+
+
+     
+
+    
+     
+
+
+
+ 
