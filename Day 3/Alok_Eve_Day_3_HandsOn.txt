@@ -1,0 +1,241 @@
+Insert Operations
+
+1. What is the purpose of insertOne() in MongoDB?
+Ans. insertOne() is used to insert a single document into a collection in MongoDB. It adds one record at a time and returns an acknowledgment of success.
+
+2. Write a MongoDB command to insert a single document into a collection.
+
+Ans. db.students.insertOne({ name: "Alok", age: 22, course: "MCA" })
+	This command inserts one document into the students collection.
+
+3. How does MongoDB behave if the collection does not exist while using insertOne()?
+Ans. If the collection does not exist, MongoDB automatically creates the collection and then inserts the document. No error is thrown.
+
+4. What is insertMany() and how is it different from insertOne()?
+Ans. insertMany() is used to insert multiple documents at once, while insertOne() inserts only one document. insertMany() improves performance when inserting bulk data.
+
+5. What happens if one document fails during insertMany() execution?
+Ans. By default, MongoDB stops inserting remaining documents when one fails (ordered insert). If ordered: false is used, MongoDB continues inserting the remaining documents.
+
+Update Operations
+
+1. What is the difference between updateOne() and updateMany()?
+Ans. updateOne() updates only the first matching document, while updateMany() updates all documents that match the filter condition.
+
+2. Write a command to update only one document’s field in MongoDB.
+
+Ans. db.students.updateOne({ name: "Alok" }, { $set: { age: 23 } })
+	This updates the age field of only one matching document.
+
+3. How do you update multiple documents at the same time in MongoDB?
+Ans. You use updateMany() with a filter condition. It applies the update to all documents that satisfy the condition.
+
+4. What happens if the filter condition in updateOne() matches multiple documents?
+Ans. MongoDB updates only the first matched document. The remaining matching documents are ignored.
+
+5. What update operator is used to modify specific fields without replacing the entire document?
+Ans. The $set operator is used to modify specific fields. It updates only the given fields without affecting other data.
+
+Add Date (Current Date)
+
+1. How do you add the current date to a document while inserting data?
+Ans. You can use new Date() while inserting the document. This stores the current date and time.
+
+2. Which MongoDB operator is equivalent to SQL CURDATE()?
+Ans. new Date() or the $currentDate operator is equivalent to SQL CURDATE() in MongoDB.
+
+3. Write a command to add the current date to all existing documents.
+
+Ans. db.students.updateMany({}, { $currentDate: { createdAt: true } })
+	This adds the current date to all documents.
+
+4. What is the difference between using new Date() and $currentDate?
+Ans. new Date() is used during insertion or manual updates, while $currentDate automatically sets the server’s current date during an update operation.
+
+Delete Operations
+
+1. What is the difference between deleteOne() and deleteMany()?
+ans. deleteOne() removes only one matching document, while deleteMany() removes all matching documents.
+
+2. Write a MongoDB command to delete a single document.
+Ans. db.students.deleteOne({ name: "Alok" })
+	This deletes only one document matching the condition.
+
+3. What happens if the filter in deleteMany() is empty {}?
+Ans. All documents in the collection are deleted. The collection structure remains intact.
+
+Drop Operations
+
+1. How do you drop a collection (table) in MongoDB?
+Ans. db.students.drop()
+	This completely removes the collection and its data.
+
+2. What is the command to drop an entire database in MongoDB?
+Ans db.dropDatabase()
+	This permanently deletes the selected database.
+
+3. What is the difference between deleteMany({}) and drop()?
+Ans. deleteMany({}) removes all documents but keeps the collection, while drop() removes the entire collection including indexes and metadata.
+
+
+
+
+
+
+
+1.InsertOne (Practical)
+Insert a student record with name, course, and year.
+Insert an employee document with name, role, salary, and joining date.
+Create a product document with name, price, and category.
+
+Ans.
+// Students Record
+db.students.insertOne({
+  name: "Alok Kumar",
+  course: "MCA",
+  year: 2
+})
+
+//Employee document
+db.employees.insertOne({
+  name: "Rahul Sharma",
+  role: "Software Engineer",
+  salary: 60000,
+  joiningDate: new Date()
+})
+
+//Product document
+db.products.insertOne({
+  name: "Laptop",
+  price: 55000,
+  category: "Electronics"
+})
+
+db.students.find();
+db.employees.find();
+db.products.find();
+
+
+2. InsertMany (Practical)
+Insert at least 5 user records into a collection.
+db.users.insertMany([
+  { name: "Alok", email: "alok@gmail.com", age: 22 },
+  { name: "Rahul", email: "rahul@gmail.com", age: 25 },
+  { name: "Priya", email: "priya@gmail.com", age: 23 },
+  { name: "Neha", email: "neha@gmail.com", age: 24 },
+  { name: "Amit", email: "amit@gmail.com", age: 26 }
+])
+
+Insert multiple products belonging to different categories.
+db.products.insertMany([
+  { name: "Laptop", price: 55000, category: "Electronics" },
+  { name: "Chair", price: 2500, category: "Furniture" },
+  { name: "Book", price: 500, category: "Education" },
+  { name: "Mobile Phone", price: 30000, category: "Electronics" },
+  { name: "Shoes", price: 2000, category: "Fashion" }
+])
+
+Insert many orders with orderId, customerName, and totalAmount.
+db.orders.insertMany([
+  { orderId: "ORD101", customerName: "Alok", totalAmount: 1200 },
+  { orderId: "ORD102", customerName: "Rahul", totalAmount: 3500 },
+  { orderId: "ORD103", customerName: "Priya", totalAmount: 2800 },
+  { orderId: "ORD104", customerName: "Neha", totalAmount: 4500 },
+  { orderId: "ORD105", customerName: "Amit", totalAmount: 1500 }
+])
+
+3. UpdateOne (Practical)
+
+Update the salary of a single employee.
+db.employees.updateOne(
+  { name: "Rahul Sharma" },
+  { $set: { salary: 70000 } }
+)
+
+Add a new field status to one specific user.
+db.users.updateOne(
+  { name: "Alok" },
+  { $set: { status: "Active" } }
+)
+
+Change the city of one customer.
+db.customers.updateOne(
+  { customerName: "Priya" },
+  { $set: { city: "Bangalore" } }
+)
+
+
+4. UpdateMany (Practical)
+
+Add a field updatedDate with the current date to all records.
+db.users.updateMany(
+  {},
+  { $currentDate: { updatedDate: true } }
+)
+
+Increase the price of all products in a specific category.
+db.products.updateMany(
+  { category: "Electronics" },
+  { $inc: { price: 5000 } }
+)
+
+Add a new field country to all users.
+db.users.updateMany(
+  {},
+  { $set: { country: "India" } }
+)
+
+5.Add Date (Practical)
+
+Insert a document with the current date using MongoDB.
+db.logs.insertOne({
+  message: "User login",
+  createdAt: new Date()
+})
+
+Update all documents by adding today’s date.
+db.logs.updateMany(
+  {},
+  { $currentDate: { updatedAt: true } }
+)
+
+Convert a numeric year field into a date field.
+db.students.updateMany(
+  { year: { $type: "number" } },
+  [
+    {
+      $set: {
+        year: {
+          $dateFromParts: { year: "$year", month: 1, day: 1 }
+        }
+      }
+    }
+  ]
+)
+
+6. DeleteOne (Practical)
+
+Delete a user whose name is "Ali".
+db.users.deleteOne({ name: "Ali" })
+
+Remove one product with a specific productId.
+db.products.deleteOne({ productId: "P101" })
+
+
+7. DeleteMany (Practical)
+
+Delete all users from a particular city.
+db.users.deleteMany({ city: "Delhi" })
+
+Delete all records where the year is less than 2020.
+db.students.deleteMany({ year: { $lt: 2020 } })
+
+
+8.Drop Operations (Practical)
+
+Drop a collection named students.
+db.students.drop()
+
+Drop the current database.
+db.dropDatabase()
+
