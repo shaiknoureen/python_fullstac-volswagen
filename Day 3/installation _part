@@ -1,0 +1,29 @@
+
+Mongo DB Installation
+1.	Go to google and type MongoDB installation community version.
+2.	https://www.mongodb.com/try/download/community
+3.	In the nav bar collapse the product module and choose the community edition
+4.	Select the download button
+5.	Chose the version, platform and the package as msi
+6.	Download the package
+7.	Open and double click on it and it will get downloaded
+8.	Click next on the pop up 
+9.	Select complete button and click on agreement and click on next unbutton the mongodb compass.
+10.	Once the download part completed open the command prompt and type 
+mongod –version.
+11.	If you couldn’t find the software.
+Open cdrive -- program files-mongodb-server8.2bincopy the pathopen the environment variablesin advance-environment variablessystem variablesselect the pathclick on newpaste the linkclick on ok->okok
+12.	Open the command prompt type the command mongod –version.
+Mongodb shell installation
+1.	Open google and type mongo shell installation
+2.	https://www.mongodb.com/try/download/shell
+3.	Choose the version, platform and select the package as msi
+4.	It will get downloaded
+5.	Double click on the software it will show a setup pop up
+6.	Uncheck the button
+7.	C:/programfiles/mongosh
+8.	Nextinstall->finish
+9.	Open the cmd and type mongosh
+10.	You will find the version of mondodb and mongo shell
+11.	Type show dbs
+ 
