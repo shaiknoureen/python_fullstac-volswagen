@@ -1,0 +1,234 @@
+Insert Operations
+
+Q1. Purpose of insertOne()?
+
+Answer:  Inserts one document into a collection.
+
+Q2. Insert a single document
+
+Answer: db.students.insertOne({ id: 1, name: "Shashank", dept: "CSE" })
+
+Q3. What if collection does not exist? 
+
+Answer: MongoDB automatically creates the collection.
+
+Q4. What is insertMany()? Difference from insertOne()? 
+
+Answer: Inserts multiple documents at once 
+        insertOne() = single document 
+        insertMany() = array of documents
+
+Q5. If one document fails in insertMany()?
+
+Answer: By default, stops at the error. Already inserted documents remain.
+        Use { ordered: false } to continue inserting others
+
+Update Operations
+
+Q6. Difference between updateOne() and updateMany()?
+
+Answer: updateOne() → updates first matched document only
+
+	updateMany() → updates all matched documents
+
+Q7. Update only one document
+
+Answer: 
+	db.students.updateOne( { id: 1 }, { $set: { dept: "IT" } } )
+
+Q8. Update multiple documents
+
+Answer: 
+	db.students.updateMany( { dept: "CSE" }, { $set: { college: "CU" } } )
+
+Q9. If updateOne() matches multiple documents?
+
+Answer:
+	Only one (first match) is updated
+
+Q10. Operator to update specific fields without replacing document? 
+
+Answer:  $set
+
+Add Date (Current Date)
+
+Q11. Add current date while inserting
+
+Answer:  db.logs.insertOne({ action: "login", createdAt: new Date() })
+
+Q12. MongoDB equivalent of SQL CURDATE()? → 
+
+Answer:  new Date() or $currentDate
+
+Q13. Add current date to all existing documents
+
+Answer:  db.logs.updateMany( {}, { $currentDate: { updatedAt: true } } )
+
+Q14. new Date() vs $currentDate
+
+Answer: 
+
+new Date() 
+
+Used during insert  
+Client-side  
+Fixed value 
+
+$currentDate
+
+Used during update
+Server-side
+Always current
+
+
+Delete Operations
+
+Q15. deleteOne() vs deleteMany()
+
+Answer:
+	deleteOne() → deletes one document
+
+	deleteMany() → deletes multiple documents
+
+Q16. Delete a single document
+
+Answer: db.students.deleteOne({ id: 1 })
+
+Q17. What if filter is {} in deleteMany()? 
+
+Answer: Deletes all documents, collection remains
+
+Drop Operations
+
+Q18. Drop a collection
+
+Answer: db.students.drop()
+
+Q19. Drop entire database
+
+Answer: db.dropDatabase()
+
+Q20. deleteMany({}) vs drop()
+
+Answer: 
+
+deleteMany({}) 
+
+Deletes all documents  
+Collection remains  
+Indexes remain 
+
+drop()
+Deletes collection
+Collection removed
+Indexes removed
+
+
+
+Practical Questions
+
+InsertOne (Practical)
+
+Q1. Insert a student
+
+Answer: db.students.insertOne({ name: "Shashank", course: "CSE", year: 2024 })
+
+Q2. Insert an employee
+
+Answer: db.employees.insertOne({ name: "Rahul", role: "Developer", salary: 60000, joiningDate: new Date() })
+
+Q3. Insert a product
+
+Answer: db.products.insertOne({ name: "Laptop", price: 55000, category: "Electronics" })
+
+InsertMany (Practical)
+
+Q4. Insert 5 users
+
+Answer: db.users.insertMany([ { name: "Ali", age: 22 }, { name: "Riya", age: 24 }, { name: "Aman", age: 23 }, { name: "Neha", age: 21 }, { name: "Karan", age: 25 } ])
+
+Q5. Insert multiple products
+
+Answer: db.products.insertMany([ { name: "Phone", price: 20000, category: "Electronics" }, { name: "Chair", price: 3000, category: "Furniture" }, { name: "Table", price: 7000, category: "Furniture" } ])
+
+Q6. Insert many orders
+
+Answer: db.orders.insertMany([ { orderId: 101, customerName: "Ali", totalAmount: 1500 }, { orderId: 102, customerName: "Riya", totalAmount: 2500 }, { orderId: 103, customerName: "Aman", totalAmount: 1800 } ])
+
+
+UpdateOne (Practical)
+
+Q7. Update salary of one employee
+
+Answer: db.employees.updateOne( { name: "Rahul" }, { $set: { salary: 70000 } } )
+
+Q8. Add status to one user
+
+Answer: db.users.updateOne( { name: "Ali" }, { $set: { status: "Active" } } )
+
+Q9. Change city of one customer
+
+Answer: db.customers.updateOne( { name: "Riya" }, { $set: { city: "Delhi" } } )
+
+
+UpdateMany (Practical)
+
+Q10. Add updatedDate to all records
+
+Answer: db.users.updateMany( {}, { $currentDate: { updatedDate: true } } )
+
+Q11. Increase price of products in a category
+
+Anser: db.products.updateMany( { category: "Electronics" }, { $inc: { price: 2000 } } )
+
+Q12. Add country to all users
+
+Answer: db.users.updateMany( {}, { $set: { country: "India" } } )
+
+
+Add Date (Practical)
+
+Q13. Insert document with current date
+
+Answer: db.logs.insertOne({ action: "login", date: new Date() })
+
+Q14. Add today’s date to all documents
+
+Answer: db.logs.updateMany( {}, { $currentDate: { todayDate: true } } )
+
+Q15. Convert numeric year to date
+
+Answer: db.students.updateMany( { year: { $type: "number" } }, [{ $set: { year: { $toDate: { $concat: [{ $toString: "$year" }, "-01-01"] } } } }] )
+
+
+DeleteOne (Practical)
+
+Q16. Delete user named "Ali"
+
+Answer: db.users.deleteOne({ name: "Ali" })
+
+Q17. Delete one product by productId
+
+Answer: db.products.deleteOne({ productId: 101 })
+
+
+DeleteMany (Practical)
+
+Q18. Delete users from a city
+
+Answer: db.users.deleteMany({ city: "Delhi" })
+
+Q19. Delete records where year < 2020
+
+Answer:
+
+	db.students.deleteMany({ year: { $lt: 2020 } })
+
+Drop Operations (Practical)
+Q20. Drop students collection
+
+Answer: db.students.drop()
+
+Q21. Drop current database
+
+Answer: db.dropDatabase()
