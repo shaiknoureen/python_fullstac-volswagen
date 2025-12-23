@@ -3,19 +3,14 @@ Question 1 - Write down five differences in sql and NoSQL.
 
 Answer - Five differences in sql and NoSQL are -
 
-
-
     Aspect	              	      SQL 	           		      	                     NoSQL
-Data Structure		Tables with rows and columns				Document-based, key-value, column-family, or graph-based
-Schema			Fixed schema (predefined structure)			Flexible schema (dynamic and adaptable)
-Scalability		Vertically scalable (upgrading hardware)		Horizontally scalable (adding more servers)
-Data Integrity		ACID-compliant (strong consistency)			BASE-compliant (more available, less consistent)
-Query Language		SQL (Structured Query Language)				Varies (e.g., MongoDB uses its own query language)
-Performance		Efficient for complex queries and transactions		Better for large-scale data and fast read/write operations
-Use Case		Best for transactional systems (banking, ERP, etc.)	Ideal for big data, real-time web apps, and data lakes
-Examples		MySQL, PostgreSQL, Oracle, MS SQL Server		MongoDB, Cassandra, CouchDB, Neo4j
-
-
+Data Structure		Tables with rows and columns				    Document-based, key-value, column-family, or graph-based
+Schema			    Fixed schema			                        Flexible schema
+Scalability		    Vertically scalable		                        Horizontally scalable
+Data Integrity		ACID-compliant (strong consistency)			    BASE-compliant (more available, less consistent)
+Query Language		SQL (Structured Query Language)				    Varies (e.g., MongoDB uses its own query language)
+Performance		    Efficient for complex queries and transactions	Better for large data and fast read/write operations
+Use Case		    Best for transactional systems	                Ideal for big data, real-time web apps, and data lakes
 
 Question 2 - Create a database and Add records.
 
@@ -33,6 +28,5 @@ db.items.insertMany([
   {itemId: 9, name: 'Tea', price: 120, quantity: 5},
   {itemId: 10, name: 'Coffee', price: 180, quantity: 5}
   ])
-
 
 db.items.find()
