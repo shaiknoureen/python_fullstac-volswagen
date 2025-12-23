@@ -1,0 +1,33 @@
+Differences between SQL and NoSQL
+
+1. Data Structure
+SQL databases store data in tables with rows and columns, whereas NoSQL databases store data in collections and documents.
+
+2. Schema
+SQL databases have a fixed schema, but NoSQL databases have a flexible schema.
+
+3. Query Language
+SQL databases use SQL commands like SELECT and INSERT, while NoSQL databases use query methods such as find() and insertOne().
+
+4. Type of Data
+SQL databases are best suited for structured data, whereas NoSQL databases handle semi-structured and unstructured data efficiently.
+
+5. Examples
+Examples of SQL databases include MySQL, Oracle, and PostgreSQL, while examples of NoSQL databases include MongoDB, Cassandra, and Firebase.
+
+
+db.juices.insertMany([
+  { juiceId: 1, name: "Apple Juice", price: 50, size: "Medium" },
+  { juiceId: 2, name: "Orange Juice", price: 60, size: "Large" },
+  { juiceId: 3, name: "Mango Juice", price: 70, size: "Medium" },
+  { juiceId: 4, name: "Pineapple Juice", price: 65, size: "Small" },
+  { juiceId: 5, name: "Grape Juice", price: 55, size: "Medium" },
+  { juiceId: 6, name: "Watermelon Juice", price: 45, size: "Large" },
+  { juiceId: 7, name: "Banana Shake", price: 80, size: "Large" },
+  { juiceId: 8, name: "Strawberry Juice", price: 75, size: "Medium" },
+  { juiceId: 9, name: "Mixed Fruit Juice", price: 90, size: "Large" },
+  { juiceId: 10, name: "Papaya Juice", price: 50, size: "Small" }
+]);
+
+
+db.juices.find({ size: "Large" });
