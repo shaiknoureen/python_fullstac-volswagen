@@ -1,0 +1,27 @@
+5 differences between sql and NoSQL are following :
+
+a. SQL databases store data in a structured table format with a fixed schema, whereas NoSQL databases store data in flexible formats such as documents, key-value pairs, or graphs.
+
+b. SQL databases follow a predefined schema that is difficult to change, whereas NoSQL databases support a dynamic schema that is easy to modify.
+
+c. SQL databases are mainly vertically scalable by increasing server resources, whereas NoSQL databases are horizontally scalable by adding more servers.
+
+d. SQL databases use a standardized query language called SQL, whereas NoSQL databases do not have a single standard query language and use database-specific queries.
+
+e. SQL databases are suitable for complex queries and transactional applications, whereas NoSQL databases are suitable for big data, real-time, and distributed systems.
+
+
+
+
+Database creation and execution code for OneCompiler :
+
+db.hostel.insertMany([
+	{Id: 2501, name:'Alok', roomNo:105},
+	{Id: 2502, name:'Ashok', roomNo:205},
+	{Id: 2521, name:'Akash', roomNo:105},
+	{Id: 2520, name:'Sahil', roomNo:115},
+	{Id: 2522, name:'Shivam', roomNo:108},
+	{Id: 2531, name:'Zack', roomNo:301},
+	{Id: 2518, name:'Aman', roomNo:105}
+]);
+db.hostel.find({roomNo: 105});
