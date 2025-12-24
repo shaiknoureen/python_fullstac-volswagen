@@ -1,0 +1,28 @@
+
+db.instagram.insertMany([
+  { user_id: 1, name: 'arun',    post: 5,  likes: 120, comments: 15 },
+  { user_id: 2, name: 'ajay',    post: 8,  likes: 200, comments: 25 },
+  { user_id: 3, name: 'sai',     post: 3,  likes: 90,  comments: 10 },
+  { user_id: 4, name: 'kumar',   post: 10, likes: 150, comments: 20 },
+  { user_id: 5, name: 'ragula',  post: 6,  likes: 180, comments: 18 },
+  { user_id: 6, name: 'kish',    post: 7,  likes: 130, comments: 22 },
+  { user_id: 7, name: 'venu',    post: 4,  likes: 75,  comments: 12 },
+  { user_id: 8, name: 'uday',    post: 9,  likes: 210, comments: 30 },
+  { user_id: 9, name: 'bharath', post: 2,  likes: 60,  comments: 5  },
+  { user_id: 10,name: 'yash',    post: 11, likes: 250, comments: 35 }
+])
+#using group by
+db.instagram.aggregate([{$group:{ _id:null,total_likes:{$sum:"$likes"},total_post:{$sum:"$post"},total_comments:{$sum:"$comments"}}}])
+
+db.instagram.aggregate([{$group:{ _id:null,avg_likes:{$avg:"$likes"}}}])
+
+db.instagram.aggregate([{$group:{ _id:null, max:{ $max:"$comments"}}}])
+
+db.instagram.aggregate([{ $group:{ _id:null, minn: { $min:"$post"}}}])
+#using match (match is executed when the condition is correct)
+db.instagram.aggregate([{$match:{user_id:{$in:[1,2,3]}}},
+{$group:{_id:null,total_likes:{$sum:"$likes"},total_comments:{$sum:"$comments"}}}])
+
+
+
+db.instagram.aggregate([{$match:{ user_id:{$in:[1,2,3]}}}])
