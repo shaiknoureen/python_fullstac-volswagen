@@ -1,3 +1,7 @@
+                    *****DAY 4 MORNING SESSION****
+
+
+use social media
 
 db.instagram.insertMany([
   { user_id: 1, name: 'arun',    post: 5,  likes: 120, comments: 15 },
