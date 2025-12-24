@@ -1,0 +1,129 @@
+1.create a databse name social media
+2.create a table data
+3.create 10 records init
+4. apply aggregation to the table
+
+db.data.insertMany([
+  { userId: 1, name: "Alice", platform: "Facebook", posts: 12, likes: 150 },
+  { userId: 2, name: "Bob", platform: "Instagram", posts: 8, likes: 200 },
+  { userId: 3, name: "Charlie", platform: "Twitter", posts: 20, likes: 300 },
+  { userId: 4, name: "David", platform: "Facebook", posts: 15, likes: 250 },
+  { userId: 5, name: "Eva", platform: "Instagram", posts: 5, likes: 100 },
+  { userId: 6, name: "Frank", platform: "Twitter", posts: 18, likes: 220 },
+  { userId: 7, name: "Grace", platform: "Facebook", posts: 10, likes: 180 },
+  { userId: 8, name: "Hannah", platform: "Instagram", posts: 7, likes: 130 },
+  { userId: 9, name: "Ian", platform: "Twitter", posts: 25, likes: 400 },
+  { userId: 10, name: "Jack", platform: "Facebook", posts: 13, likes: 210 }
+])
+db.data.aggregate([
+  {
+    $project: {
+      name: 1,
+      platform: 1,
+      likes: 1,
+      posts: 1,
+      avgLikesPerPost: { $divide: ["$likes", "$posts"] }
+    }
+  }
+])
+
+
+Output:
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('694ba4cb1b358abcbf8de665'),
+    '1': ObjectId('694ba4cb1b358abcbf8de666'),
+    '2': ObjectId('694ba4cb1b358abcbf8de667'),
+    '3': ObjectId('694ba4cb1b358abcbf8de668'),
+    '4': ObjectId('694ba4cb1b358abcbf8de669'),
+    '5': ObjectId('694ba4cb1b358abcbf8de66a'),
+    '6': ObjectId('694ba4cb1b358abcbf8de66b'),
+    '7': ObjectId('694ba4cb1b358abcbf8de66c'),
+    '8': ObjectId('694ba4cb1b358abcbf8de66d'),
+    '9': ObjectId('694ba4cb1b358abcbf8de66e')
+  }
+}
+[
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de665'),
+    name: 'Alice',
+    platform: 'Facebook',
+    posts: 12,
+    likes: 150,
+    avgLikesPerPost: 12.5
+  },
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de666'),
+    name: 'Bob',
+    platform: 'Instagram',
+    posts: 8,
+    likes: 200,
+    avgLikesPerPost: 25
+  },
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de667'),
+    name: 'Charlie',
+    platform: 'Twitter',
+    posts: 20,
+    likes: 300,
+    avgLikesPerPost: 15
+  },
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de668'),
+    name: 'David',
+    platform: 'Facebook',
+    posts: 15,
+    likes: 250,
+    avgLikesPerPost: 16.666666666666668
+  },
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de669'),
+    name: 'Eva',
+    platform: 'Instagram',
+    posts: 5,
+    likes: 100,
+    avgLikesPerPost: 20
+  },
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de66a'),
+    name: 'Frank',
+    platform: 'Twitter',
+    posts: 18,
+    likes: 220,
+    avgLikesPerPost: 12.222222222222221
+  },
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de66b'),
+    name: 'Grace',
+    platform: 'Facebook',
+    posts: 10,
+    likes: 180,
+    avgLikesPerPost: 18
+  },
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de66c'),
+    name: 'Hannah',
+    platform: 'Instagram',
+    posts: 7,
+    likes: 130,
+    avgLikesPerPost: 18.571428571428573
+  },
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de66d'),
+    name: 'Ian',
+    platform: 'Twitter',
+    posts: 25,
+    likes: 400,
+    avgLikesPerPost: 16
+  },
+  {
+    _id: ObjectId('694ba4cb1b358abcbf8de66e'),
+    name: 'Jack',
+    platform: 'Facebook',
+    posts: 13,
+    likes: 210,
+    avgLikesPerPost: 16.153846153846153
+  }
+]
