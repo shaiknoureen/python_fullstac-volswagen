@@ -1,0 +1,224 @@
+1. $set – Scenario Questions
+
+A user updates their email address. How do you update only the email field without affecting other data?
+
+	db.users.updateOne(
+ 	 { userId: 1 },
+ 	 { $set: { email: "newemail@gmail.com" } }
+	)
+
+An order’s status changes from “pending” to “delivered”. How do you update the status field?
+
+db.orders.updateOne(
+  { orderId: "ORD101" },
+  { $set: { status: "delivered" } }
+)
+
+
+A product document has no discount field. How do you add it with a value of 10?
+
+db.products.updateOne(
+  { productId: "P101" },
+  { $set: { discount: 10 } }
+)
+
+
+A nested field address.city needs correction. How do you update only the city?
+
+db.customers.updateOne(
+  { customerId: 5 },
+  { $set: { "address.city": "Bangalore" } }
+)
+
+You want to rename a product without changing its price or category. How do you do it?
+
+db.products.updateOne(
+  { productId: "P102" },
+  { $set: { name: "Smartphone Pro" } }
+)
+
+2. $inc – Scenario Questions
+
+A user logs in. How do you increase login count by 1?
+
+db.users.updateOne(
+  { userId: 1 },
+  { $inc: { loginCount: 1 } }
+)
+
+A product is sold once. How do you decrease stock by 1?
+
+db.products.updateOne(
+  { productId: "P101" },
+  { $inc: { stock: -1 } }
+)
+
+A wallet balance increases by ₹500 after cashback. How do you update it?
+
+db.wallets.updateOne(
+  { userId: 1 },
+  { $inc: { balance: 500 } }
+)
+
+A blog post gets a new like. How do you increment the likes count?
+
+db.posts.updateOne(
+  { postId: 201 },
+  { $inc: { likes: 1 } }
+)
+
+A product return happens. How do you increase available stock?
+
+db.products.updateOne(
+  { productId: "P101" },
+  { $inc: { stock: 1 } }
+)
+
+3. $mul – Scenario Questions
+
+Apply a 10% price increase to all electronics products.
+
+db.products.updateMany(
+  { category: "Electronics" },
+  { $mul: { price: 1.10 } }
+)
+
+Give a 20% discount on furniture items.
+
+db.products.updateMany(
+  { category: "Furniture" },
+  { $mul: { price: 0.80 } }
+)
+
+Increase salary of all employees by 5%.
+
+db.employees.updateMany(
+  {},
+  { $mul: { salary: 1.05 } }
+)
+
+Apply GST of 18% on product prices.
+
+db.products.updateMany(
+  {},
+  { $mul: { price: 1.18 } }
+)
+
+Reduce price by 30% during a sale.
+
+db.products.updateMany(
+  {},
+  { $mul: { price: 0.70 } }
+)
+
+4. $push – Scenario Questions
+
+A user adds a new address to their profile. How do you add it to an array?
+
+db.users.updateOne(
+  { userId: 1 },
+  { $push: { addresses: { city: "Delhi", pincode: 110001 } } }
+)
+
+A product receives a new review. How do you add it to the reviews array?
+
+db.products.updateOne(
+  { productId: "P101" },
+  { $push: { reviews: { user: "Alok", rating: 5, comment: "Excellent" } } }
+)
+
+A student enrolls in a new course. How do you add the course to an array?
+
+db.students.updateOne(
+  { studentId: 10 },
+  { $push: { courses: "Data Science" } }
+)
+
+An order has multiple products. How do you add one more product to the order?
+
+db.orders.updateOne(
+  { orderId: "ORD201" },
+  { $push: { products: { productId: "P205", quantity: 1 } } }
+)
+
+A chat app stores messages in an array. How do you push a new message?
+
+db.chats.updateOne(
+  { chatId: 5 },
+  { $push: { messages: { sender: "Alok", text: "Hello!", time: new Date() } } }
+)
+
+5.  $pull – Scenario Questions
+
+A user deletes an old address. How do you remove it from the array?
+
+db.users.updateOne(
+  { userId: 1 },
+  { $pull: { addresses: { city: "Patna" } } }
+)
+
+A product review violates policy. How do you remove that review?
+
+db.products.updateOne(
+  { productId: "P101" },
+  { $pull: { reviews: { user: "SpamUser" } } }
+)
+
+A student drops a course. How do you remove the course from the array?
+
+db.students.updateOne(
+  { studentId: 10 },
+  { $pull: { courses: "Data Science" } }
+)
+
+Remove all products with price < 1000 from a cart array.
+
+db.carts.updateOne(
+  { cartId: 1 },
+  { $pull: { products: { price: { $lt: 1000 } } } }
+)
+
+Delete all inactive tags from a product document.
+
+db.products.updateOne(
+  { productId: "P102" },
+  { $pull: { tags: { status: "inactive" } } }
+)
+
+6. Nested Data & Arrays – Scenario Questions
+
+Update the quantity of a specific product inside an order’s items array.
+
+db.orders.updateOne(
+  { orderId: "ORD101", "items.productId": "P201" },
+  { $set: { "items.$.quantity": 3 } }
+)
+
+Change the phone number inside a nested contact object.
+
+db.users.updateOne(
+  { userId: 5 },
+  { $set: { "contact.phone": "9876543210" } }
+)
+
+Increase the salary of employees in a specific department stored in an array.
+
+db.companies.updateMany(
+  { "employees.department": "IT" },
+  { $inc: { "employees.$[emp].salary": 5000 } },
+  { arrayFilters: [{ "emp.department": "IT" }] }
+)
+
+Add a new skill to a specific employee inside an employees array.
+
+db.companies.updateOne(
+  { companyId: 1, "employees.empId": 101 },
+  { $push: { "employees.$.skills": "MongoDB" } }
+)
+
+Remove a specific item from a nested cart array based on product ID.
+
+db.carts.updateOne(
+  { userId: 10 },
+  { $pull: { items: { productId: "P301" } } }
+)
