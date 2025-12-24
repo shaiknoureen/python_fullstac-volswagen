@@ -1,0 +1,32 @@
+1.create a databse name social media
+2.create a table data
+3.create 10 records init
+4. apply aggregation to the table
+
+db.data.insertMany([
+  {name:"John", category:"Post", price:10, quantity:5},
+  {name:"Alexa", category:"Post", price:15, quantity:3},
+  {name:"Michael", category:"Story", price:8, quantity:10},
+  {name:"Sophia", category:"Story", price:12, quantity:4},
+  {name:"Daniel", category:"Reel", price:20, quantity:2},
+  {name:"Emma", category:"Reel", price:25, quantity:1},
+  {name:"Chris", category:"Post", price:10, quantity:6},
+  {name:"Olivia", category:"Story", price:7, quantity:8},
+  {name:"Ryan", category:"Reel", price:18, quantity:3},
+  {name:"Linda", category:"Post", price:14, quantity:4}
+])
+
+db.data.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      totalCategorySales: {
+        $sum: {
+          $multiply: ["$price", "$quantity"]
+        }
+      }
+    }
+  }
+])
+
+db.data.find();
