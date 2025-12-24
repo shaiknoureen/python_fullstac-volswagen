@@ -1,0 +1,28 @@
+                                                                ***DAY-4 Morning Handson*** 
+Q)1.create a databse name social media
+  2.create a table data
+  3.create 10 records init
+  4. apply aggregation to the table
+
+ Answer:
+ 
+use social_media
+
+db.createCollection("data")
+
+db.data.insertMany([
+  { _id: 1, name: "Vedanti", platform: "Instagram", likes: 120, comments: 10, shares: 5 },
+  { _id: 2, name: "Nidhi", platform: "Instagram", likes: 80, comments: 5, shares: 2 },
+  { _id: 3, name: "Mohit", platform: "Twitter", likes: 200, comments: 25, shares: 20 },
+  { _id: 4, name: "Pranjal", platform: "Twitter", likes: 20, comments: 15, shares: 10 },
+  { _id: 5, name: "Devesh", platform: "Facebook", likes: 40, comments: 22, shares: 13 },
+  { _id: 6, name: "Vedant", platform: "Facebook", likes: 200, comments: 25, shares: 100 },
+  { _id: 7, name: "Rahul", platform: "Instagram", likes: 45, comments: 17, shares: 6 },
+  { _id: 8, name: "Priya", platform: "Facebook", likes: 60, comments: 12, shares: 33 },
+  { _id: 9, name: "Vikas", platform: "Instagram", likes: 80, comments: 18, shares: 11 },
+  { _id: 10, name: "Anjali", platform: "Twitter", likes: 20, comments: 10, shares: 5 }
+])
+db.data.find()
+db.data.aggregate([{$match:{$expr:{$gt:[{$add:["$likes","$comments","$shares"]},200]}}}])
+
+db.data.aggregate([{$group:{_id:"$platform",totalEngagement:{$sum:{$add:["$likes","$comments","$shares"]}}}}])
