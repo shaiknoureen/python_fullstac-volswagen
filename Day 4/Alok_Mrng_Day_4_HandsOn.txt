@@ -1,0 +1,66 @@
+1.create a databse name social media
+
+2.create a table data
+
+3.create 10 records init
+
+4. apply aggregation to the table
+
+
+
+// use socialMedia
+
+db.usersData.insertOne({
+  userId: 1,
+  name: "Dummy"
+});
+
+db.usersData.insertMany([
+  { userId: 1, name: "Alok", age: 22, city: "Patna", posts: 10 },
+  { userId: 2, name: "Rahul", age: 25, city: "Delhi", posts: 15 },
+  { userId: 3, name: "Priya", age: 23, city: "Mumbai", posts: 12 },
+  { userId: 4, name: "Neha", age: 24, city: "Delhi", posts: 8 },
+  { userId: 5, name: "Amit", age: 26, city: "Bangalore", posts: 20 },
+  { userId: 6, name: "Rohit", age: 21, city: "Patna", posts: 5 },
+  { userId: 7, name: "Sneha", age: 22, city: "Kolkata", posts: 7 },
+  { userId: 8, name: "Vikas", age: 27, city: "Mumbai", posts: 18 },
+  { userId: 9, name: "Pooja", age: 23, city: "Delhi", posts: 9 },
+  { userId: 10, name: "Karan", age: 24, city: "Chennai", posts: 11 }
+])
+
+//Count User City Wise
+db.usersData.aggregate([
+  {
+    $group: {
+      _id: "$city",
+      totalUsers: { $sum: 1 }
+    }
+  }
+]);
+
+// Total posts by each City
+db.usersData.aggregate([
+  {
+    $group: {
+      _id: "$city",
+      totalPosts: { $sum: "$posts" }
+    }
+  }
+]);
+
+// Average age of users 
+db.usersData.aggregate([
+  {
+    $group: {
+      _id: null,
+      averageAge: { $avg: "$age" }
+    }
+  }
+]);
+
+// Users having more than 10 posts 
+db.usersData.aggregate([
+  {
+    $match: { posts: { $gt: 10 } }
+  }
+]);
