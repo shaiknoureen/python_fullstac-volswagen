@@ -1,0 +1,59 @@
+db.social_media.insertMany([
+  { user: "Shashank", platform: "Instagram", followers: 1200, posts: 25, likes: 560 },
+  { user: "Raaj", platform: "Twitter", followers: 850, posts: 18, likes: 430 },
+  { user: "Manish", platform: "Facebook", followers: 640, posts: 30, likes: 390 },
+  { user: "Neha", platform: "Instagram", followers: 980, posts: 22, likes: 510 },
+  { user: "Aman", platform: "LinkedIn", followers: 420, posts: 15, likes: 210 },
+  { user: "Pooja", platform: "Instagram", followers: 1500, posts: 40, likes: 800 },
+  { user: "Karan", platform: "Facebook", followers: 300, posts: 12, likes: 180 },
+  { user: "Sneha", platform: "Twitter", followers: 560, posts: 20, likes: 260 },
+  { user: "Vikas", platform: "LinkedIn", followers: 710, posts: 28, likes: 340 },
+  { user: "Anjali", platform: "Instagram", followers: 900, posts: 24, likes: 450 }
+]);
+
+db.social_media.find({ platform: "LinkedIn" });
+
+db.social_media.aggregate([
+  {
+    $group: {
+      _id: "$platform",
+      totalFollowers: { $sum: "$followers" }
+    }
+  }
+]);
+
+db.social_media.aggregate([
+  {
+    $group: {
+      _id: "$platform",
+      avgFollowers: { $avg: "$followers" }
+    }
+  }
+]);
+
+db.social_media.aggregate([
+  {
+    $group: {
+      _id: "$platform",
+      maxFollowers: { $max: "$followers" }
+    }
+  }
+]);
+
+db.social_media.aggregate([
+  {
+    $group: {
+      _id: "$platform",
+      minFollowers: { $min: "$followers" }
+    }
+  }
+]);
+
+db.social_media.aggregate([
+  {
+    $group: {
+      _id: "$platform",
+      totalLikes: { $sum: "$likes" }
+    }
+  }
+]);
