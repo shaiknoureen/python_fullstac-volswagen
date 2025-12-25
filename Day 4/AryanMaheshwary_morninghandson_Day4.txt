@@ -1,0 +1,21 @@
+db.social_media.insertMany([
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340},
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340},
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340},
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340},
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340},
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340},
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340},
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340},
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340},
+ { user: "Aryan" , platform: "Instagram", followers: 616, post: 10, likes: 340}
+]);
+
+db.social_media.find({platform : 'LinkedIn'});
+db.social_media.aggregate([
+{
+$group: {
+_id: "$platform",
+totalFollowers: {$sum: "$followers"}
+}
+}])

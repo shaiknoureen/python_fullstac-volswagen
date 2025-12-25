@@ -1,0 +1,205 @@
+Scenario based Questions
+
+Q1. Question on $set
+
+
+Queries - 
+
+db.products.insertMany([ 
+  { _id: 1, name: "Laptop", category: "electronics", price: 60000, stock: 10, likes: 50 }, 
+  { _id: 2, name: "Mobile", category: "electronics", price: 20000, stock: 25, likes: 120 }, 
+  { _id: 3, name: "Chair", category: "furniture", price: 3000, stock: 40, likes: 30 }, 
+  { _id: 4, name: "Table", category: "furniture", price: 7000, stock: 15, likes: 45 }, 
+  { _id: 5, name: "Headphones", category: "electronics", price: 2500, stock: 60, likes: 80 } 
+])
+
+/* 1. A user updates their email address (email stored in product document) */ 
+db.products.updateOne( { _id: 1 }, { $set: { email: "newemail@gmail.com" } } );
+db.products.find().pretty()
+
+/* 2. Order status changes from pending to delivered (status stored in product document) */ 
+db.products.updateOne( { _id: 1 }, { $set: { status: "delivered" } } );
+db.products.find().pretty()
+
+/* 3. Add discount field with value 10 */ 
+db.products.updateOne( { _id: 2 }, { $set: { discount: 10 } } );
+db.products.find().pretty()
+
+/* 4. Update nested address.city */ 
+db.products.updateOne( { _id: 3 }, { $set: { "address.city": "Mumbai" } } );
+db.products.find().pretty()
+
+/* 5. Rename product without affecting price or category */ 
+db.products.updateOne( { _id: 4 }, { $set: { name: "Updated Product Name" } } );
+db.products.find().pretty()
+
+
+
+Q2. Question on $inc
+
+
+Queries -
+
+
+/* 1. A user logs in → increase login count by 1 */ 
+
+db.products.updateOne( { _id: 1 }, { $inc: { loginCount: 1 } } );
+db.products.find().pretty()
+
+/* 2. A product is sold once → decrease stock by 1 */ 
+
+db.products.updateOne( { _id: 1 }, { $inc: { stock: -1 } } );
+db.products.find().pretty()
+
+/* 3. Wallet balance increases by ₹500 after cashback */ 
+
+db.products.updateOne( { _id: 1 }, { $inc: { walletBalance: 500 } } );
+db.products.find().pretty()
+
+/* 4. Blog post gets a new like → increment likes */ 
+
+db.products.updateOne( { _id: 1 }, { $inc: { likes: 1 } } );
+db.products.find().pretty()
+
+/* 5. Product return happens → increase stock by 1 */ 
+
+db.products.updateOne( { _id: 3 }, { $inc: { stock: 1 } } );
+db.products.find().pretty()
+
+
+
+Q3. Question on $mul
+
+
+Queries -
+
+
+/* 1. Apply 10% price increase to all electronics products */ 
+
+db.products.updateMany( { category: "electronics" }, { $mul: { price: 1.10 } } );
+db.products.find().pretty()
+
+
+/* 2. Give 20% discount on furniture items */ 
+
+db.products.updateMany( { category: "furniture" }, { $mul: { price: 0.80 } } );
+db.products.find().pretty()
+
+
+/* 3. Increase salary of all employees by 5% (salary field stored in product document) */ 
+
+db.products.updateMany( { salary: { $exists: true } }, { $mul: { salary: 1.05 } } );
+db.products.find().pretty()
+
+
+/* 4. Apply GST of 18% on product prices */ 
+
+db.products.updateMany( {}, { $mul: { price: 1.18 } } );
+db.products.find().pretty()
+
+
+/* 5. Reduce price by 30% during a sale */ 
+
+db.products.updateMany( {}, { $mul: { price: 0.70 } } );
+db.products.find().pretty()
+
+
+
+Q4. Question on $push
+
+
+Queries -
+
+/* 1. A user adds a new address to their profile */ 
+
+db.products.updateOne( { _id: 1 }, { $push: { addresses: { city: "Delhi", pincode: 110001 } } } );
+db.products.find().pretty()
+
+/* 2. A product receives a new review */ 
+
+db.products.updateOne( { _id: 1 }, { $push: { reviews: { user: "Shashank", rating: 5, comment: "Good product" } } } );
+db.products.find().pretty()
+
+/* 3. A student enrolls in a new course */ 
+
+db.products.updateOne( { _id: 2 }, { $push: { courses: "MongoDB" } } );
+db.products.find().pretty()
+
+/* 4. An order has multiple products, add one more product */ 
+
+db.products.updateOne( { _id: 3 }, { $push: { orderItems: { productName: "Mouse", price: 500 } } } );
+db.products.find().pretty()
+
+/* 5. A chat app stores messages in an array, push new message */ 
+
+db.products.updateOne( { _id: 4 }, { $push: { messages: "Hello, this is a new message" } } );
+db.products.find().pretty()
+
+
+
+Q5. Question on $pull
+
+
+Queries -
+
+
+/* 1. A user deletes an old address */ 
+
+db.products.updateOne( { _id: 1 }, { $pull: { addresses: { city: "Pune" } } } );
+db.products.find().pretty()
+
+/* 2. A product review violates policy */ 
+
+db.products.updateOne( { _id: 1 }, { $pull: { reviews: { rating: 1 } } } );
+db.products.find().pretty()
+
+/* 3. A student drops a course */ 
+
+db.products.updateOne( { _id: 2 }, { $pull: { courses: "Maths" } } );
+db.products.find().pretty()
+
+/* 4. Remove all products with price < 1000 from cart array */ 
+
+db.products.updateOne( { _id: 3 }, { $pull: { cart: { price: { $lt: 1000 } } } } );
+db.products.find().pretty()
+
+/* 5. Delete all inactive tags from a product document */ 
+
+db.products.updateOne( { _id: 4 }, { $pull: { tags: "inactive" } } );
+db.products.find().pretty()
+
+
+
+Q6. Question on $Nested Data & Arrays - Scenario questions
+
+
+Queries -
+
+
+/* 1. Update quantity of a specific product inside order's items array */ 
+
+db.products.updateOne( { _id: 1, "orderItems.productId": 101 }, { $set: { "orderItems.$.quantity": 3 } } );
+db.products.find().pretty()
+
+/* 2. Change phone number inside nested contact object */ 
+
+db.products.updateOne( { _id: 1 }, { $set: { "contact.phone": "9876543210" } } );
+db.products.find().pretty()
+
+/* 3. Increase salary of employees in a specific department (e.g., IT) */ 
+
+db.products.updateMany( { "employees.department": "IT" }, { $inc: { "employees.$.salary": 5000 } } );
+db.products.find().pretty()
+
+/* 4. Add a new skill to a specific employee inside employees array */ 
+
+db.products.updateOne( { "employees.empId": 201 }, { $push: { "employees.$.skills": "Node.js" } } );
+db.products.find().pretty()
+
+/* 5. Remove a specific item from nested cart array based on product ID */ 
+
+db.products.updateOne( { _id: 2 }, { $pull: { cart: { productId: 501 } } } );
+db.products.find().pretty()
+
+
+
