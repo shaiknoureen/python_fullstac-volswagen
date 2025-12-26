@@ -1,0 +1,121 @@
+<html>
+<head>
+    <title>HTML Error Handling with Textarea</title>
+</head>
+<h2>Form Error Handling</h2>
+<form>
+<!--text-->
+<label>Name:</label>
+<input type = "text" required><br><br>
+
+
+<!----Email-->
+<label>Email:</label>
+<input type = "email" required><br><br>
+<!--password-->
+<label>password:</label>
+        <input type = "password" minlength="8" required><br><br>
+<!--gender-->
+<label>Gender:</label>
+<label for ="male">
+<input type="radio" id="male" name ="gender">Male</label>
+<label for ="Female">
+<input type="radio" id="Female" name ="gender">Female</label><br><br>
+
+<label>Age:</label>
+        <input type = "number" min="18" max="60" required><br><br>
+
+<label>Phone:</label>
+        <input type = "tel" pattern="[0-9]{10}" placeholder="10 digit number" required><br><br>
+
+<label>Address:</label>
+        <textarea rows="4" cols="30" required minlength="10" placeholder="enter atleast 10 characters"></textarea><br><br>
+
+<input type="submit" value="submit">
+</form>
+</body>
+
+
+
+
+<html>
+<head>
+<title>First Page</title>
+</head>
+<body>
+<h1>Hello Everyone! welcome to HTML Language</h1>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h2>Hello Everyone! welcome to HTML Language</h2>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h3>Hello Everyone! welcome to HTML Language</h3>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h4>Hello Everyone! welcome to HTML Language</h4>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h5>Hello Everyone! welcome to HTML Language</h5>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+</body>
+</html>
+</html>
+<html>
+<head>
+    <title>Input Types Example</title>
+</head>
+<h2>HTML5 New Input Types</h2>
+<form>
+<!--text-->
+<label for = "name">Name:</label>
+<input type = "text" id ="name" name="name" placeholder="enter you name"><br><br>
+
+
+<!----Email-->
+<label for = "email">Email:</label>
+<input type = "email"  id="email" name="email" placeholder="enter you email id"><br><br>
+<!--password-->
+<label for = "password">password:</label>
+        <input type = "password" id ="password" name="password" placeholder="enter password"><br><br>
+<!--gender-->
+<label>Gender:</label>
+<label for ="male">
+<input type="radio" id="male" name ="gender">Male</label>
+<label for ="Female">
+<input type="radio" id="Female" name ="gender">Female</label><br><br>
+<!---checkbox-->
+<label>Hobbies:</label>
+<label>
+    <input type="checkbox">Reading</label>
+    <input type="checkbox">writing</label>
+    <input type="checkbox">Dancing</label>
+    <input type="checkbox">cooking</label>
+    <input type="checkbox">singing</label><br><br>
+
+<!--select-->
+<label for="country">Country:</label>
+<select id ="country">
+<option>select</option>
+<option>India</option>
+<option>Usa</option>
+<option>Germany</option>
+<option>scottland</option>
+<option>Australia</option>
+</select>
+
+<!---textarea-->
+<label for="message">Message:</label><br>
+<textarea id ="message" rows="4" cols="30" required minlength="10" placeholder="enter atleast 10 characters"> </textarea><br><br>
+
+
+<!---submit-->
+<input type ="submit" value = "submit">
+<input type = "reset" value = "reset">
+
+
+
+</form>
+
+
+
+</html>
+
+
+
