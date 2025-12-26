@@ -1,0 +1,67 @@
+1. This can be enforced using HTML5 by applying the required attribute to all fields and using minlength for length rules. The username field must have minlength="5" and the password field must have minlength="8". The email field uses type="email" to ensure a valid email format. HTML5 will automatically prevent form submission if any rule is violated.
+
+<input type="text" required minlength="5">
+<input type="email" required>
+<input type="password" required minlength="8">
+
+2. HTML5 alone cannot enforce conditional required fields because validation attributes like required are static and cannot change based on another field’s state. If a checkbox controls whether an email field is required, JavaScript is needed to dynamically add or remove the required attribute when the checkbox is checked or unchecked.
+
+3. When using <input type="number" min="18" max="60">, if a user enters 0, the browser marks it invalid because it is below the minimum. Entering 61 is also invalid because it exceeds the maximum. If the user enters 18.5, it is considered valid because HTML5 allows decimal values by default. To restrict input to integers only, the step="1" attribute must be used.
+
+<input type="number" min="18" max="60" step="1">
+
+4. This requirement can be enforced using the pattern attribute. The pattern ensures the number starts with 7, 8, or 9 and contains exactly 10 digits. If someone enters 1234567890, the validation fails because the number does not start with the required digits.
+
+<input type="tel" pattern="[789][0-9]{9}" required>
+
+5. HTML5 email validation checks only the basic structure of an email address. The browser will reject user@@example.com because it has an invalid format and will also reject user@com because it lacks a proper domain. However, user@example.co.in is accepted because it follows a valid email structure. HTML5 does not verify whether the email actually exists.
+
+6. When a textarea has minlength="50", pasting exactly 50 characters satisfies the requirement and the form is allowed to submit. If the user enters or pastes 49 characters, the browser blocks submission and shows a validation error. The browser checks this condition only when the form is submitted.
+
+<textarea minlength="50"></textarea>
+
+7. HTML5 alone cannot fully enforce password complexity rules such as uppercase, lowercase, number, and special character. The pattern attribute can partially enforce these rules by defining a regular expression, but it cannot provide user-friendly feedback or real-time guidance. JavaScript is needed for complete validation and better user experience.
+
+<input type="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}">
+
+8. Real-Time Error Handling
+
+With <input type="number" min="1" max="10">, if a user types 15 and then immediately deletes it, the browser does not show an error while typing. HTML5 validation is triggered only when the form is submitted. JavaScript differs because it can detect invalid input instantly and show real-time error messages as the user types.
+
+<input type="number" min="1" max="10">
+
+9. Multiple Inputs With Same Name
+
+HTML5 does not provide a reliable way to require at least one checkbox from a group. Adding the required attribute to one checkbox may work inconsistently across browsers. To properly ensure at least one checkbox is selected, JavaScript validation is required.
+
+<input type="checkbox" name="hobby" required>
+
+10. Custom Validation Message
+
+HTML5 does not allow changing default error messages directly. To show a custom message such as “Enter your official email,” JavaScript must be used with the setCustomValidity() method. This replaces the browser’s default validation message until it is cleared.
+
+11. URL Input Validation
+
+When using <input type="url">, the browser requires a valid URL format that includes a protocol. The value www.example.com is rejected because it lacks http:// or https://. The input is accepted only when a proper protocol is included.
+
+<input type="url">
+
+12. Handling Optional Fields
+
+An optional comment field that must contain at least 20 characters if filled can be implemented by using minlength without the required attribute. If the field is empty, the browser allows submission. If text is entered and it is fewer than 20 characters, the browser blocks submission.
+
+<textarea minlength="20"></textarea>
+
+13. Cross-Field Validation
+
+HTML5 alone cannot ensure that the password and confirm password fields match because there is no built-in attribute to compare values across inputs. JavaScript is required to compare both fields and display an error if the values are different.
+
+14. Date Input Validation
+
+The date can be restricted to future dates using the min attribute. If the user manually types yesterday’s date, the browser marks the field invalid and prevents submission. For “today’s date,” the min value must be dynamically set using JavaScript.
+
+<input type="date" min="2025-12-26">
+
+15. Error Handling UX
+
+HTML5 alone cannot display inline error messages beside form fields because browsers show default validation popups. To place error messages next to fields and style them properly, JavaScript is required to detect validation errors and insert custom messages into the page.
