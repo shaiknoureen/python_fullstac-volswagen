@@ -1,0 +1,56 @@
+1. Local Storage – Simple Persistence
+The web storage feature used is localStorage. It persists because the data stored in localStorage has no expiration time and remains saved in the browser even after it is closed and reopened.
+
+2. Local Storage – Single Value
+localStorage stores data as string values. The value is retrieved using the method localStorage.getItem("email").
+
+3. Local Storage – Clear Data
+The method localStorage.clear() is used to delete all saved data from localStorage.
+
+4. Offline Cache – Basic Usage
+The file that tells the browser which resources to cache for offline use is called a cache manifest file (usually with a .appcache extension).
+
+5. Offline Cache – First Visit
+The offline page does not appear on the first visit because the browser must first load the page and cache the resources while the internet is available.
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local Storage Demo</title>
+</head>
+<body>
+
+  <h2>User Information</h2>
+
+  Name:
+  <input type="text" id="name"><br><br>
+
+  Email:
+  <input type="email" id="email"><br><br>
+
+  <button onclick="saveData()">Save</button>
+  <button onclick="clearData()">Clear Data</button>
+
+  <script>
+    // Load saved data
+    document.getElementById("name").value =
+      localStorage.getItem("name") || "";
+
+    document.getElementById("email").value =
+      localStorage.getItem("email") || "";
+
+    function saveData() {
+      localStorage.setItem("name", document.getElementById("name").value);
+      localStorage.setItem("email", document.getElementById("email").value);
+      alert("Data Saved");
+    }
+
+    function clearData() {
+      localStorage.clear();
+      alert("All Data Cleared");
+      location.reload();
+    }
+  </script>
+
+</body>
+</html>
