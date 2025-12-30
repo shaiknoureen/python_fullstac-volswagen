@@ -1,0 +1,285 @@
+Ques1. 
+Ans <form>
+  <label>
+    Username:
+    <input
+      type="text"
+      name="username"
+      required
+      minlength="5">
+  </label>
+  <br><br>
+
+  <label>
+    Email:
+    <input
+      type="email"
+      name="email"
+      required>
+  </label>
+  <br><br>
+
+  <label>
+    Password:
+    <input
+      type="password"
+      name="password"
+      required
+      minlength="8">
+  </label>
+ <br><br>
+ <button type="submit">Register</button>
+</form>
+
+
+
+
+Ques2. 
+Ans No. HTML5 alone cannot fully enforce conditional required fields.
+HTML5 validation attributes like required, minlength, and pattern are static.
+They cannot express logic such as:
+“This field is required only if another field is checked.”
+HTML5 has no built-in conditional logic that links one form control’s validation rules to another control’s state.
+Suggested solution is we can use javascript in this and the code below can justify the logic of the question.
+
+<label>
+  <input type="checkbox" id="subscribe">
+  Subscribe to newsletter
+</label>
+
+<br><br>
+
+<label>
+  Email:
+  <input type="email" id="email">
+</label>
+
+<script>
+  const subscribe = document.getElementById("subscribe");
+  const email = document.getElementById("email");
+
+  subscribe.addEventListener("change", () => {
+    email.required = subscribe.checked;
+  });
+</script>
+
+
+
+
+Ques3. 
+Ans In an HTML5 form using an <input type="number" min="18" max="60">, the browser checks that the entered value falls within the specified range. A value of 0 is invalid because it is less than the minimum age of 18, and 61 is also invalid because it exceeds the maximum limit of 60; in both situations, the browser stops the form from being submitted and displays an error message. However, entering 18.5 is allowed by default since number inputs accept decimal values unless restricted. To ensure that only whole numbers are entered, the step attribute should be set to 1.
+<input type="number" name="age" min="18" max="60" step="1" required>	
+
+
+
+
+Ques4.
+Ans <input type="text" name="phone" pattern="[789][0-9]{9}" required>
+The pattern [789][0-9]{9} means the first digit must be either 7, 8, or 9, followed by exactly 9 more digits, making a total of 10 digits. If a user enters 1234567890, the input fails validation because it starts with 1, which does not match the allowed starting digits. As a result, the browser prevents form submission and displays a validation error message indicating that the input does not match the required format.
+
+
+
+
+Ques5.
+Ans When an input field uses type="email", HTML5 applies a basic format check to ensure the value looks like a valid email address, but it does not perform strict or exhaustive validation. An address like user@@example.com is rejected because it contains more than one @ symbol, which breaks the required email structure. user@com is also rejected in most browsers since the domain part does not include a dot, making it an invalid domain format. On the other hand, user@example.co.in is accepted because it follows the standard pattern of a single @ with a properly structured domain name that may include multiple dots. This validation helps catch common errors, but it does not verify whether the email address actually exists, so server-side validation is still important.
+<input type="email" name="email" required>
+
+
+
+
+Ques6.
+Ans 
+When a textarea uses the minlength="50" attribute, the browser checks the total number of characters entered before allowing the form to be submitted. If a user pastes exactly 50 characters, the input meets the minimum requirement, so the textarea is considered valid and the form can be submitted without any validation error. However, if the user pastes 49 characters, the input does not satisfy the minimum length, so the browser blocks form submission and displays a validation message indicating that more characters are required. The browser does not prevent the user from typing or pasting fewer characters; it only enforces the rule at validation time, typically when the form is submitted.
+
+<!DOCTYPE html>
+<html>
+<body>
+<form>
+  Comments:<br>
+  <textarea minlength="50" required></textarea><br><br>
+  <input type="submit">
+</form>
+</body>
+</html>
+
+
+
+Ques7. 
+Ans <!DOCTYPE html>
+<html>
+<body>
+<form>
+  Password:
+  <input type="password"
+  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}"
+  required>
+  <input type="submit">
+</form>
+</body>
+</html>
+
+HTML5 cannot fully enforce all of these password rules on its own. While it can require a minimum length using the minlength attribute and can partially enforce character requirements using the pattern attribute with a regular expression, HTML5 validation is still limited.
+
+
+
+
+Ques8.
+Ans <!DOCTYPE html>
+<html>
+<body>
+Quantity: <input type="number" id="qty" min="1" max="10">
+<p id="msg"></p>
+
+<script>
+document.getElementById("qty").oninput = function() {
+  if (this.value < 1 || this.value > 10) {
+    document.getElementById("msg").innerHTML = "Invalid quantity";
+  } else {
+    document.getElementById("msg").innerHTML = "";
+  }
+};
+</script>
+</body>
+</html>
+
+
+
+
+Ques9. 
+Ans HTML5 does not provide a built-in way to require at least one checkbox from a group directly. The required attribute can be applied to a single checkbox, but it does not automatically apply to a group of checkboxes with the same name. If you mark one checkbox as required, the user could still leave the other two unchecked, and the form would pass validation as long as that single checkbox is checked.
+To enforce that at least one checkbox is selected, you need JavaScript to check the group before form submission.
+<form id="hobbyForm">
+  <label><input type="checkbox" name="hobby" value="Music"> Music</label>
+  <label><input type="checkbox" name="hobby" value="Reading"> Reading</label>
+  <label><input type="checkbox" name="hobby" value="Travel"> Travel</label>
+  <br><br>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const form = document.getElementById('hobbyForm');
+  form.addEventListener('submit', function(event) {
+    const checkboxes = document.querySelectorAll('input[name="hobby"]:checked');
+    if (checkboxes.length === 0) {
+      alert('Please select at least one hobby.');
+      event.preventDefault(); // prevent form submission
+    }
+  });
+</script>
+
+
+
+
+Ques10.
+Ans <!DOCTYPE html>
+<html>
+<body>
+<form>
+  Email: <input type="email" id="email" required>
+  <input type="submit">
+</form>
+
+<script>
+document.getElementById("email").oninvalid = function() {
+  this.setCustomValidity("Enter your official email");
+};
+document.getElementById("email").oninput = function() {
+  this.setCustomValidity("");
+};
+</script>
+</body>
+</html>
+
+
+Ques11.
+Ans  With type="url", HTML5 expects the value to follow a valid URL format, which typically includes a scheme/protocol like http:// or https://. If a user enters www.example.com without a protocol, most browsers will reject it during form validation because it does not include the required scheme. The browser checks that the input matches the URL pattern defined by HTML5, which ensures it can be properly interpreted as a URL.
+So, only inputs like http://www.example.com or https://www.example.com are accepted. HTML5 URL validation is meant to catch obvious format mistakes but does not verify that the URL actually exists or is reachable.
+<input type="url" name="website" required>
+
+
+
+
+Ques12. 
+Ans <!DOCTYPE html>
+<html>
+<body>
+<form>
+  Comment (optional):<br>
+  <textarea minlength="20"></textarea><br><br>
+  <input type="submit">
+</form>
+</body>
+</html>
+We can implement this in HTML5 using the minlength attribute without making the field required. When the field is optional, the browser only enforces minlength if the user enters any text. If the user leaves it empty, the form can still be submitted.
+Example:
+<textarea name="comment" minlength="20" placeholder="Enter your comment (optional)"></textarea>
+
+
+
+
+Ques13.
+Ans HTML5 alone cannot ensure that two fields match, such as a Password and Confirm Password field. While HTML5 can enforce rules like required, minlength, or patterns on individual inputs, it has no built-in mechanism to compare the values of two different fields.
+To ensure the Password and Confirm Password fields match, you need JavaScript to check that the values are identical before form submission. This usually involves adding an event listener on form submission (or on input change) to compare the two fields and prevent submission if they differ. Additionally, server-side validation is also necessary to securely enforce this rule, as client-side checks can be bypassed.
+Example approach using JavaScript:
+<form id="signupForm">
+  <label>
+    Password:
+    <input type="password" id="password" name="password" required minlength="8">
+  </label>
+  <br><br>
+  <label>
+    Confirm Password:
+    <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8">
+  </label>
+  <br><br>
+  <button type="submit">Register</button>
+</form>
+
+<script>
+  const form = document.getElementById('signupForm');
+  form.addEventListener('submit', function(event) {
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    if (password !== confirmPassword) {
+      alert('Passwords do not match.');
+      event.preventDefault(); // prevent form submission
+    }
+  });
+</script>
+
+
+
+
+
+Ques14.
+Ans You can enforce that a date must be after today using the HTML5 min attribute on a <input type="date">. You set min to today’s date in the format YYYY-MM-DD.
+<input type="date" id="eventDate" name="eventDate" required>
+
+<script>
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('eventDate').setAttribute('min', today);
+</script>
+Ques 15. <!DOCTYPE html>
+<html>
+<body>
+<form novalidate>
+  Email: <input type="email" id="email">
+  <span id="error"></span><br><br>
+  <button onclick="validate()">Submit</button>
+</form>
+
+<script>
+function validate() {
+  let email = document.getElementById("email");
+  let error = document.getElementById("error");
+  if (!email.checkValidity()) {
+    error.innerHTML = "Invalid email format";
+  } else {
+    error.innerHTML = "";
+  }
+}
+</script>
+</body>
+</html>
+
+
