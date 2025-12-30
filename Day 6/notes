@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Storage Demo</title>
+</head> 
+<body>
+    <h2>Local Storage Demo</h2>
+    <label>First Name:</label><br><br>
+    <input type="text" id="fname"><br><br>
+
+     <label>Last Name:</label><br><br>
+    <input type="text" id="lname"><br><br>
+
+     <label>Age:</label><br><br>
+    <input type="number" id="age"><br><br>
+
+     <label>Contact No:</label><br><br>
+    <input type="tel" id="contact"><br><br>
+
+     <label>Email Id:</label><br><br>
+    <input type="email" id="email"><br><br>
+
+    
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="getData()">Get Data</button>
+    <button onclick="clearData()">Clear Data</button>
+
+    <h3>Stored Data:</h3>
+    <p id="output"></p>
+
+
+    <script>
+    function saveData(){
+        
+        localStorage.setItem("firstname",document.getElementById("fname").value);
+        localStorage.setItem("lastname",document.getElementById("lname").value);
+        localStorage.setItem("age",document.getElementById("age").value);
+        localStorage.setItem("contact",document.getElementById("contact").value);
+        localStorage.setItem("email",document.getElementById("email").value);
+
+        document.getElementById("output").innerHTML= "Data saved successfully in localStorage!";
+    }
+
+
+    function getData(){
+        
+    document.getElementById("output").innerHTML="firstname:" + localStorage.getItem("firstname") + "<br>" 
+     +"lasttname:" + localStorage.getItem("lastname") + "<br>"
+      +"Age:" + localStorage.getItem("Age") + "<br>"
+       +"contact:" + localStorage.getItem("contact") + "<br>"
+        +"email:" + localStorage.getItem("email") + "<br>"
+    }
+    
+    function clearData(){
+        localStorage.clear();
+        
+        document.getElementById("output").innerHTML="All Data Cleared from Local Storage";
+    }
+
+
+
+
+    </script>
+
+
+
+</body>   
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" manifest="app.appcache">
+<head>
+    <meta charset = "UTF-8">
+    <title>Offline Notes App</title>
+</head>
+<body>
+    <h2>Offline Notes Application</h2>
+    <p>this application works even without internet</p>
+    <textarea id = "note" placeholder = "write your note here"></textarea><br><br>
+    <button onclick="saveNote()">Save Note</button>
+    <button onclick="loadNote()">load Note</button>
+    <p id="status"></p>
+    <script>
+        function saveNote() {
+            let text = document.getElementById("note").value;
+             localStorage.setItem("note",text);
+             document.getElementById("status").innerHTML="notes saved offline"
+        }
+
+
+        function loadNote() {
+            
+             document.getElementById("note").value = localStorage.getItem("note");
+             document.getElementById("status").innerHTML="notes loaded from offline";
+        }
+    </script>
+
+
+
+</body>
+
+
+</html>
