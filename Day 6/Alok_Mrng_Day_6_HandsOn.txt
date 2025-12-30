@@ -1,0 +1,50 @@
+1. Local Storage – Simple Persistence
+A user enters their name in a web form and closes the browser. When they reopen the page, the name is still visible.
+Question:
+Which web storage feature allows this, and why does it persist?
+
+Ans.
+Local Storage is a web storage feature that allows websites to store key–value data in the user’s browser without an expiration time.
+
+Data stored in localStorage remains saved even after the browser is closed or the system is restarted. It is only removed when the user clears browser data or the website explicitly deletes it.
+
+
+2. Local Storage – Single Value
+A developer stores the user’s email using localStorage.setItem("email", "abc@gmail.com"). Later, they retrieve it successfully.
+Question:
+What type of value does localStorage store, and how is it retrieved?
+
+Ans.
+localStorage stores all data as strings in key–value pairs.
+
+The value is retrieved using the key with localStorage.getItem("email"), which returns the stored value as a string ("abc@gmail.com").
+
+
+3. Local Storage – Clear Data
+A student wants to clear all stored form data after logout.
+Question:
+Which localStorage method can be used to delete all saved data?
+
+Ans.
+localStorage.clear() is a method used to remove all key–value pairs stored in localStorage for the current website.
+It is useful during logout to completely clear saved form data and user-related information.
+
+
+4. Offline Cache – Basic Usage
+A simple offline HTML page displays “Welcome Offline” even without internet.
+Question:
+What is the file that tells the browser which resources to cache for offline use?
+
+Ans.
+A Cache Manifest file is a text file that tells the browser which resources (HTML, CSS, JS, images) should be stored locally so a web page can work offline.
+Once the resources listed in the .appcache file are downloaded, the browser loads them from the local cache even when there is no internet connection.
+
+
+5. Offline Cache – First Visit
+A user tries to open an offline page for the first time without internet, but it doesn’t load.
+Question:
+Why does the offline page not appear on the first visit?
+
+Ans.
+The offline page does not appear on the first visit because the resources were never cached.
+Offline caching works only after the browser has downloaded and stored the files at least once while online.
