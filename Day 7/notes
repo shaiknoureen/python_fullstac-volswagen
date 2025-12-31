@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Styling-Text</title>
+        <style>
+            button {
+                background: blue;
+                color:white;
+                padding: 10px 20px;
+                border-radius: 20px;
+                border:none;
+                box-shadow: 2px 2px 5px gray;
+                transition:background 0.3s;
+            }
+            button:hover{
+                background: green;
+            }
+            a {
+                text-decoration: none;
+                color: green;
+            }
+            a:hover {
+                color:red;
+            }
+            .marquee{
+                width: 1000px;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            .text{
+                display:inline-block;
+                animation: moveRight 5s linear infinite;
+            }
+            @keyframes moveRight{
+                from{transform: translate(-100);}
+                to{transform:translate(100%)}
+            }
+            h2{
+
+                color:red;
+                font-size: 25px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                text-align: right;
+            }
+            p{
+              color :darkblue;
+              font-size: 18px;
+              font-family: Arial, Helvetica, sans-serif;
+              text-align: center;
+
+            }
+            .box{
+                width: 200px;
+                padding: 20px;
+                border: 5 px solid red;
+                margin:15px;
+                background:lightgray;
+            }
+            </style>
+
+    </head>
+    <body>
+        
+        <div class="marquee">
+        <div class="text">this is styled text moves from left to right</div>
+        <div class="box">Box Model Example</div>
+        </div>
+        <a href="#">hover this link</a>
+</body>
+
+        <button>Hover me</button>
+
+
+
+
+//install event
+self.addEventListener('install',function(event)
+               {
+                event.waitUntil(
+                    caches.open('simple-cache').then(function(cache)
+                {
+                return cache.add('./index.html');
+
+                })
+            );
+               });
+
+//fetch event
+self.addEventListener('fetch',function(event)
+               {
+                event.respondWith(
+                    caches.match(event.request).then(function(response)
+                {
+                return response || fetch(event.request);
+
+                })
+            );
+               });
+service worker 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>simple service worker example</title>
+    
+</head>
+<body>
+<p>turn off internet and refresh</p>
+<script>
+    if('serviceWorker' in navigator) {
+
+        navigator.serviceWorker.register('example.js').then(()=>{console.log("service Worker Registered");});
+    }
+</script>
+
+
+
+
+</body>
+
+
+
+</html>
+
+
+//fetch event
+ 
+   
+</html>
