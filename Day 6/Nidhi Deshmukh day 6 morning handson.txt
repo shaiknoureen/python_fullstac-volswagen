@@ -1,0 +1,71 @@
+1. Local Storage – Simple Persistence
+
+Question:
+A user enters their name in a web form and closes the browser. When they reopen the page, the name is still visible.
+Which web storage feature allows this, and why does it persist?
+
+Answer:
+This functionality is provided by Local Storage. Local Storage stores data permanently in the browser and does not remove it when the browser is closed or refreshed. The data remains available until it is manually deleted by the user or by the application.
+
+Example:
+
+localStorage.setItem("name", "Rahul");
+
+
+When the page is reopened later:
+
+localStorage.getItem("name"); // returns "Rahul"
+
+2. Local Storage – Single Value
+
+Question:
+A developer stores the user’s email using localStorage.setItem("email", "abc@gmail.com"). Later, they retrieve it successfully.
+What type of value does localStorage store, and how is it retrieved?
+
+Answer:
+Local Storage stores data in the form of string values. All values saved in localStorage are converted into strings. The stored data is retrieved using the localStorage.getItem() method.
+
+Example:
+
+localStorage.setItem("email", "abc@gmail.com");
+let email = localStorage.getItem("email");
+
+3. Local Storage – Clear Data
+
+Question:
+A student wants to clear all stored form data after logout.
+Which localStorage method can be used to delete all saved data?
+
+Answer:
+The localStorage.clear() method is used to remove all data stored in localStorage. It deletes all key–value pairs at once and is useful when clearing user data after logout.
+
+Example:
+
+localStorage.clear();
+
+4. Offline Cache – Basic Usage
+
+Question:
+A simple offline HTML page displays “Welcome Offline” even without internet.
+What is the file that tells the browser which resources to cache for offline use?
+
+Answer:
+The file used is called a Cache Manifest file. This file informs the browser about which web resources should be saved so that the page can work offline.
+
+Example:
+
+CACHE MANIFEST
+index.html
+style.css
+
+5. Offline Cache – First Visit
+
+Question:
+A user tries to open an offline page for the first time without internet, but it doesn’t load.
+Why does the offline page not appear on the first visit?
+
+Answer:
+The offline page does not appear because the browser has not cached the required files yet. The page must be opened once with an active internet connection so that the resources can be downloaded and stored for offline use.
+
+Example:
+If a user directly opens index.html without internet for the first time, the page will not load because no cached files exist.
