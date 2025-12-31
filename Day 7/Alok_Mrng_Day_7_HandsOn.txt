@@ -1,0 +1,193 @@
+Service Workers (5 Scenarios)
+1.A news website should load the last-read articles even when the user is offline. Which Service Worker features would you use and how?
+
+2.Your app fetches API data frequently. You want to serve cached data first and update it in the background. Which caching strategy will you choose?
+
+3.A Service Worker is registered successfully, but it is not controlling the page. What could be the reasons?
+
+4.You updated your Service Worker code, but users still see the old cached content. How would you fix this?
+
+5.A shopping app must show a custom offline page when the network fails. How would you implement this using a Service Worker?
+
+Answers.
+
+1. Offline articles on a news website
+Feature used: Cache API + Fetch Event
+Cache articles when user reads them.
+In the fetch event, return cached articles when offline.
+
+2. Serve cached data first, update in background
+Caching strategy: Stale-While-Revalidate
+Shows cached data instantly.
+Fetches fresh data in background and updates cache.
+
+3. Service Worker registered but not controlling page
+
+Reasons:
+
+Page not reloaded after registration
+Service Worker scope mismatch
+Service Worker is waiting (not activated)
+Page loaded before SW registration
+
+4. Users see old cached content
+
+Update cache version name
+Delete old caches in activate event
+Force reload or skip waiting
+
+5. Custom offline page in shopping app
+
+Cache an offline.html page
+In fetch, if network fails → return cached offline page
+
+
+Styling: Text, Links, Backgrounds & Borders (5 Scenarios)
+
+6.You want all links to:
+        A.be blue by default
+        B.turn red on hover
+        C.remove underline except on hover
+How would you write the CSS?
+
+7.A heading text must be centered horizontally and vertically over a background image. Which CSS properties would you use?
+
+8.You need a gradient background instead of an image to reduce load time. How would you create it using CSS3?
+
+9.A card design requires:
+        rounded corners
+        a dashed border
+        shadow only at the bottom
+How would you style it?
+
+10.A paragraph text must appear justified, with increased line spacing and custom font color. Which properties will you use?
+
+Answers.
+
+6. Link styling
+a {
+  color: blue;
+  text-decoration: none;
+}
+a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+7. Center text over background image
+
+Properties used:
+display: flex, justify-content: center, align-items: center, background-image
+
+8. Gradient background
+background: linear-gradient(to right, #ff7e5f, #feb47b);
+
+9. Card styling
+.card {
+  border-radius: 10px;
+  border: 2px dashed #333;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+}
+
+10. Paragraph formatting
+
+Properties used:
+text-align: justify, line-height, color
+
+
+What’s New in CSS3 (5 Scenarios)
+
+11.You want to animate a button smoothly when hovered without using JavaScript. Which CSS3 features will you use?
+
+12.A website needs rounded images and soft shadows that work on modern browsers. Which CSS3 properties help?
+
+13.You are building a form and want input fields to change border color smoothly when focused. How can CSS3 transitions help?
+
+14.A designer wants multiple background images on a single div. Is this possible in CSS3? How?
+
+15.To improve responsiveness, you want font sizes to adjust automatically based on screen size. Which CSS3 units or techniques will you use?
+
+Answers.
+
+11. Smooth hover animation
+
+Features: transition, transform
+
+button {
+  transition: all 0.3s ease;
+}
+button:hover {
+  transform: scale(1.1);
+}
+
+12. Rounded images & shadows
+
+Properties:
+border-radius, box-shadow
+
+13. Smooth border change on focus
+input {
+  transition: border-color 0.3s ease;
+}
+input:focus {
+  border-color: blue;
+}
+
+14. Multiple background images
+
+Yes, possible
+
+background-image: url(img1.png), url(img2.png);
+background-position: left top, right bottom;
+
+15. Responsive font sizes
+
+Techniques:
+rem, vw, clamp()
+
+
+Box Model & Layout (5 Scenarios)
+
+16.A div with width: 300px becomes larger than expected after adding padding and border. Why does this happen and how do you fix it?
+
+17.Two divs should appear side by side, but they are stacking vertically. What could be the reasons related to box model or layout?
+
+18.A layout breaks on small screens because elements overflow their container. How does box-sizing help?
+
+19.You want equal spacing inside a container without increasing its total width. Which box model concept is important here?
+
+20.A developer uses margin-top on a child element, but it affects the parent instead. What box model behavior is this and how can it be avoided?
+
+Answers.
+
+16. Div becomes larger after padding
+Why: Padding + border add to width
+Fix:
+box-sizing: border-box;
+
+17. Divs stacking vertically
+
+Reasons:
+
+Block elements
+Width not defined
+No flex or float applied
+
+18. Overflow on small screens
+
+How box-sizing helps:
+border-box keeps width fixed even with padding/border
+
+19. Equal spacing without increasing width
+
+Important concept:
+box-sizing: border-box
+
+20. Margin affecting parent
+
+Behavior: Margin collapsing
+Avoid by:
+
+Adding padding/border to parent
+Using overflow: hidden
+Using flexbox
