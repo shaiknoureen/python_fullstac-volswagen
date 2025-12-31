@@ -1,0 +1,33 @@
+Ques1. A user enters their name in a web form and closes the browser. When they reopen the page, the name is still visible. Question: Which web storage feature allows this, and why does it persist?
+Ans   1.The feature used is localStorage.
+2. It stores data in the browser as key–value pairs.
+3.Data in localStorage has no expiration time.The data remains even after the browser is closed and reopened.
+ 4.It is cleared only if the website or user deletes it.
+
+
+Ques2.  Q.2) Local Storage – Single Value
+A developer stores the user’s email using localStorage.setItem("email", "abc@gmail.com"). Later, they retrieve it successfully. Question: What type of value does localStorage store, and how is it retrieved?
+1.	Ans localStorage stores values as strings only.
+2.	Even numbers, objects, or booleans are saved as strings.
+3.	The value is stored using localStorage.setItem(key, value).
+4.	It is retrieved using localStorage.getItem("email").
+5.	The retrieved value is the string "abc@gmail.com".
+
+Ques3. A student wants to clear all stored form data after logout. Question: Which localStorage method can be used to delete all saved data?
+Ans The localStorage.clear() method is used to delete all saved data from localStorage.
+
+Ques 4. Offline Cache – Basic Usage
+A simple offline HTML page displays “Welcome Offline” even without internet. Question: What is the file that tells the browser which resources to cache for offline use?
+Ans The browser uses a Cache Manifest file to manage offline caching.
+It is usually named manifest.appcache.
+The file lists resources to be stored for offline use.
+It is linked in the HTML using the manifest attribute.
+
+
+Ques 5. A user tries to open an offline page for the first time without internet, but it doesn’t load. Question: Why does the offline page not appear on the first visit?
+Ans The offline page does not load because the resources were never cached.
+The browser must visit the page at least once while online to save the files.
+Offline caching only works after the initial online load.
+Without internet on the first visit, nothing is stored yet.
+
+
