@@ -1,0 +1,25 @@
+print("hello world")
+a = "volkswagen"
+print(a)
+
+
+apple = "it is a fruit"
+print(apple)
+
+
+a = "string"
+z = a
+abc = type("string")
+length = len("banana")
+b = 123
+c = 23.12
+d = 23.1j
+e = True
+print(a,b,c,d,e)
+print("the string we are using is ",z)
+print(abc)
+print(length)
+
+
+age = str(input("enter your age:"))
+print("your age is",age)
