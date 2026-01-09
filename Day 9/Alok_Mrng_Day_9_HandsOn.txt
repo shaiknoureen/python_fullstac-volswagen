@@ -1,0 +1,184 @@
+1. let vs const – Bug in Production
+In a dashboard app, a developer used const for a variable that stores the logged-in user’s role. Later, the role needs to be updated when the user switches accounts without reloading the page.
+Question:
+Why does this cause an error, and how would you refactor the code using let and const correctly?
+
+Ans.
+In JavaScript, variables declared with const cannot be reassigned after their initial value is set.
+Reason for Error:
+	const creates a read-only variable binding
+	Reassigning a const variable results in
+Since switching users requires updating the role at runtime, using const leads to a runtime error, which can break the application in production.
+
+Correct Refactoring Using let and const:
+	Use let for variables whose values can change
+	Use const for values that remain constant
+
+2. Block Scope Debugging Issue
+A loop creates buttons dynamically, and each button should log its own index when clicked. However, all buttons log the same index value.
+Question:
+How does replacing var with let fix this issue, and what is happening internally with block scope?
+
+Ans.
+Why This Happens:
+
+var is function-scoped, not block-scoped
+The loop creates only one shared variable i
+Event handlers run after the loop finishes
+By then, i equals 3
+All buttons reference the same i
+
+The issue occurs because var is function-scoped, causing all event handlers to share the same loop variable. Replacing var with let fixes the bug by creating a new block-scoped variable for each iteration. Internally, JavaScript creates a separate binding of the loop variable for every iteration, ensuring each button logs the correct index.
+
+3. Error Handling in API Response
+You are consuming an API that sometimes returns null instead of an object. The app crashes when trying to access response.data.user.name.
+Question:
+How would you handle this error using try...catch, and how would you debug this issue in the browser?
+
+Ans.
+When the API returns null, the code tries to access properties on null, which is not allowed in JavaScript.
+Root Cause :
+response.data is null
+JavaScript cannot access .user or .name on null
+The error is thrown at runtime and crashes the app
+
+The application crashes because it attempts to access properties on a null API response. Using try...catch prevents runtime crashes and allows graceful error handling. Debugging the issue involves inspecting the API response using browser DevTools, console logs, breakpoints, and stack traces. Proper validation and defensive coding ensure application stability even when APIs return unexpected data.
+
+4. Custom Error for Business Logic
+In a payment module, the amount should never be negative or zero.
+Question:
+How would you throw a custom error, catch it, and display a user-friendly message without breaking the application flow?
+
+Ans.
+Why Custom Errors Are Needed:
+
+Business rules (like payment validation) are not system errors
+Using custom errors:
+Makes code more readable
+Separates business logic from technical issues
+Helps show meaningful messages to users
+
+To enforce business rules like preventing negative or zero payment amounts, custom errors should be thrown and handled properly. By using try...catch and custom error classes, the application can display meaningful messages to users while maintaining a smooth application flow. This approach improves code readability, user experience, and overall application stability.
+
+5. Generators for Large Data Processing
+You are processing a huge list of logs, but loading everything into memory slows down the app.
+Question:
+How would you use a generator function to process one log at a time, and why is this better than a normal loop?
+
+Ans.
+Generator Function:
+
+A generator function is a special JavaScript function that:
+Uses the function* syntax
+Pauses execution using yield
+Returns values one at a time instead of all at once
+This makes generators ideal for large data processing.
+
+How This Works Internally:
+The generator does not execute fully
+Each yield
+Pauses function execution
+Saves the current state
+Resumes when .next() is called
+
+Generator functions allow large datasets to be processed one item at a time, preventing memory overload and improving performance. Unlike normal loops, generators use lazy execution and pause-resume behavior, making them highly efficient for large-scale data processing tasks.
+
+6. Iterators in a Custom Object
+You created a custom object representing a playlist, and you want to loop through songs using for...of.
+Question:
+How would you implement an iterator using Symbol.iterator for this object?
+
+Ans.
+An iterator is an object that defines how values are accessed one at a time.
+In JavaScript, an object becomes iterable when it implements the Symbol.iterator method.
+Symbol.iterator returns an iterator object
+The iterator object has a next() method
+next() returns
+
+What Is Happening Internally :
+for...of looks for Symbol.iterator
+Symbol.iterator() is called once
+JavaScript repeatedly calls next()
+Loop continues until done: true
+
+To make a custom object iterable with for...of, you must implement the Symbol.iterator method. This method returns an iterator object that controls how values are accessed one at a time. Using a generator function for Symbol.iterator is the cleanest and most maintainable approach for real-world applications.
+
+7. Import / Export Debugging Scenario
+A utility function is exported from utils.js, but when imported into app.js, you get undefined.
+Question:
+What are the common mistakes with named vs default exports, and how would you debug this issue?
+
+Ans.
+Common Mistakes That Cause undefined :
+Importing Named Export as Default
+Importing Default Export as Named
+Wrong File Path or Extension
+Export After Usage
+
+How to Debug This Issue
+1. Console Log the Import
+2. Verify Export Type
+3. Check Module Type
+4. Restart Dev Server
+5. Check for Typos
+
+8. Functions vs Classes Decision
+You are building a notification system where notifications have state (read/unread) and behavior (mark as read).
+Question:
+When would you choose a class over a function, and how would you structure this using ES6 classes?
+
+Ans.
+When to Choose a Class Over a Function :
+
+You should prefer a class when
+State + Behavior belong together
+Notifications have internal state (isRead)
+They also have behavior (markAsRead())
+Multiple instances are required
+Many notifications exist at the same time
+Each notification maintains its own state
+Object-oriented modeling is clearer
+Real-world entities (Notification, User, Order)
+Easier to understand and maintain
+Future extensibility is expected
+Different notification types (Email, Push, SMS)
+Inheritance and method reuse become useful
+
+Structuring the Notification System Using ES6 Classes :
+Basic Notification Class
+Using the Class
+Extending the System
+
+9. Map, Filter, Reduce – Performance Case
+You receive an array of orders. You need:
+only completed orders
+total revenue
+formatted output
+Question:
+How would you use filter, map, and reduce together, and why is this approach better than multiple loops?
+
+Ans.
+Using filter, map, and reduce Together :
+Step 1: Filter Completed Orders
+Step 2: Calculate Total Revenue
+Step 3: Format Output
+
+Why This Is Better Than Multiple Loops
+Traditional Loop Approach:
+Harder to read
+Mixed logic (filtering, formatting, summing)
+More error-prone
+
+Using filter, map, and reduce together provides a clean, readable, and maintainable solution for processing arrays. This approach separates concerns, reduces bugs, and improves code clarity compared to multiple loops. While performance is already good for most cases, a single reduce() can be used for extreme optimization scenarios.
+
+10. Arrow Functions & this Bug
+In a class method, an event handler using a normal function loses access to this.
+Question:
+How does converting the function to an arrow function fix the issue, and what is the difference in how this works?
+
+Ans.
+In JavaScript, a normal function has its own this, which is determined at call time. When used as an event handler inside a class, this refers to the DOM element, not the class instance, causing loss of access to class properties.
+
+Arrow functions fix this issue because they do not have their own this. Instead, they lexically inherit this from the surrounding scope, which in this case is the class instance.
+
+Therefore, converting the event handler to an arrow function preserves the correct this value and prevents runtime bugs without needing manual binding.
