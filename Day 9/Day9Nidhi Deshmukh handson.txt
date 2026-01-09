@@ -1,0 +1,166 @@
+1. let vs const
+
+Question:
+Why does using const for a variable that changes cause an error?
+
+Answer:
+const does not allow reassignment. Use let for variables that change.
+
+let role = "admin";
+role = "user"; // OK
+
+2. var vs let in Loop
+
+Question:
+Why do all buttons print the same index when using var?
+
+Answer:
+var is function-scoped. let is block-scoped, so each loop gets its own value.
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+// Output: 0 1 2
+
+3. API Null Error Handling
+
+Question:
+How do you prevent crash when API returns null?
+
+Answer:
+Use try...catch or optional chaining.
+
+try {
+  console.log(response.data.user.name);
+} catch {
+  console.log("User not found");
+}
+
+console.log(response?.data?.user?.name ?? "Guest");
+
+4. Custom Error Example
+
+Question:
+How do you handle invalid payment amount?
+
+Answer:
+Throw and catch a custom error.
+
+function pay(amount) {
+  if (amount <= 0) throw new Error("Invalid amount");
+}
+
+try {
+  pay(-10);
+} catch (e) {
+  console.log(e.message);
+}
+
+5. Generator Function
+
+Question:
+Why use generators for large data?
+
+Answer:
+Generators process data one value at a time and save memory.
+
+function* gen() {
+  yield 1;
+  yield 2;
+}
+
+for (let x of gen()) console.log(x);
+
+6. Custom Iterator
+
+Question:
+How to make an object iterable?
+
+Answer:
+Implement Symbol.iterator.
+
+const obj = {
+  items: [1, 2, 3],
+  [Symbol.iterator]() {
+    let i = 0;
+    return {
+      next: () => ({
+        value: this.items[i++],
+        done: i > this.items.length
+      })
+    };
+  }
+};
+
+for (let x of obj) console.log(x);
+
+7. Import / Export Issue
+
+Question:
+Why does imported function become undefined?
+
+Answer:
+Named and default exports are mixed incorrectly.
+
+// utils.js
+export function sum(a, b) {
+  return a + b;
+}
+
+// app.js
+import { sum } from "./utils.js";
+
+8. Class vs Function
+
+Question:
+When should you use a class?
+
+Answer:
+When you need state + behavior together.
+
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(this.name);
+  }
+}
+
+9. map, filter, reduce
+
+Question:
+How to calculate total of completed orders?
+
+Answer:
+Use filter, map, and reduce.
+
+const orders = [
+  { price: 100, status: "done" },
+  { price: 50, status: "pending" }
+];
+
+const total = orders
+  .filter(o => o.status === "done")
+  .map(o => o.price)
+  .reduce((a, b) => a + b, 0);
+
+console.log(total);
+
+10. Arrow Function & this
+
+Question:
+Why do arrow functions fix this issue?
+
+Answer:
+Arrow functions inherit this from their parent scope.
+
+class Counter {
+  count = 0;
+  start() {
+    setInterval(() => {
+      this.count++;
+      console.log(this.count);
+    }, 1000);
+  }
+}
