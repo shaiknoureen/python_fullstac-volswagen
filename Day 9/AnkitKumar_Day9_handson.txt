@@ -1,0 +1,39 @@
+1. let vs const – Bug in Production
+
+This error happens because const creates a variable whose reference cannot be reassigned. If a developer stores the logged-in user’s role using const, such as const userRole = 'admin';, and later tries to update it when the user switches accounts (userRole = 'editor';), JavaScript throws a TypeError: Assignment to constant variable. This is because const is meant for values that should never change. The correct refactor is to use let for values that are expected to change over time, like the user role, while reserving const for values that remain constant, such as configuration objects or fixed URLs. For example, let userRole = 'admin'; allows reassignment, while const API_URL = '/api/v1'; remains unchanged.
+
+2. Block Scope Debugging Issue
+
+When var is used inside a loop to create buttons, all buttons end up logging the same index because var is function-scoped, not block-scoped. This means there is only one shared i variable, and by the time any button is clicked, the loop has already completed, leaving i at its final value. Replacing var with let fixes the issue because let is block-scoped, so each iteration of the loop gets its own separate i value. Internally, JavaScript creates a new lexical environment for each loop iteration when let is used, allowing each button’s click handler to “remember” the correct index.
+
+3. Error Handling in API Response
+
+The crash occurs because the code assumes that response.data.user always exists, but when the API returns null, accessing user.name throws a runtime error. To handle this safely, you can wrap the logic in a try...catch block. Inside try, you attempt to read response.data.user.name, and if the value is null, the error is caught and handled gracefully instead of crashing the app. In the catch block, you can log the error or show a fallback message. To debug this in the browser, you would inspect the network response in DevTools, check the actual API payload, and use breakpoints or console.log(response) to verify when and why null is returned.
+
+4. Custom Error for Business Logic
+
+In a payment module, allowing zero or negative amounts violates business rules, so this should be handled explicitly. You can throw a custom error by checking the value and using throw new Error('Payment amount must be greater than zero'). This error is then caught using try...catch where the payment logic is executed. Inside the catch block, instead of breaking the application flow, you display a user-friendly message such as “Please enter a valid payment amount.” This approach separates business logic validation from UI logic and ensures that the application continues running smoothly even when invalid input occurs.
+
+5. Generators for Large Data Processing
+
+A generator function allows you to process one log entry at a time instead of loading the entire list into memory. By using the function* syntax and yield, the function pauses execution after returning each log, resuming only when the next value is requested. This is better than a normal loop because it significantly reduces memory usage and improves performance for large datasets. Instead of holding thousands of logs in memory at once, the generator produces values lazily, which is ideal for streaming data or long-running processing tasks.
+
+6. Iterators in a Custom Object
+
+To make a custom playlist object iterable with for...of, you implement an iterator using Symbol.iterator. This involves defining a method that returns an object with a next() function. Each call to next() returns the next song and a done flag. Internally, this allows JavaScript’s iteration protocols to work with your object just like arrays. Once implemented, the playlist can be looped over naturally, making the code cleaner and more intuitive when dealing with collections.
+
+7. Import / Export Debugging Scenario
+
+A common reason for getting undefined during import is mixing up named exports and default exports. For example, exporting a function as export default function helper() but importing it with { helper } will result in undefined. Similarly, exporting with export const helper = () => {} requires importing with curly braces. To debug this, you should first check how the function is exported in utils.js, then ensure the import syntax in app.js matches it exactly. Logging the imported module or using your editor’s auto-import suggestions can also help identify mismatches.
+
+8. Functions vs Classes Decision
+
+You would choose a class over a function when you need to manage state and behavior together, such as a notification system with read and unread states. ES6 classes allow you to encapsulate properties like isRead and methods like markAsRead() in a single, reusable structure. This makes the code easier to scale and reason about, especially when creating multiple notifications. A class provides a clear blueprint, while a plain function is better suited for simple, stateless logic.
+
+9. Map, Filter, Reduce – Performance Case
+
+To process orders efficiently, you can first use filter to select only completed orders, then map to format the output, and finally reduce to calculate total revenue. This approach is better than multiple loops because each method has a clear responsibility, making the code more readable and maintainable. Additionally, chaining these methods avoids unnecessary temporary variables and makes the data transformation flow easier to understand at a glance.
+
+10. Arrow Functions & this Bug
+
+The issue occurs because normal functions have their own this, which depends on how the function is called. When used as an event handler inside a class, this no longer refers to the class instance. Arrow functions fix this because they do not create their own this; instead, they lexically bind this from the surrounding scope. As a result, this inside the arrow function correctly refers to the class instance, allowing access to class properties and methods without needing .bind(this).
