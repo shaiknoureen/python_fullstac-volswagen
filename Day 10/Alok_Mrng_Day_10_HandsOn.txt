@@ -1,0 +1,247 @@
+1. Scenario-based questions on elif conditions
+Online Shopping Discount
+A shopping website gives:
+20% discount if total amount ≥ 5000
+10% discount if total amount ≥ 3000
+No discount otherwise
+
+Write a Python program using if–elif–else to calculate the final payable amount.
+
+Ans:
+amount = float(input("Enter total shopping amount: "))
+
+if amount >= 5000:
+    discount = amount * 0.20
+elif amount >= 3000:
+    discount = amount * 0.10
+else:
+    discount = 0
+
+final_amount = amount - discount
+
+print("Discount:", discount)
+print("Final Payable Amount:", final_amount)
+
+
+2. Traffic Signal System
+
+A traffic light system works as follows:
+"RED" → Stop
+"YELLOW" → Get Ready
+"GREEN" → Go
+
+Write a program using elif to display the correct instruction based on the signal color entered by the user.
+
+Ans:
+signal = input("Enter traffic signal color: ").upper()
+
+if signal == "RED":
+    print("Stop")
+elif signal == "YELLOW":
+    print("Get Ready")
+elif signal == "GREEN":
+    print("Go")
+else:
+    print("Invalid signal color")
+
+
+3. Electricity Bill Calculation
+An electricity board charges:
+₹1.5 per unit for first 100 units
+₹2.5 per unit for next 100 units
+₹4.0 per unit for units above 200
+Use elif to calculate the electricity bill for given units consumed.
+
+Ans.
+units = int(input("Enter units consumed: "))
+
+if units <= 100:
+    bill = units * 1.5
+elif units <= 200:
+    bill = (100 * 1.5) + ((units - 100) * 2.5)
+else:
+    bill = (100 * 1.5) + (100 * 2.5) + ((units - 200) * 4.0)
+
+print("Electricity Bill: ₹", bill)
+
+
+4. Student Result Processing
+A school decides grades based on marks:
+≥ 90 → Excellent
+≥ 75 → Very Good
+≥ 60 → Good
+≥ 40 → Pass
+Below 40 → Fail
+Write a program using elif to print the student’s grade.
+
+Ans.
+marks = int(input("Enter student marks: "))
+
+if marks >= 90:
+    print("Grade: Excellent")
+elif marks >= 75:
+    print("Grade: Very Good")
+elif marks >= 60:
+    print("Grade: Good")
+elif marks >= 40:
+    print("Grade: Pass")
+else:
+    print("Grade: Fail")
+
+
+5. Bank Account Status
+A bank categorizes accounts as:
+Balance ≥ 100000 → Premium
+Balance ≥ 25000 → Gold
+Balance ≥ 5000 → Silver
+Below 5000 → Regular
+Write a program using elif to display account type.
+
+Ans.
+balance = float(input("Enter account balance: "))
+
+if balance >= 100000:
+    print("Account Type: Premium")
+elif balance >= 25000:
+    print("Account Type: Gold")
+elif balance >= 5000:
+    print("Account Type: Silver")
+else:
+    print("Account Type: Regular")
+
+
+Questions on whitespaces, indentation, and string math expressions
+Whitespace & Readability
+The following code runs without error:
+
+6. Python
+x=10+5*2
+Rewrite it using proper whitespaces according to Python style guidelines and explain why this is preferred.
+Indentation Error Analysis
+What will happen when the following code is executed? Explain why.
+
+Ans.
+Corrected version of code will be :
+x = 10 + 5 * 2
+
+This Is Preferred because:
+Python follows PEP 8 style guidelines.
+Spaces around operators (=, +, *) improve readability.
+Easier to understand and debug, especially in complex expressions.
+Makes code look clean and professional.
+
+This happens when Python code has incorrect indentation-
+What Will Happen :
+Python will raise an IndentationError
+The program will not execute
+Why This Happens:
+Python uses indentation instead of braces {} to define code blocks.
+All statements inside a block must be properly aligned.
+Even one extra or missing space can cause an error.
+
+7. if x > 5:
+print("Greater")
+How should it be corrected?
+String vs Math Expression
+What is the difference between the output of the following two statements?
+
+Ans.
+Corrected Code:
+if x > 5:
+    print("Greater")
+Explanation:
+Python requires indentation to define the body of an if statement.
+The print() line must be indented (usually 4 spaces).
+Without indentation, Python raises an IndentationError.
+String vs Maths Expression :
+print("10 + 5")
+print(10 + 5)
+
+Difference in Output
+print("10 + 5")
+Output: 10 + 5
+Reason: It is a string, so Python prints it exactly as written.
+print(10 + 5)
+Output: 15
+Reason: It is a mathematical expression, so Python evaluates it first.
+
+
+8. Python
+print("2 + 3 * 4")
+print(2 + 3 * 4)
+Explain the role of strings in math expressions.
+Evaluating String Math Expression
+
+Ans.
+Role of Strings in Math Expressions:
+A string is text enclosed in quotes (" " or ' ').
+When a math expression is written inside quotes, Python treats it as plain text.
+Python does not evaluate mathematical operations inside a string.
+
+Math Expression (Without Quotes):
+2 + 3 * 4
+Python evaluates it using operator precedence:
+* (multiplication) first → 3 * 4 = 12
++ next → 2 + 12 = 14
+
+Evaluating a String Math Expression:
+"2 + 3 * 4"
+No, not automatically.
+converts a string expression into a math expression.
+It should be used carefully, as it can execute unwanted code.
+
+9. Given:
+Python
+expr = "10 + 5 * 2"
+a) What is the value stored in expr?
+b) How can you evaluate it to get the numerical result?
+c) Why should you be careful while evaluating it?
+
+Ans.
+a)expr stores a string, not a calculation.
+"10 + 5 * 2"
+It is plain text containing numbers and operators.
+
+b)You can use eval() to evaluate the string as a math expression:
+result = eval(expr)
+print(result)
+Output: 20
+
+c)You be careful while evaluating it because :
+eval() executes any Python code inside the string.
+If the string comes from user input, it can run malicious code.
+This can cause security risks or unintended program behavior.
+
+10. Indentation with elif
+Identify and correct the indentation error in the code below:
+
+Python
+if marks >= 60:
+    print("Pass")
+elif marks >= 40:
+print("Conditional Pass")
+else:
+    print("Fail")
+Explain how indentation affects the execution of elif.
+
+Ans.
+The Error is:
+The print("Conditional Pass") line is not indented.
+Python expects the body of elif to be indented, just like if.
+
+Corrected code:
+if marks >= 60:
+    print("Pass")
+elif marks >= 40:
+    print("Conditional Pass")
+else:
+    print("Fail")
+How Indentation Affects elif Execution :
+Python uses indentation to define blocks of code.
+The statement under if / elif must be indented to show it belongs to that condition.
+If indentation is wrong:
+	Python raises an IndentationError
+	Program stops execution
+Correct indentation ensures:
+	Only the matching condition’s block executes.
+	elif is checked only if the if condition is false.
