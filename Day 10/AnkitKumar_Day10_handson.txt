@@ -1,0 +1,88 @@
+1. amount = float(input("Enter total shopping amount: "))
+
+if amount >= 5000:
+    discount = 0.20
+elif amount >= 3000:
+    discount = 0.10
+else:
+    discount = 0
+
+final_amount = amount - (amount * discount)
+print("Final payable amount:", final_amount)
+
+
+2. signal = input("Enter traffic signal color: ").upper()
+
+if signal == "RED":
+    print("Stop")
+elif signal == "YELLOW":
+    print("Get Ready")
+elif signal == "GREEN":
+    print("Go")
+else:
+    print("Invalid signal")
+
+3. units = int(input("Enter electricity units consumed: "))
+bill = 0
+
+if units <= 100:
+    bill = units * 1.5
+elif units <= 200:
+    bill = (100 * 1.5) + ((units - 100) * 2.5)
+else:
+    bill = (100 * 1.5) + (100 * 2.5) + ((units - 200) * 4.0)
+
+print("Electricity Bill: ₹", bill)
+
+4. marks = int(input("Enter student marks: "))
+
+if marks >= 90:
+    print("Excellent")
+elif marks >= 75:
+    print("Very Good")
+elif marks >= 60:
+    print("Good")
+elif marks >= 40:
+    print("Pass")
+else:
+    print("Fail")
+
+5. balance = float(input("Enter account balance: "))
+
+if balance >= 100000:
+    print("Premium Account")
+elif balance >= 25000:
+    print("Gold Account")
+elif balance >= 5000:
+    print("Silver Account")
+else:
+    print("Regular Account")
+
+6. Proper whitespace improves readability
+
+Follows PEP 8 style guidelines
+
+Makes code easier to understand and maintain
+
+7. IndentationError occurs
+
+Python requires an indented block after if
+
+8. "2 + 3 * 4" is a string, printed as text
+
+2 + 3 * 4 is a math expression, evaluated numerically
+
+Strings do not perform calculations
+
+9. if marks >= 60:
+    print("Pass")
+elif marks >= 40:
+    print("Conditional Pass")
+else:
+    print("Fail")
+
+All blocks under if, elif, and else must be properly indented
+
+Incorrect indentation causes IndentationError
+
+Indentation defines which statements belong to which condition
