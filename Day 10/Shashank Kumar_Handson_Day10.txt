@@ -1,0 +1,158 @@
+1. Online Shopping Discount
+
+Answer - 
+
+	amount = int(input("Enter total amount: "))
+
+	if amount >= 5000: 
+		discount = 0.20 
+	elif amount >= 3000: 
+		discount = 0.10 
+	else: 
+		discount = 0
+
+	final_amount = amount - (amount * discount) 
+	print("Payable Amount:", final_amount)
+
+	
+Explanation: elif checks the next condition only if the previous one is false, ensuring only one discount is applied.
+
+2. Traffic Signal System
+
+Answer - 
+
+	signal = input("Enter signal color: ").upper()
+
+	if signal == "RED": 
+		print("Stop") 
+	elif signal == "YELLOW": 
+		print("Get Ready") 
+	elif signal == "GREEN": 
+		print("Go") 
+	else: print("Invalid Signal")
+
+Explanation: elif is used to compare multiple possible values of a single variable.
+
+3. Electricity Bill Calculation
+
+Answer -
+
+	units = int(input("Enter units consumed: "))
+
+	if units <= 100: 
+		bill = units * 1.5 
+	elif units <= 200: 
+		bill = (100 * 1.5) + (units - 100) * 2.5 
+	else: 
+		bill = (100 * 1.5) + (100 * 2.5) + (units - 200) * 4.0
+
+	print("Electricity Bill: Rs.", bill)
+
+Explanation: Slab-wise calculation is best handled using elif to avoid overlapping conditions.
+
+4. Student Result Processing 
+
+Answer - 
+
+	marks = int(input("Enter marks: "))
+	if marks >= 90: 
+		print("Excellent") 
+	elif marks >= 75: 
+		print("Very Good") 
+	elif marks >= 60: 
+		print("Good") 
+	elif marks >= 40: 
+		print("Pass") 
+	else: 
+		print("Fail")
+
+Explanation: Conditions are checked from highest to lowest to assign the correct grade.
+
+5. Bank Account Status
+
+Answer - 
+
+	balance = int(input("Enter account balance: "))
+
+	if balance >= 100000: 
+		print("Premium") 
+	elif balance >= 25000: 
+		print("Gold") 
+	elif balance >= 5000: 
+		print("Silver") 
+	else: 
+		print("Regular")
+
+Explanation: Ordering conditions correctly avoids incorrect category assignment.
+
+6 . Whitespace & Readability
+
+Answer -
+
+	Original 
+		x=10+5*2
+ 	Improved 
+		x = 10 + 5 * 2
+
+Explanation: Proper spacing improves readability and follows Python’s style guidelines (PEP 8).
+
+7. Indentation Error Analysis 
+
+Answer -
+
+	Incorrect Code
+
+	if x > 5: 
+	print("Greater")
+
+	What happens: IndentationError because Python requires indented blocks after if. 
+	
+	Correct Code
+
+	if x > 5: 
+		print("Greater")
+
+8. String vs Math Expression 
+
+Answer - 
+
+	print("2 + 3 * 4") 
+	print(2 + 3 * 4)
+
+Output Difference 
+	"2 + 3 * 4" → printed as text 
+	2 + 3 * 4 → evaluated as math → 14 
+
+Explanation: Strings are not evaluated as mathematical expressions. 
+
+9. Evaluating String Math Expression 
+
+Answer -
+	expr = "10 + 5 * 2"
+
+	a) Value stored → "10 + 5 * 2" 
+	b) To evaluate: 
+	
+	result = eval(expr) 
+	
+	c) Be careful because eval() can execute malicious code if input is untrusted. 
+
+10. Indentation with elif
+
+Answer -
+	Incorrect Code 
+		if marks >= 60: 
+			print("Pass") 
+		elif marks >= 40: 
+		print("Conditional Pass") 
+		else: 
+			print("Fail") 
+	
+	Correct Code 
+		if marks >= 60: 
+			print("Pass") 
+		elif marks >= 40: 
+			print("Conditional Pass") 
+		else: 
+			print("Fail") 
+Explanation: Each elif block must be aligned with if. Incorrect indentation breaks logical flow and causes errors.
