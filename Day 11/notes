@@ -1,0 +1,61 @@
+price = 100
+quantity = 0
+try:
+ total = price/quantity
+ print(total)
+except ZeroDivisionError:
+    print("quantity cannot be zero")
+
+
+try:
+    x = int("abc")
+except ValueError:
+    print("valueError occured")
+
+try:
+    print(10/0)
+except ZeroDivisionError:
+    print("ZeroDivisionError occured")
+
+try:
+    order = {"burger":120}
+    print(order["pizza"])
+except KeyError:
+    print("KeyError occured")
+
+
+
+
+order = {"burger":120,"pizza":250}
+
+try:
+  item = input("enter item name:")
+  quantity = int(input("enter quantity"))
+  price = order[item]
+  total =  price*quantity
+  print("total bill",total)
+except KeyError:
+    print("item not available")
+except ValueError:
+    print("quantity must be a number")
+
+
+try:
+    price = int(input("enter price"))
+    quantity = int(input("enter quantity "))
+    total = price* quantity
+except ValueError:
+    print("invalid input")
+else:
+    print("order processed successfully")
+    print("total amount:",total)
+
+
+
+try:
+    order_id = int(input("enter order id"))
+    print("processind id",order_id)
+except ValueError:
+    print("order id must be a number")
+finally:
+    print("order session closed")
