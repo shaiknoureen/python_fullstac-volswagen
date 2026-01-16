@@ -1,0 +1,85 @@
+1. A shop stores customer id and their orders in a dictionary. How will you update the price of an existing item in a customer order.
+
+Answer: Access the item using its key and assign a new value.
+	Example: 
+		orders[customer_id][item] = new_price
+
+2. A customer adds a new item to an already placed order. Which dictionary operation will you use to modify the order.
+
+Answer: Use key assignment to add a new key-value pair.
+	Example: 
+		orders["new_item"] = price
+
+3. A restaurant wants to increase the price of all items in an order by 10. How can this be done using dictionary values.
+
+Answer: Using dictionary comprehension we can achieve this.
+	Example: 
+		{k: v * 1.10 for k, v in order.items()}
+
+4. An order contains many items. How will you calculate the total bill using dictionary methods.
+
+Answer: Use the values() method and apply sum().
+	Example: 
+		total = sum(orders.values())
+
+5. A customer cancels one item from the order. How will you remove that item from the dictionary.
+
+Answer: Use the pop() method with the item name.
+	Example:
+		orders.pop("item_name")
+
+6. A system needs to update multiple items in an order at the same time. Which dictionary method is suitable and why.
+
+Answer: Use the update() method because it updates multiple key-value pairs at once.
+	Example:
+		orders.update({"item1": price1, "item2": price2})
+
+7. An item name may or may not exist in the order. How will you safely access its price without getting an error.
+
+Answer: Use the get() method.
+	Example:
+		price = orders.get("item_name", 0)
+
+8. A shop wants to check whether a customer has ordered Pizza. Which dictionary feature will you use.
+
+Answer: Use the in keyword to check the key.
+	Example:
+		"Pizza" in orders
+
+9. An order dictionary is empty.
+How can you add items dynamically to it.
+
+Answer:
+Add items using key assignment.
+Example:
+orders["Burger"] = 120
+
+10. A restaurant stores orders for multiple customers. How will you loop through the dictionary to print each customer total bill.
+
+Answer: Use a loop with items() and calculate the sum of values.
+	Example:
+		for customer, order in orders.items(): 
+			print(customer, sum(order.values()))
+
+11. A food delivery app removes the last added item from an order. Which dictionary method will be used.
+
+Answer: Use the popitem() method.
+
+12. A student record dictionary contains name, age, and marks. Which item will be removed when popitem is used and why.
+
+Answer: The last inserted item will be removed because dictionaries follow insertion order.
+
+13. A shop mistakenly added a wrong item price. How will you correct only that item without affecting others.
+
+Answer: Update the specific key with the correct value.
+	Example:
+		orders["item_name"] = correct_price
+
+14. A program needs to merge new order items with existing order. Which dictionary method will you use.
+
+Answer: Use the update() method.
+	Example - order.update(new_items)
+
+15. A customer order dictionary is cleared after payment. Which dictionary method is used and what will be the result?
+
+Answer: Use order.clear() → dictionary becomes empty
