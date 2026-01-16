@@ -1,0 +1,102 @@
+1. Update the price of an existing item in a customer order
+You directly assign a new value to the existing key.
+
+order = {"Burger": 150, "Pizza": 300}
+order["Pizza"] = 320
+
+
+2. Add a new item to an already placed order
+Use assignment to add a new key-value pair.
+
+order["Pasta"] = 200
+
+
+3. Increase the price of all items by 10%
+Loop through dictionary values and update each price.
+
+for item in order:
+    order[item] *= 1.10
+
+
+4. Calculate the total bill
+Use the values() method and sum().
+
+total_bill = sum(order.values())
+
+
+5. Remove one item from the order
+Use the pop() method with the item name.
+
+order.pop("Burger")
+
+
+6. Update multiple items at the same time
+Use update() because it modifies many key-value pairs at once.
+
+order.update({"Pizza": 350, "Pasta": 220})
+
+
+7. Safely access an item price without error
+Use get() to avoid KeyError.
+
+price = order.get("Sandwich", "Item not found")
+
+
+8. Check whether Pizza is ordered
+Use the in keyword to check keys.
+
+if "Pizza" in order:
+    print("Pizza ordered")
+
+
+9. Add items dynamically to an empty dictionary
+Start with {} and add items using assignment.
+
+order = {}
+order["Burger"] = 150
+order["Fries"] = 100
+
+
+10. Loop through customers and print total bill
+Use nested dictionaries and loop with items().
+
+orders = {
+    "C001": {"Burger": 150, "Pizza": 300},
+    "C002": {"Pasta": 200}
+}
+
+for customer, order in orders.items():
+    print(customer, sum(order.values()))
+
+
+11. Remove the last added item
+Use popitem() which removes the last inserted item.
+
+order.popitem()
+
+
+12. Item removed using popitem() and why
+The last inserted item is removed because dictionaries preserve insertion order.
+
+student = {"name": "Amit", "age": 20, "marks": 85}
+student.popitem()  # removes "marks"
+
+
+13. Correct only one wrong item price
+Reassign the value for that specific key.
+
+order["Pizza"] = 300
+
+
+14. Merge new order items with existing order
+Use update() to combine dictionaries.
+
+new_items = {"Ice Cream": 120, "Cold Drink": 60}
+order.update(new_items)
+
+
+15. Clear the order after payment
+Use clear() which removes all items.
+
+order.clear()
+# result: {}
