@@ -1,0 +1,139 @@
+1. Optional tax and discount in a billing function
+def calculate_bill(amount, tax=0, discount=0):
+    return amount + tax - discount
+
+total = calculate_bill(1000)
+total_with_tax = calculate_bill(1000, tax=50)
+total_full = calculate_bill(1000, tax=50, discount=100)
+
+
+By giving tax and discount default values, the function works even if they are not passed. Default arguments make parameters optional and prevent errors when values are missing.
+
+2. Returning sum, average, and maximum
+def calculate_stats(numbers):
+    total = sum(numbers)
+    avg = total / len(numbers)
+    maximum = max(numbers)
+    return total, avg, maximum
+
+s, a, m = calculate_stats([10, 20, 30])
+
+
+Python allows returning multiple values as a tuple. The caller can unpack these values into separate variables in a clean and readable way.
+
+3. Restrict positional arguments for age and city
+def register_user(name, *, age, city):
+    print(name, age, city)
+
+register_user("Alice", age=25, city="Delhi")
+
+
+Using * forces age and city to be keyword-only arguments. This improves clarity and prevents users from accidentally passing values in the wrong order.
+
+4. Modifying a list inside a function
+def add_item(items):
+    items.append("apple")
+
+my_list = []
+add_item(my_list)
+print(my_list)
+
+
+Lists are mutable, so changes made inside the function affect the original list. Python passes the reference to the object, not a copy.
+
+5. Counting how many times a function is called
+count = 0
+
+def my_function():
+    global count
+    count += 1
+
+my_function()
+my_function()
+
+
+A global variable is used so the function can update the value across multiple calls. This allows tracking function usage during execution.
+
+6. Accept unlimited food prices using *args
+def order_total(*prices):
+    return sum(prices)
+
+total = order_total(100, 200, 150, 50)
+
+
+*args allows the function to accept any number of positional arguments, making it ideal for handling dynamic orders.
+
+7. Passing a list to a function expecting separate arguments
+prices = [100, 200, 300]
+total = order_total(*prices)
+
+
+Using * unpacks the list so each element is passed as a separate argument, matching the function’s expected input.
+
+8. Passing a list as a single argument to *args
+def demo(*args):
+    print(args)
+
+demo([1, 2, 3])
+
+
+The entire list becomes one element inside args, resulting in a tuple containing a single list: ([1, 2, 3],).
+
+9. Printing first item separately and remaining dynamically
+def show_items(first, *rest):
+    print("First:", first)
+    print("Remaining:", rest)
+
+show_items("Burger", "Pizza", "Pasta", "Salad")
+
+
+The first parameter captures the first value, while *rest collects all remaining values dynamically into a tuple.
+
+**kwargs Scenarios
+10. Accept optional user profile details
+def create_profile(**details):
+    print(details)
+
+create_profile(name="John", age=30, city="Mumbai")
+
+
+**kwargs allows passing any number of keyword arguments, making it perfect for optional user profile fields.
+
+11. Providing default values for missing keyword arguments
+def create_profile(**details):
+    age = details.get("age", "Not Provided")
+    city = details.get("city", "Not Provided")
+    print(age, city)
+
+
+Using .get() ensures safe access to dictionary values and provides defaults if keys are missing, avoiding runtime errors.
+
+12. Passing a dictionary to a function expecting **kwargs
+data = {"age": 25, "city": "Chennai"}
+create_profile(**data)
+
+
+The ** operator unpacks the dictionary into keyword arguments, matching the function’s parameter style.
+
+Lambda Expressions
+13. Sorting students by marks
+students = [("Amit", 80), ("Ravi", 90), ("Neha", 85)]
+students.sort(key=lambda x: x[1])
+
+
+A lambda function is used for quick, inline logic without defining a full function, making the code concise and readable.
+
+14. Filter even numbers and square them
+numbers = [1, 2, 3, 4, 5, 6]
+result = list(map(lambda x: x**2, filter(lambda x: x % 2 == 0, numbers)))
+
+
+filter() selects even numbers, and map() squares them. Lambdas keep the operation compact and efficient.
+
+Lists & Tuples
+15. Cause of TypeError: 'tuple' object is not callable
+list = [(1, 2), (3, 4)]
+list()
+
+
+This error usually happens when a variable name shadows a built-in function (like list or tuple) and is later used with parentheses, making Python think the tuple is a function.
