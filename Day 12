@@ -1,0 +1,27 @@
+def demo():
+    yield "a"
+    yield "b"
+    yield "c"
+g = demo()
+print(next(g))
+print(next(g))
+print(next(g))
+
+
+#generator with send()
+
+def counter():
+    num = 0
+    while True:
+        step = yield num
+        if step:
+            num += step
+        else:
+            num += 1
+
+a = counter()
+next(a)
+print(a.send(5))
+print(a.send(2))
+print(a.send(5))
+print(a.send(0))
