@@ -1,0 +1,98 @@
+FUNCTIONS (Scenarios)
+
+1. You are writing a billing system where tax and discount are optional.
+How would you design a function so that it works even if tax or discount is not passed?
+
+Answer:
+The function should use default parameters for tax and discount. This ensures that even if the caller does not pass these values, the function still works using default values (usually 0). This makes the function flexible and avoids errors.
+
+2. A function should return sum, average, and maximum of given numbers.
+How will you return multiple values from a function and receive them?
+
+Answer:
+Python allows returning multiple values as a tuple. The calling code can then unpack these values into separate variables. This makes it easy to return and handle multiple related results from a single function.
+
+3. You want to restrict users from passing positional arguments for age and city.
+Which function design will you use and why?
+
+Answer:
+You should use keyword-only arguments by placing * in the function parameters. This forces users to specify parameter names explicitly, improving readability and preventing incorrect positional usage.
+
+4. You have a function that modifies a list passed to it.
+How does Python handle mutable arguments inside functions?
+
+Answer:
+Python passes references to mutable objects like lists. Therefore, any modification made to the list inside the function directly affects the original list outside the function.
+
+5. You want to count how many times a function is called during program execution.
+Which type of variable scope will you use?
+
+Answer:
+A global variable or nonlocal variable is used so that the count value persists between function calls and can be updated every time the function executes.
+
+Args Scenarios
+
+6. A restaurant app receives any number of food items in an order.
+How would you design a function to accept unlimited food prices?
+
+Answer:
+Use *args in the function definition. It allows the function to accept any number of arguments, which are stored as a tuple, making it suitable for handling dynamic orders.
+
+7. You already have a list of prices but the function expects separate arguments.
+How will you pass the list correctly?
+
+Answer:
+You should unpack the list using * while calling the function. This passes each list element as a separate argument instead of passing the list as one value.
+
+8. What happens if you pass a list as a single argument to a function using args?
+
+Answer:
+The entire list is treated as one element inside args. The function does not automatically unpack it unless the * operator is explicitly used.
+
+9. You want to print the first item separately and remaining items dynamically.
+How will you design the function using args?
+
+Answer:
+Define one normal parameter for the first item and *args for the remaining items. This allows fixed handling of the first value while supporting dynamic values for the rest.
+
+Kwargs Scenarios
+
+10. A user profile system stores optional fields like age, city, phone.
+How will you design a function to accept any optional details?
+
+Answer:
+Use **kwargs in the function definition. It collects all optional keyword arguments into a dictionary, allowing flexible handling of user details.
+
+11. You want to provide default values if some keyword arguments are missing.
+How will you handle this safely?
+
+Answer:
+Use the dictionary get() method on kwargs. This allows safe access to values and returns a default value if the key does not exist, preventing errors.
+
+12. How will you pass a dictionary to a function that expects kwargs?
+
+Answer:
+Unpack the dictionary using ** while calling the function. This converts dictionary key-value pairs into keyword arguments.
+
+LAMBDA EXPRESSIONS (Scenarios)
+
+13. You have a list of students and want to sort them by marks quickly without defining a full function.
+What will you use and why?
+
+Answer:
+Use a lambda function with the key parameter of sorted(). Lambda functions are short, anonymous, and ideal for simple operations like sorting.
+
+14. You need to filter all even numbers from a list and then square them in one flow.
+Which combination of functions will you use?
+
+Answer:
+Use filter() to select even numbers and map() to square them. Lambda functions make this process concise and readable.
+
+LISTS & TUPLES (Scenarios)
+
+15. Your program crashes with:
+TypeError: 'tuple' object is not callable
+What is the most common cause of this error when working with lists of tuples?
+
+Answer:
+This error commonly occurs when parentheses () are mistakenly used instead of square brackets [] while accessing tuple elements, causing Python to treat the tuple like a function.
