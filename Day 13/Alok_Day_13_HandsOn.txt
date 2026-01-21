@@ -1,0 +1,127 @@
+Modules & Packages (5 Questions)
+
+1. You are building a large application with authentication, database, and logging features. How would you structure this using packages and sub-packages? Explain the role of __init__.py.
+
+Answer:
+In a large application, the code should be organized into packages based on functionality to improve clarity and maintenance. For example, separate packages can be created for authentication, database operations, and logging, each containing related modules. This structure makes the project easier to understand, test, and scale as new features are added.
+The __init__.py file indicates that a directory is a Python package. It can be used to initialize package-level variables, execute setup code, or define which modules are accessible when the package is imported. It also helps manage package-level imports.
+
+2. A script works fine when run directly but fails with ModuleNotFoundError when imported from another folder. What could be the reasons and how would you fix it?
+
+Answer:
+This issue usually occurs because Python cannot locate the module when it is imported from a different directory. Common reasons include missing or incorrect import paths, the project root not being included in Python’s module search path, or improper use of relative imports.
+To fix this, you can ensure that the project root is included in PYTHONPATH, use proper absolute or relative imports, or execute the program using python -m so Python resolves imports correctly.
+
+3. You want to share common utility functions across multiple projects without copying code. How would you create and use a custom module for this?
+
+Answer:
+A custom module can be created by placing reusable utility functions into a separate Python file. This module can be stored in a shared directory and imported into multiple projects.
+For better reuse and version control, the module can be converted into a package and installed using pip. This approach avoids code duplication, ensures consistency, and makes updates easier to manage across projects.
+
+4. Two different modules have functions with the same name. How would you import them to avoid name conflicts?
+
+Answer:
+To avoid name conflicts, you can import modules using aliases or explicitly reference functions with their module names. Aliases make it clear which function belongs to which module and prevent accidental overwriting of functions with the same name.
+This approach improves code readability and reduces confusion when working with large projects.
+
+5. Your project has heavy modules that slow down startup time. How can lazy importing help, and when would you use it?
+
+Answer:
+Lazy importing means importing a module only when it is actually needed rather than at the start of the program. This reduces startup time and memory usage, especially when dealing with large or resource-intensive modules.
+Lazy imports are useful when modules are required only in specific situations, such as optional features, conditional execution paths, or performance-critical applications where fast startup is important.
+
+GENERATORS (Scenarios)
+
+1. You need to process a 10GB log file line by line without loading it fully into memory. Why are generators a better choice than lists?
+
+Answer:
+Generators are a better choice because they produce one value at a time instead of storing all values in memory. When processing a very large file like a 10GB log file, loading all lines into a list would consume huge memory and may crash the program.
+Generators read and process each line lazily, meaning the next line is generated only when needed. This makes generators memory-efficient, faster for large files, and ideal for sequential data processing.
+
+2. You are generating an infinite sequence of timestamps for a monitoring system. How would you safely implement this using a generator?
+
+Answer:
+An infinite generator can be created using a loop that continuously yields timestamps. To keep it safe, the generator should be controlled externally using conditions, break statements, or time limits when consuming it.
+This ensures the generator does not overload the system and stops execution when monitoring is no longer required.
+
+3. A generator function has multiple yield statements inside loops and conditionals. How does Python remember where to resume execution?
+
+Answer:
+Python internally stores the execution state of the generator, including local variables, loop counters, and the position of the last yield.
+When the generator is called again, Python resumes execution exactly after the previous yield statement, not from the beginning. This state preservation is what makes generators efficient and powerful.
+
+4. You want to stop a generator midway based on a condition. How can this be done, and what happens internally?
+
+Answer:
+A generator can be stopped using a return statement or by allowing the function to naturally reach the end. When this happens, Python raises a Stop Iteration exception internally.
+This exception signals that the generator has no more values to produce, and iteration stops gracefully without errors.
+
+5. Compare a generator expression and a list comprehension in a real-time data streaming scenario. Which one would you choose and why?
+
+Answer:
+In a real-time data streaming scenario, a generator expression is preferred over a list comprehension. Generator expressions produce data on demand, consuming minimal memory and allowing continuous processing of incoming data.
+List comprehensions, on the other hand, generate and store all values at once, which is inefficient and impractical for streaming or large datasets. Therefore, generators are more suitable for real-time and memory-sensitive applications.
+
+FILE HANDLING (Scenarios)
+
+1. You are writing logs to a file and want to ensure data is saved even if the program crashes. Which file mode and techniques would you use?
+
+Answer:
+The file should be opened in append mode ('a') so that new log entries are added without overwriting existing data. To ensure data is saved even during a crash, the program should flush the file buffer frequently or use line buffering.
+Using a with statement is also important, as it automatically closes the file properly, ensuring that buffered data is written to disk.
+
+2. A file is being read by multiple processes at the same time. What issues can occur and how would you prevent data corruption?
+
+Answer:
+When multiple processes access the same file, issues such as race conditions, partial reads, or inconsistent data can occur. This is especially problematic if one process is writing while others are reading.
+To prevent data corruption, file locking mechanisms should be used. Locks ensure that only one process accesses the file in a critical section at a time, maintaining data integrity.
+
+3. You need to read a CSV file, clean the data, and write the output to another file. How would you handle this efficiently?
+
+Answer:
+The file should be read line by line to avoid loading the entire CSV into memory. Each row can be processed, cleaned, and immediately written to a new output file.
+Using Python’s built-in CSV handling utilities improves efficiency and accuracy, especially when dealing with large datasets.
+
+4. A file contains sensitive data. How would you ensure it is properly closed and not left open accidentally?
+
+Answer:
+The safest way is to use the with statement while opening the file. The with block ensures that the file is automatically closed as soon as the block ends, even if an error occurs.
+This approach reduces the risk of data leaks and resource misuse when handling sensitive information.
+
+5. While reading a large file, your program suddenly raises an exception. How can you make sure the file is still closed properly?
+
+Answer:
+The file should be handled using a with statement or enclosed inside a try–finally block.
+In both cases, Python guarantees that the file is closed properly, even if an exception interrupts the program, ensuring safe resource management.
+
+DECORATORS (Scenarios)
+
+1. You want to log the execution time of multiple functions without modifying their code. How would decorators help here?
+
+Answer:
+Decorators allow you to wrap existing functions with additional behavior without changing their original code. By creating a timing decorator, the start and end time of a function can be recorded every time it runs.
+This approach promotes code reusability and keeps logging logic separate from business logic, making the program cleaner and easier to maintain.
+
+2. A function should only run if the user is authenticated. How would you enforce this using a decorator?
+
+Answer:
+An authentication decorator can be created to check the user’s login or authentication status before calling the function. If the user is authenticated, the function executes normally; otherwise, access is denied.
+This ensures centralized access control, avoids repeating authentication checks, and improves security.
+
+3. You are using multiple decorators on a single function. In what order are they executed, and why does this matter?
+
+Answer:
+Multiple decorators are applied from bottom to top (the decorator closest to the function runs first). During execution, the topmost decorator is entered first and exited last.
+The order matters because each decorator wraps the result of the previous one, and changing the order can alter behavior, output, or even cause errors.
+
+4. A decorator breaks a function’s original name and docstring. How would you fix this issue?
+
+Answer:
+This issue occurs because the decorator replaces the original function with a wrapper function. To fix it, the functools.wraps decorator should be used inside the custom decorator.
+It preserves the original function’s metadata such as name, docstring, and documentation.
+
+5. You want a decorator that accepts arguments (for example, a retry count). How is this different from a normal decorator?
+
+Answer:
+A decorator with arguments requires an extra level of function nesting. Instead of directly wrapping the function, it first accepts decorator arguments and then returns the actual decorator.
+This allows the decorator’s behavior to be customized dynamically, such as changing retry limits or timeout values.
