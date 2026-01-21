@@ -1,0 +1,102 @@
+#customer object
+#instance methods
+#properties
+#class methods and class data
+#static methods
+#private methods
+#inheritance
+#method overriding
+
+class customer:
+    #---------class data------
+   company_name = "smartshop"
+   customer_count =0
+
+#------initializer which means creating the constructor---
+   def __init__(self,name,email,age):
+        self.name = name
+        self.email = email
+        self.__age = age #protected variable
+        self.__balance = 0 #private variable
+        customer.customer_count += 1
+
+    #-----instance methods------
+   def add_balance(self,amount):
+        if amount >0:
+            self.__balance += amount
+            print(f"{amount} added successfully")
+        else:
+            print("invalid amount")
+   @property  #getter
+   def balance(self):
+        return self.__balance
+
+   @balance.setter    #setter
+   def balance(self,amount):
+        if amount < 0:
+            print("balance cannot be negative")
+        else:
+            self.__balance = amount
+   @classmethod
+   def get_customer_count(cls):
+       return cls.customer_count
+   @staticmethod
+   def validate_email(email):
+       return "@" in email and "." in email
+   #-----private method---
+   def __calculate_discount(self):
+        if self.__balance >= 5000:
+            return 20
+        return 10
+   #public method using private-----
+   def get_discount(self):
+       return self.__calculate_discount()
+   #-----display
+   def display(self):
+        print(f" customer name : {self.name} email: {self.email} age :{self.__age}balance :{self.__balance} discount :{self.get_discount()} company: {customer.company_name}")
+
+ #-------inheritance------
+class premiumcustomer(customer):
+     def __init__(self,name,email,age,membership_fee):
+         super().__init__(name,email,age)
+         self.membership_fee=membership_fee
+
+#--------method overriding-----
+     def get_discount(self):
+         return 30  #premium customers
+     def display(self):
+         super().display()
+         print(f"memership fee: {self.membership_fee}")
+         print("customer type: premium \n")
+
+#------lets create the object-----
+c1 = customer("sushma","sushma@gmail.com",25)
+c2 = premiumcustomer("aishu","aishu@gmail.com",25,2000)
+
+#using methods
+c1.add_balance(6000)
+c2.add_balance(3000)
+
+
+#validating the static method
+print("valid email:",customer.validate_email(c1.email))
+
+#display
+c1.display()
+c2.display()
+
+#classmethod
+print("total customers:",customer.get_customer_count())
+
+
+
+
+
+
+
+
+
+
+
+
+
