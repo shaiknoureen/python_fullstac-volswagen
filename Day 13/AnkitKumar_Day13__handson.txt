@@ -1,0 +1,262 @@
+Modules & Packages
+1. Structuring a large application using packages and sub-packages & role of __init__.py
+
+For a large application, you divide features into packages so the code stays organized and maintainable. Each major feature gets its own package, and related logic goes into sub-packages. The __init__.py file marks a directory as a Python package and can control what gets exposed when the package is imported.
+
+Example structure:
+
+app/
+ ├── auth/
+ │    ├── __init__.py
+ │    ├── login.py
+ │    └── permissions.py
+ ├── database/
+ │    ├── __init__.py
+ │    └── connection.py
+ ├── logging/
+ │    ├── __init__.py
+ │    └── logger.py
+ └── main.py
+
+2. Script runs directly but fails when imported from another folder
+
+This usually happens because Python cannot find the module in its search path (sys.path). Common reasons include incorrect relative imports, missing __init__.py, or running the script from a different working directory.
+
+Fixes:
+
+Use absolute imports
+
+Run the script as a module
+
+Add the project root to PYTHONPATH
+
+Example fix:
+
+python -m app.main
+
+3. Sharing common utility functions across multiple projects
+
+You create a reusable custom module or package and place it in a common directory or install it as a local package using pip. This avoids code duplication and keeps updates centralized.
+
+Example:
+
+# utils.py
+def format_date(date):
+    return date.strftime("%Y-%m-%d")
+
+
+Usage:
+
+from utils import format_date
+
+4. Avoiding name conflicts between modules with same function names
+
+You can use aliases or import the module instead of the function to avoid conflicts.
+
+Example:
+
+import math_utils
+import string_utils
+
+math_utils.add(2, 3)
+string_utils.add("a", "b")
+
+
+Or:
+
+from math_utils import add as math_add
+from string_utils import add as string_add
+
+5. Lazy importing to improve startup time
+
+Lazy importing means importing a module only when it is actually needed. This reduces startup time and memory usage for heavy modules.
+
+Example:
+
+def process_data():
+    import pandas
+    return pandas.DataFrame()
+
+
+This is useful when the module is rarely used or only required in specific situations.
+
+Generators
+6. Processing a 10GB file line by line
+
+Generators are better because they produce one item at a time instead of loading everything into memory. This makes them memory-efficient and ideal for large files.
+
+Example:
+
+def read_file(path):
+    with open(path) as f:
+        for line in f:
+            yield line
+
+7. Infinite sequence of timestamps using a generator
+
+Generators safely handle infinite sequences because they generate values on demand and stop when requested.
+
+Example:
+
+import time
+
+def timestamps():
+    while True:
+        yield time.time()
+
+8. How Python remembers generator state
+
+Python saves the generator’s execution state, including local variables and the instruction pointer. When next() is called, execution resumes exactly after the last yield.
+
+This is handled internally by Python’s generator object.
+
+9. Stopping a generator midway
+
+You stop a generator by using return or raising StopIteration. Internally, Python marks the generator as exhausted.
+
+Example:
+
+def numbers():
+    for i in range(10):
+        if i == 5:
+            return
+        yield i
+
+10. Generator expression vs list comprehension
+
+A generator expression is preferred in real-time streaming because it processes values lazily and uses less memory, while a list comprehension loads all data at once.
+
+Example:
+
+data = (x for x in range(1000000))
+
+File Handling
+11. Ensuring logs are saved even if the program crashes
+
+Use append mode and flush or sync the file buffer. Using context managers ensures proper handling.
+
+Example:
+
+with open("app.log", "a") as f:
+    f.write("Log entry\n")
+    f.flush()
+
+12. Multiple processes reading the same file
+
+Issues include race conditions and partial reads. File locking mechanisms can prevent corruption.
+
+Example:
+
+import fcntl
+
+with open("data.txt") as f:
+    fcntl.flock(f, fcntl.LOCK_SH)
+    data = f.read()
+
+13. Reading, cleaning, and writing a CSV file efficiently
+
+Read line by line, process data incrementally, and write output immediately to avoid high memory usage.
+
+Example:
+
+with open("input.csv") as src, open("output.csv", "w") as dst:
+    for line in src:
+        cleaned = line.strip()
+        dst.write(cleaned + "\n")
+
+14. Ensuring sensitive files are closed properly
+
+Using a context manager guarantees the file is closed even if an error occurs.
+
+Example:
+
+with open("secret.txt") as f:
+    data = f.read()
+
+15. Handling exceptions while reading a large file
+
+A with statement ensures the file closes automatically even if an exception is raised.
+
+Example:
+
+try:
+    with open("bigfile.txt") as f:
+        for line in f:
+            process(line)
+except Exception:
+    pass
+
+Decorators
+16. Logging execution time using decorators
+
+Decorators wrap functions and add timing logic without changing the original code.
+
+Example:
+
+import time
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        print(time.time() - start)
+        return result
+    return wrapper
+
+17. Authentication check using a decorator
+
+The decorator checks authentication before running the function.
+
+Example:
+
+def auth_required(func):
+    def wrapper(user):
+        if not user.is_authenticated:
+            return "Access denied"
+        return func(user)
+    return wrapper
+
+18. Order of execution with multiple decorators
+
+Decorators execute from the bottom up. This matters because the output of one decorator becomes the input of the next.
+
+Example:
+
+@a
+@b
+def func():
+    pass
+
+
+b runs first, then a.
+
+19. Preserving function name and docstring
+
+Use functools.wraps to copy metadata from the original function.
+
+Example:
+
+from functools import wraps
+
+def decorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    return wrapper
+
+20. Decorators with arguments
+
+Decorators with arguments require an extra function layer. This allows passing configuration values like retry count.
+
+Example:
+
+def retry(times):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(times):
+                try:
+                    return func(*args, **kwargs)
+                except Exception:
+                    pass
+        return wrapper
+    return decorator
