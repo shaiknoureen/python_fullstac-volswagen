@@ -1,0 +1,87 @@
+
+-- create
+create table customers(
+  customer_id int primary key,
+  first_name varchar(50) not null,
+  last_name varchar(50) not null,
+  email varchar(100) unique,
+  phone bigint(50),
+  created_at text
+ );
+  
+
+-- insert
+INSERT INTO customers VALUES (001, 'sushma','nagraj', 'sushma@gmail.com','1234567891','2026-01-22');
+INSERT INTO customers VALUES (002, 'sekhar','nanda', 'sekhar@gmail.com','2345678911','2026-01-22');
+INSERT INTO customers VALUES (003, 'sailaja','ram', 'sailaja@gmail.com','3456789121','2026-01-22');
+INSERT INTO customers VALUES (004, 'suraj','raj', 'suraj@gmail.com','567891234','2026-01-22');
+INSERT INTO customers VALUES (005, 'rajesh','kumar', 'rajesh@gmail.com','4567891123','2026-01-22');
+INSERT INTO customers VALUES (006, 'sai','naresh', 'sai@gmail.com','89145673889','2026-01-22');
+INSERT INTO customers VALUES (007, 'samuel','rai', 'samuel@gmail.com','12347643891','2026-01-22');
+
+
+select * from customers;
+select * from customers where first_name = "sailaja";
+update customers set email = 's@gmail.com' where customer_id = 001;
+select * from customers;
+delete from customers where customer_id = 005;
+select * from customers;
+select * from customers order by first_name asc limit 5;
+
+
+
+
+
+create table customer(
+  customer_id int primary key,
+  first_name varchar(50) not null,
+  last_name varchar(50) not null,
+  
+ );
+ INSERT INTO customers VALUES (001, 'sushma','nagraj');
+  INSERT INTO customers VALUES (002, 'sasi','nagraj');
+   INSERT INTO customers VALUES (003, 'sai','nagraj');
+    INSERT INTO customers VALUES (004, 'sailaja','nagraj');
+     INSERT INTO customers VALUES (005, 'sekhar','nagraj');
+
+
+
+
+
+
+
+
+select * from customers;
+select * from customers where first_name = "sailaja";
+update customers set email = 's@gmail.com' where customer_id = 001;
+select * from customers;
+delete from customers where customer_id = 005;
+rollback;
+select * from customers;
+select * from customers order by first_name asc limit 5;
+
+
+
+
+begin transaction;
+
+delete from customers where customer_id = 005;
+
+rollback;
+drop table customer;
+  
+select count(*)  as total_customers from customers;
+
+select avg(total) from customers;
+select sum(total) from customers;
+select created_at ,count(*) as total_customers from customers group by created_at;
+alter table customers rename column phone to mobile_number;
+alter table customers add column status text;
+update customers set status = "active" where customer_id in(001,003,005,007);
+update customers set status = "inactive" where customer_id in(002,004,006);
+select * from customers where status = "active" and email is not null;
+select * from customers where status = "active" and email is  null;
+select * from customers where status = "active" or email is null;
+select * from customers where status = "active" and(email like "%gmail.com" or email like "%yahoo.com");
+
+select * from customers;
