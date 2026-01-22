@@ -1,0 +1,385 @@
+1. This program defines a Validator class with a static method to check password strength. Static methods do not depend on object or class data.
+
+class Validator:
+    @staticmethod
+    def is_strong(password):
+        return len(password) >= 8 and any(char.isdigit() for char in password)
+
+print(Validator.is_strong("Pass1234"))
+
+
+The static method checks length and presence of digits to determine password strength.
+
+2. This program uses static methods to convert temperature between Celsius and Fahrenheit.
+
+class Temperature:
+    @staticmethod
+    def c_to_f(c):
+        return (c * 9/5) + 32
+
+    @staticmethod
+    def f_to_c(f):
+        return (f - 32) * 5/9
+
+print(Temperature.c_to_f(25))
+
+
+Static methods are suitable here because conversion does not depend on class data.
+
+3. This program checks whether a given year is a leap year using a static method.
+
+class Utility:
+    @staticmethod
+    def is_leap(year):
+        return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+print(Utility.is_leap(2024))
+
+
+The static method performs a calculation independent of any object.
+
+4. This program validates a product code with a predefined format (e.g., “PROD-123”).
+
+class Validator:
+    @staticmethod
+    def validate_code(code):
+        return code.startswith("PROD-") and code[5:].isdigit()
+
+print(Validator.validate_code("PROD-101"))
+
+
+Static validation logic ensures consistent format checking.
+
+5. This program demonstrates reuse of a static method across different classes.
+
+class MathUtil:
+    @staticmethod
+    def square(x):
+        return x * x
+
+class A:
+    def show(self):
+        print(MathUtil.square(4))
+
+class B:
+    def display(self):
+        print(MathUtil.square(5))
+
+
+The same static method is reused without duplication.
+
+6. This program uses a class method to count the number of Student objects created.
+
+class Student:
+    count = 0
+
+    def __init__(self):
+        Student.count += 1
+
+    @classmethod
+    def total_students(cls):
+        return cls.count
+
+
+Class methods operate on class-level data shared by all objects.
+
+7. This program uses a class method as a factory to create objects from dictionary data.
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["name"], data["age"])
+
+p = Person.from_dict({"name": "Alice", "age": 25})
+
+
+Factory methods simplify object creation from structured data.
+
+8. This program uses a class method to update a shared interest rate.
+
+class Bank:
+    interest_rate = 5
+
+    @classmethod
+    def update_rate(cls, rate):
+        cls.interest_rate = rate
+
+
+All objects reflect the updated interest rate.
+
+9. This program shows how a class method behaves when called from a child class.
+
+class Parent:
+    value = 10
+
+    @classmethod
+    def show(cls):
+        print(cls.value)
+
+class Child(Parent):
+    value = 20
+
+Child.show()
+
+
+The class method refers to the calling class, not the parent.
+
+10. This program resets all class-level data using a class method.
+
+class Data:
+    x = 10
+    y = 20
+
+    @classmethod
+    def reset(cls):
+        cls.x = 0
+        cls.y = 0
+
+
+Class methods are ideal for managing shared state.
+
+11. This program uses a private method to calculate interest.
+
+class BankAccount:
+    def __calculate_interest(self, balance):
+        return balance * 0.05
+
+    def get_interest(self, balance):
+        return self.__calculate_interest(balance)
+
+
+Private methods hide internal logic from users.
+
+12. This program shows a public method calling a private validation method.
+
+class User:
+    def __validate(self, age):
+        return age >= 18
+
+    def register(self, age):
+        return self.__validate(age)
+
+
+Encapsulation ensures validation logic remains internal.
+
+13. This program demonstrates that private methods cannot be accessed directly.
+
+class Test:
+    def __hidden(self):
+        print("Hidden")
+
+t = Test()
+# t.__hidden()  # Error
+
+
+Direct access causes an AttributeError.
+
+14. This program demonstrates name mangling of private methods.
+
+class Demo:
+    def __show(self):
+        print("Hello")
+
+d = Demo()
+d._Demo__show()
+
+
+Python internally renames private methods to prevent conflicts.
+
+15. This program shows that changing private methods does not affect external code.
+
+class Calculator:
+    def __add(self, a, b):
+        return a + b
+
+    def calculate(self, a, b):
+        return self.__add(a, b)
+
+
+External code only depends on the public interface.
+
+16. This program updates salary using an instance method.
+
+class Employee:
+    def __init__(self, salary):
+        self.salary = salary
+
+    def increment(self, amount):
+        self.salary += amount
+
+
+Instance methods modify object-specific data.
+
+17. This program modifies both instance and class variables.
+
+class Counter:
+    total = 0
+
+    def __init__(self):
+        Counter.total += 1
+        self.id = Counter.total
+
+
+Each object gets unique data while updating shared data.
+
+18. This program shows an error when an instance method is called without an object.
+
+class Sample:
+    def show(self):
+        print("Hello")
+
+# Sample.show()  # Error
+
+
+Instance methods require an object reference.
+
+19. This program returns calculated data based on object attributes.
+
+class Rectangle:
+    def __init__(self, l, w):
+        self.l = l
+        self.w = w
+
+    def area(self):
+        return self.l * self.w
+
+
+The method uses object data to compute results.
+
+20. This program overrides a method and calls the parent method using super().
+
+class Parent:
+    def greet(self):
+        print("Hello")
+
+class Child(Parent):
+    def greet(self):
+        super().greet()
+        print("Welcome")
+
+
+super() allows reuse of parent behavior.
+
+21. This program creates multiple objects storing different data.
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+p1 = Person("A")
+p2 = Person("B")
+
+
+Each object maintains its own state.
+
+22. This program shows the difference between class and instance variables.
+
+class Test:
+    x = 10
+
+    def __init__(self, y):
+        self.y = y
+
+
+Class variables are shared; instance variables are unique.
+
+23. This program assigns attributes dynamically without a constructor.
+
+class Empty:
+    pass
+
+e = Empty()
+e.name = "Dynamic"
+
+
+Python allows flexible attribute assignment.
+
+24. This program demonstrates shared object references.
+
+a = [1, 2]
+b = a
+b.append(3)
+
+
+Both variables refer to the same object.
+
+25. This program demonstrates object deletion.
+
+class Demo:
+    def __del__(self):
+        print("Object deleted")
+
+d = Demo()
+del d
+
+
+The destructor runs when the object is deleted.
+
+26. This program demonstrates single inheritance.
+
+class Animal:
+    def speak(self):
+        print("Sound")
+
+class Dog(Animal):
+    pass
+
+
+The child inherits behavior from the parent.
+
+27. This program overrides a parent method to change behavior.
+
+class Animal:
+    def speak(self):
+        print("Sound")
+
+class Dog(Animal):
+    def speak(self):
+        print("Bark")
+
+
+Method overriding customizes functionality.
+
+28. This program combines inheritance and overriding.
+
+class Shape:
+    def draw(self):
+        print("Drawing shape")
+
+class Circle(Shape):
+    def draw(self):
+        print("Drawing circle")
+
+
+The child class provides its own implementation.
+
+29. This program demonstrates super() in a constructor.
+
+class Parent:
+    def __init__(self):
+        print("Parent init")
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+        print("Child init")
+
+
+super() ensures parent initialization.
+
+30. This program extends functionality without modifying the parent class.
+
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+class AdvancedCalculator(Calculator):
+    def multiply(self, a, b):
+        return a * b
+
+
+The child class adds new features while keeping the parent unchanged.
