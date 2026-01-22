@@ -1,0 +1,487 @@
+1. Program to create a class named Validator and define a static method that checks whether a password is strong
+
+Ans:
+class Validator:
+    @staticmethod
+    def is_strong_password(password):
+        if len(password) < 8:
+            return False
+        if not any(char.isdigit() for char in password):
+            return False
+        if not any(char.isupper() for char in password):
+            return False
+        if not any(char.islower() for char in password):
+            return False
+        return True
+
+# Example usage
+pwd = "Strong123"
+print("Strong Password:", Validator.is_strong_password(pwd))
+
+2. Program where a static method converts temperature from Celsius to Fahrenheit and Fahrenheit to Celsius
+
+Ans:
+class TemperatureConverter:
+    @staticmethod
+    def celsius_to_fahrenheit(c):
+        return (c * 9 / 5) + 32
+
+    @staticmethod
+    def fahrenheit_to_celsius(f):
+        return (f - 32) * 5 / 9
+
+# Example usage
+print("30°C in Fahrenheit:", TemperatureConverter.celsius_to_fahrenheit(30))
+print("86°F in Celsius:", TemperatureConverter.fahrenheit_to_celsius(86))
+
+3. Program to create a Utility class with a static method that checks whether a given year is a leap year
+
+Ans:
+class Utility:
+    @staticmethod
+    def is_leap_year(year):
+        if (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0):
+            return True
+        return False
+# Example usage
+year = 2024
+print("Leap Year:", Utility.is_leap_year(year))
+
+4. Program to validate a product code using a static method with a predefined format
+
+Ans:
+Format: PROD-XXXX (PROD followed by 4 digits)
+class ProductValidator:
+    @staticmethod
+    def validate_code(code):
+        if len(code) != 9:
+            return False
+        if not code.startswith("PROD-"):
+            return False
+        if not code[5:].isdigit():
+            return False
+        return True
+
+# Example usage
+code = "PROD-1234"
+print("Valid Product Code:", ProductValidator.validate_code(code))
+
+5. Program that demonstrates reuse of a static method across two different classes
+
+Ans:
+class MathUtils:
+    @staticmethod
+    def square(num):
+        return num * num
+
+class AreaCalculator:
+    def square_area(self, side):
+        return MathUtils.square(side)
+
+class VolumeCalculator:
+    def cube_volume(self, side):
+        return MathUtils.square(side) * side
+
+# Example usage
+area = AreaCalculator()
+volume = VolumeCalculator()
+print("Area of square:", area.square_area(5))
+print("Volume of cube:", volume.cube_volume(5))
+
+6. Program to create a Student class and use a class method to count the number of student objects created
+
+Ans:
+class Student:
+    count = 0
+
+    def __init__(self, name):
+        self.name = name
+        Student.count += 1
+
+    @classmethod
+    def get_student_count(cls):
+        return cls.count
+
+# Example usage
+s1 = Student("Aman")
+s2 = Student("Riya")
+s3 = Student("Rahul")
+print("Total Students:", Student.get_student_count())
+
+7. Program where a class method works as a factory method to create objects from dictionary data
+
+Ans:
+class Student:
+    def __init__(self, name, age, marks):
+        self.name = name
+        self.age = age
+        self.marks = marks
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["name"], data["age"], data["marks"])
+
+# Example usage
+data = {"name": "Alok", "age": 21, "marks": 88}
+student = Student.from_dict(data)
+print(student.name, student.age, student.marks)
+
+8. Program to create a Bank class where the interest rate is shared and updated using a class method
+
+Ans:
+class Bank:
+    interest_rate = 5.0
+
+    def __init__(self, balance):
+        self.balance = balance
+
+    @classmethod
+    def update_interest_rate(cls, new_rate):
+        cls.interest_rate = new_rate
+
+    def calculate_interest(self):
+        return self.balance * Bank.interest_rate / 100
+
+# Example usage
+acc1 = Bank(10000)
+acc2 = Bank(20000)
+Bank.update_interest_rate(6.5)
+print("Interest 1:", acc1.calculate_interest())
+print("Interest 2:", acc2.calculate_interest())
+
+9. Program to demonstrate how a class method behaves when called from a child class
+
+Ans:
+class Parent:
+    value = 10
+
+    @classmethod
+    def show_value(cls):
+        print("Value:", cls.value)
+
+
+class Child(Parent):
+    value = 20
+
+# Example usage
+Parent.show_value()
+Child.show_value()
+Output Explanation:
+The class method receives the calling class (cls), so when called from Child, it uses Child’s class variable.
+
+10. Program where a class method resets all class-level data
+
+Ans:
+class Counter:
+    count = 0
+
+    def __init__(self):
+        Counter.count += 1
+
+    @classmethod
+    def reset(cls):
+        cls.count = 0
+
+# Example usage
+c1 = Counter()
+c2 = Counter()
+c3 = Counter()
+print("Before Reset:", Counter.count)
+Counter.reset()
+print("After Reset:", Counter.count)
+
+11. Program to create a BankAccount class and perform interest calculation using a private method
+
+Ans:
+class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+    def calculate_interest(self):
+        return self.__interest()
+
+    def __interest(self):
+        return self.balance * 0.05   # 5% interest
+# Example usage
+account = BankAccount(10000)
+print("Interest:", account.calculate_interest())
+
+12. Program where a public method internally calls a private method for validation
+
+Ans:
+class User:
+    def __init__(self, username):
+        self.username = username
+
+    def login(self):
+        if self.__validate_user():
+            print("Login successful")
+        else:
+            print("Login failed")
+
+    def __validate_user(self):
+        return len(self.username) >= 5
+# Example usage
+u = User("admin1")
+u.login()
+
+13. Program to demonstrate that a private method cannot be accessed directly outside the class
+
+Ans:
+class Sample:
+    def __private_method(self):
+        print("This is a private method")
+
+    def call_private(self):
+        self.__private_method()
+
+# Example usage
+obj = Sample()
+obj.call_private()
+
+# The following line will cause an error if uncommented
+# obj.__private_method()
+Explanation:
+Private methods cannot be accessed directly using the object outside the class.
+
+14. Program to demonstrate name mangling behavior of private methods
+
+Ans:
+class Demo:
+    def __show(self):
+        print("Private method called")
+
+    def access(self):
+        self.__show()
+
+# Example usage
+d = Demo()
+d.access()
+
+# Accessing private method using name mangling
+d._Demo__show()
+Explanation:
+Python internally renames __show to _Demo__show.
+This is called name mangling.
+
+15. Program where changes in a private method do not affect external code
+
+Ans:
+class Calculator:
+    def add(self, a, b):
+        return self.__calculate(a, b)
+
+    def __calculate(self, a, b):
+        return a + b
+
+# Example usage
+calc = Calculator()
+print(calc.add(5, 3))
+Explanation:
+Even if the internal logic of __calculate() is changed later,
+external code calling add() will not be affected, ensuring data hiding and security.
+
+16. Program to create an Employee class and update salary using an instance method
+
+Ans:
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+    def update_salary(self, increment):
+        self.salary += increment
+
+# Example usage
+emp = Employee("Rahul", 30000)
+emp.update_salary(5000)
+print("Updated Salary:", emp.salary)
+
+17. Program where an instance method modifies both instance-level and class-level variables
+
+Ans:
+class Company:
+    total_employees = 0
+
+    def __init__(self, name):
+        self.name = name
+
+    def add_employee(self):
+        Company.total_employees += 1
+        self.status = "Active"
+
+# Example usage
+e1 = Company("Amit")
+e1.add_employee()
+print("Employee Status:", e1.status)
+print("Total Employees:", Company.total_employees)
+
+18. Program that shows an error when an instance method is called without creating an object
+
+Ans:
+class Sample:
+    def show(self):
+        print("Instance method called")
+
+# Incorrect usage
+Sample.show()
+Explanation:
+Calling an instance method without creating an object raises a TypeError because self is missing.
+
+19. Program to create an instance method that returns calculated data based on object attributes
+
+Ans:
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+# Example usage
+rect = Rectangle(5, 4)
+print("Area:", rect.area())
+
+20. Program to override an instance method in a child class and call the parent method using super()
+
+Ans:
+class Vehicle:
+    def start(self):
+        print("Vehicle is starting")
+class Car(Vehicle):
+    def start(self):
+        super().start()
+        print("Car is ready to drive")
+# Example usage
+c = Car()
+c.start()
+
+21. Program to create multiple objects from the same class and show that they store different data
+
+Ans:
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+# Creating multiple objects
+s1 = Student("Amit", 85)
+s2 = Student("Riya", 92)
+print(s1.name, s1.marks)
+print(s2.name, s2.marks)
+
+22. Program to demonstrate the difference between class variables and instance variables
+
+Ans:
+class Employee:
+    company = "ABC Ltd"   # Class variable
+
+    def __init__(self, name):
+        self.name = name  # Instance variable
+
+e1 = Employee("Rahul")
+e2 = Employee("Neha")
+e2.company = "XYZ Ltd"
+print(e1.company)   # ABC Ltd
+print(e2.company)   # XYZ Ltd
+
+23. Program to create a class without a constructor and assign attributes dynamically
+
+Ans:
+class Person:
+    pass
+p = Person()
+p.name = "Alok"
+p.age = 21
+print(p.name, p.age)
+
+24. Program to demonstrate object reference assignment and shared references
+
+Ans:
+class Demo:
+    def __init__(self, value):
+        self.value = value
+obj1 = Demo(10)
+obj2 = obj1   # Reference assignment
+obj2.value = 50
+print(obj1.value)
+print(obj2.value)
+
+25. Program to demonstrate object deletion and its effect
+
+Ans:
+class Sample:
+    def __init__(self):
+        print("Object Created")
+
+    def __del__(self):
+        print("Object Deleted")
+obj = Sample()
+del obj
+
+26. Program to demonstrate single inheritance using a parent and child class
+
+Ans:
+class Parent:
+    def show(self):
+        print("This is parent class")
+
+class Child(Parent):
+    def display(self):
+        print("This is child class")
+c = Child()
+c.show()
+c.display()
+
+27. Program to override a parent class method in a child class and change its behavior
+
+Ans:
+class Parent:
+    def greet(self):
+        print("Hello from Parent")
+class Child(Parent):
+    def greet(self):
+        print("Hello from Child")
+c = Child()
+c.greet()
+
+28. Program to demonstrate inheritance and method overriding together
+
+Ans:
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+class Dog(Animal):
+    def sound(self):
+        print("Dog barks")
+d = Dog()
+d.sound()
+
+29. Program to demonstrate how super() works inside a child class constructor
+
+Ans:
+class Parent:
+    def __init__(self, name):
+        self.name = name
+
+
+class Child(Parent):
+    def __init__(self, name, age):
+        super().__init__(name)
+        self.age = age
+c = Child("Ravi", 10)
+print(c.name, c.age)
+
+30. Program where a child class extends functionality without modifying the parent class
+
+Ans:
+class Vehicle:
+    def start(self):
+        print("Vehicle started")
+
+class Bike(Vehicle):
+    def ride(self):
+        print("Bike is running")
+b = Bike()
+b.start()
+b.ride()
