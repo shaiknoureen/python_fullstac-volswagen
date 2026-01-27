@@ -1,0 +1,125 @@
+CSV Scenario Based Questions (1–10)
+
+1. Removing rows with missing email addresses
+
+Answer - I would first read the CSV file row by row and explicitly check the email column for empty values, nulls, or invalid formats. Only rows failing this validation would be removed, while all valid rows are retained. This ensures the dataset stays clean without losing useful records.
+
+2. Removing duplicate leads (email + phone)
+
+I would create a unique identifier by combining email and phone number. While reading the file, I would track already-seen combinations using a dictionary or set. If duplicates appear, I would compare timestamps or row order and keep the earliest record to preserve original lead data.
+
+3. Standardizing different date formats
+
+Answer - I would attempt to parse each date using a predefined list of supported formats. Once successfully parsed, I would convert all dates into a single standard format such as YYYY-MM-DD. This makes sorting, filtering, and comparisons consistent across the dataset.
+
+4. Converting numeric strings safely
+
+Answer - I would use safe type conversion with proper error handling. If a value fails conversion, I would either log the error, replace it with a default value, or store it as NULL. This prevents runtime crashes and keeps data processing stable.
+
+5. Appending daily records to CSV
+
+Answer - I would open the CSV file in append mode so new records are added without overwriting existing data. A check would ensure headers are written only once. This approach supports daily incremental data updates.
+
+6. Handling rows with extra columns
+
+Answer - I would validate each row by comparing the number of values to the header count. Rows with extra columns can either be trimmed or flagged for review. This prevents schema mismatch errors during downstream processing.
+
+7. Processing a very large CSV
+
+Answer - Instead of loading the entire file into memory, I would read it line by line or in chunks. This approach is memory-efficient and allows processing of very large files without performance issues.
+
+8. Masking sensitive information
+
+Answer - Before writing data to a new CSV, I would mask sensitive columns such as phone numbers by hiding partial digits. This protects user privacy while still allowing limited data visibility.
+
+9. Merging CSVs with different column order
+
+Answer - I would match columns by name instead of position. After aligning columns to a common schema, I would merge rows safely, ensuring data is placed in the correct columns.
+
+10. Normalizing column name casing
+
+Answer - I would convert all headers to a standard format such as lowercase or snake_case. This avoids issues caused by case-sensitive mismatches during processing.
+
+Unit Testing Scenario-Based Questions (11–20)
+
+11. Testing CSV reading without real files
+
+Answer - I would use mock objects or in-memory file streams to simulate CSV input. This allows unit tests to run independently of the filesystem and improves reliability.
+
+12. Covering input-based behavior
+
+Answer - I would design test cases for valid inputs, invalid inputs, edge cases, and boundary values. This ensures every logical path in the function is tested.
+
+13. Testing exceptions
+
+Answer - I would intentionally pass invalid input and verify that the correct exception type and message are raised. This confirms proper error handling.
+
+14. Testing date-dependent functions
+
+Answer - I would refactor the function to accept the date as an argument or mock the system date. This ensures consistent and predictable test results.
+
+15. Validating refactoring
+
+Answer - Existing unit tests help confirm that functionality remains unchanged after refactoring. Passing tests indicate behavior consistency.
+
+16. Testing database-dependent functions
+
+Answer - I would mock database calls or use an in-memory database to isolate the business logic from external dependencies.
+
+17. Tests failing in full suite
+
+Answer - This usually happens due to shared state, test order dependency, or improper cleanup between tests. Isolating tests fixes this issue.
+
+18. Testing configuration-based outputs
+
+Answer - I would write separate test cases for each configuration value and assert expected outputs for each scenario.
+
+19. Testing success and failure paths
+
+Answer - I would write tests that verify correct results for valid inputs and proper error handling for invalid cases.
+
+20. Measuring test coverage
+
+Answer - Coverage tools show which lines and branches are executed by tests, helping identify untested logic.
+
+SQLite3 Scenario-Based Questions (21–30)
+
+21. Choosing SQLite data types
+
+Answer - I would select data types based on data usage, storage needs, and query performance, using constraints where necessary.
+
+22. Preventing accidental deletes
+
+Answer - I would use transactions so deletes can be rolled back if an error occurs.
+
+23. Bulk updates with rollback
+
+Answer - I would wrap the update statements inside a transaction and commit only after successful execution.
+
+24. Improving performance on large tables
+
+Answer - I would add indexes, optimize queries, and reduce unnecessary data retrieval.
+
+25. Preventing duplicate emails
+
+Answer - I would enforce a UNIQUE constraint on the email column at the database level.
+
+26. Recovering deleted records
+
+Answer - Data can only be recovered if backups exist or the transaction was not committed.
+
+27. Customers who placed orders
+
+Answer - I would use an INNER JOIN to fetch only customers with matching order records.
+
+28. Validating CSV data before insertion
+
+Answer - I would validate data types, required fields, and constraints before inserting into SQLite.
+
+29. Tracking data changes
+
+Answer - I would create an audit table and use triggers to log changes.
+
+30. Safely deleting old records
+
+Answer - I would delete records using clear conditions inside a transaction and verify affected rows before committing.
